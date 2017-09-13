@@ -12,8 +12,9 @@
 		E5294D2E1DC9ED6A00AC82DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D2D1DC9ED6A00AC82DB /* ViewController.m */; };
 		E5294D311DC9ED6B00AC82DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5294D2F1DC9ED6B00AC82DB /* Main.storyboard */; };
 		E5294D331DC9ED6B00AC82DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5294D321DC9ED6B00AC82DB /* Assets.xcassets */; };
-		E5294D361DC9ED6B00AC82DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5294D341DC9ED6B00AC82DB /* LaunchScreen.storyboard */; };
 		E5294D3F1DC9EE9C00AC82DB /* UIWebViewExp.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D3E1DC9EE9C00AC82DB /* UIWebViewExp.m */; };
+		E587456A1F67E63E00C1EF3A /* WKWebViewExp.m in Sources */ = {isa = PBXBuildFile; fileRef = E58745691F67E63E00C1EF3A /* WKWebViewExp.m */; };
+		E5C253B81F68BE69007F257C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C253B71F68BE69007F257C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +26,12 @@
 		E5294D2D1DC9ED6A00AC82DB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E5294D301DC9ED6B00AC82DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E5294D321DC9ED6B00AC82DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E5294D351DC9ED6B00AC82DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5294D371DC9ED6B00AC82DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5294D3D1DC9EE9C00AC82DB /* UIWebViewExp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewExp.h; sourceTree = "<group>"; };
 		E5294D3E1DC9EE9C00AC82DB /* UIWebViewExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewExp.m; sourceTree = "<group>"; };
+		E58745681F67E63E00C1EF3A /* WKWebViewExp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewExp.h; sourceTree = "<group>"; };
+		E58745691F67E63E00C1EF3A /* WKWebViewExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewExp.m; sourceTree = "<group>"; };
+		E5C253B71F68BE69007F257C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +70,11 @@
 				E5294D2D1DC9ED6A00AC82DB /* ViewController.m */,
 				E5294D3D1DC9EE9C00AC82DB /* UIWebViewExp.h */,
 				E5294D3E1DC9EE9C00AC82DB /* UIWebViewExp.m */,
+				E58745681F67E63E00C1EF3A /* WKWebViewExp.h */,
+				E58745691F67E63E00C1EF3A /* WKWebViewExp.m */,
 				E5294D2F1DC9ED6B00AC82DB /* Main.storyboard */,
+				E5C253B71F68BE69007F257C /* LaunchScreen.storyboard */,
 				E5294D321DC9ED6B00AC82DB /* Assets.xcassets */,
-				E5294D341DC9ED6B00AC82DB /* LaunchScreen.storyboard */,
 				E5294D371DC9ED6B00AC82DB /* Info.plist */,
 				E5294D261DC9ED6A00AC82DB /* Supporting Files */,
 			);
@@ -115,7 +120,7 @@
 				TargetAttributes = {
 					E5294D221DC9ED6A00AC82DB = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = NNG33WM86G;
+						DevelopmentTeam = 8BMZBNN3Q5;
 					};
 				};
 			};
@@ -142,7 +147,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5294D361DC9ED6B00AC82DB /* LaunchScreen.storyboard in Resources */,
+				E5C253B81F68BE69007F257C /* LaunchScreen.storyboard in Resources */,
 				E5294D331DC9ED6B00AC82DB /* Assets.xcassets in Resources */,
 				E5294D311DC9ED6B00AC82DB /* Main.storyboard in Resources */,
 			);
@@ -159,6 +164,7 @@
 				E5294D3F1DC9EE9C00AC82DB /* UIWebViewExp.m in Sources */,
 				E5294D2B1DC9ED6A00AC82DB /* AppDelegate.m in Sources */,
 				E5294D281DC9ED6A00AC82DB /* main.m in Sources */,
+				E587456A1F67E63E00C1EF3A /* WKWebViewExp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,14 +177,6 @@
 				E5294D301DC9ED6B00AC82DB /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E5294D341DC9ED6B00AC82DB /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E5294D351DC9ED6B00AC82DB /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -270,10 +268,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NNG33WM86G;
+				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.bq.WebViewExp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.bq.WebViewExp.intest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -286,10 +284,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NNG33WM86G;
+				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.bq.WebViewExp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.bq.WebViewExp.intest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

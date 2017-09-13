@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Xmi-A6-hD3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Xmi-A6-hD3">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <development version="7000" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--WebView Experimentation-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
@@ -15,29 +18,41 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xzl-aP-Fy7">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <items>
                                     <barButtonItem title="UIWebView" id="9Tq-RK-Kfn">
                                         <connections>
                                             <segue destination="1vd-Jg-cCz" kind="show" id="V1b-FV-jWu"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="WKWebView" id="vSi-cF-jOa"/>
+                                    <barButtonItem title="WKWebView" id="vSi-cF-jOa">
+                                        <connections>
+                                            <segue destination="XgX-ot-TZq" kind="show" id="wrf-PX-xaa"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UIWebView &amp; WKWebView" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekg-nw-vQ0">
+                                <rect key="frame" x="111" y="253.5" width="98" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ekg-nw-vQ0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5PA-Av-ZLT"/>
                             <constraint firstAttribute="trailing" secondItem="xzl-aP-Fy7" secondAttribute="trailing" id="FJn-YG-LGh"/>
+                            <constraint firstItem="ekg-nw-vQ0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MaY-8L-Myj"/>
                             <constraint firstItem="xzl-aP-Fy7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XNf-zB-MHX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xzl-aP-Fy7" secondAttribute="bottom" id="pQx-s8-R47"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Tgp-oL-AwU"/>
+                    <navigationItem key="navigationItem" title="WebView Experimentation" id="Tgp-oL-AwU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,15 +67,15 @@
                         <viewControllerLayoutGuide type="bottom" id="YuD-d6-dVH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="evu-9k-K6b">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOz-FL-h1X">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dOz-FL-h1X" secondAttribute="trailing" id="1b4-eM-tT8"/>
                             <constraint firstItem="YuD-d6-dVH" firstAttribute="top" secondItem="dOz-FL-h1X" secondAttribute="bottom" id="2mY-ej-rCw"/>
@@ -70,7 +85,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="iXl-Q5-IYE">
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="11" id="jiQ-Je-AaF">
-                            <rect key="frame" x="20" y="7" width="526" height="30"/>
+                            <rect key="frame" x="8" y="7" width="270" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
@@ -88,7 +103,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfm-aU-B5L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302" y="978"/>
+            <point key="canvasLocation" x="302" y="990"/>
+        </scene>
+        <!--Web View Exp-->
+        <scene sceneID="57q-U7-SJe">
+            <objects>
+                <viewController id="XgX-ot-TZq" customClass="WKWebViewExp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1dj-XE-sM4"/>
+                        <viewControllerLayoutGuide type="bottom" id="90d-Jc-FWp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="67Y-lq-lPr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mcY-f7-89w">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="11" id="4Kz-xZ-nkO">
+                            <rect key="frame" x="8" y="7" width="270" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
+                            <connections>
+                                <outlet property="delegate" destination="XgX-ot-TZq" id="HGW-3h-hDH"/>
+                            </connections>
+                        </textField>
+                        <barButtonItem key="rightBarButtonItem" title="Go" id="xtg-aR-aHZ">
+                            <connections>
+                                <action selector="go:" destination="XgX-ot-TZq" id="I6t-XX-dO6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <connections>
+                        <outlet property="textField" destination="4Kz-xZ-nkO" id="aS3-Wr-lQT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4FT-hx-oHl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="302" y="1646"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YaE-2K-gLA">
@@ -106,7 +160,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gz5-iY-aNH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="416" y="-385"/>
+            <point key="canvasLocation" x="302" y="206"/>
         </scene>
     </scenes>
 </document>
