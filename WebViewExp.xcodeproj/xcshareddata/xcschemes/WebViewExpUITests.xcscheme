@@ -14,7 +14,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "03A867AB205E0C2600A2A209"
+               BlueprintIdentifier = "03D986F4205ECA6E0047E6A7"
                BuildableName = "WebViewExpUITests.xctest"
                BlueprintName = "WebViewExpUITests"
                ReferencedContainer = "container:WebViewExp.xcodeproj">
@@ -34,7 +34,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "03A867AB205E0C2600A2A209"
+               BlueprintIdentifier = "03D986F4205ECA6E0047E6A7"
                BuildableName = "WebViewExpUITests.xctest"
                BlueprintName = "WebViewExpUITests"
                ReferencedContainer = "container:WebViewExp.xcodeproj">
@@ -58,7 +58,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "03A867AB205E0C2600A2A209"
+            BlueprintIdentifier = "03D986F4205ECA6E0047E6A7"
             BuildableName = "WebViewExpUITests.xctest"
             BlueprintName = "WebViewExpUITests"
             ReferencedContainer = "container:WebViewExp.xcodeproj">
@@ -76,7 +76,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "03A867AB205E0C2600A2A209"
+            BlueprintIdentifier = "03D986F4205ECA6E0047E6A7"
             BuildableName = "WebViewExpUITests.xctest"
             BlueprintName = "WebViewExpUITests"
             ReferencedContainer = "container:WebViewExp.xcodeproj">
@@ -84,7 +84,7 @@
       </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "Release">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"

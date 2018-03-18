@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03A867AF205E0C2600A2A209 /* WebViewExpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A867AE205E0C2600A2A209 /* WebViewExpUITests.swift */; };
-		03A867B7205E0C4A00A2A209 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A867B6205E0C4A00A2A209 /* SnapshotHelper.swift */; };
+		03D986F8205ECA6E0047E6A7 /* WebViewExpUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */; };
+		03D98701205ECC7E0047E6A7 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D98700205ECC7E0047E6A7 /* SnapshotHelper.swift */; };
 		E5294D281DC9ED6A00AC82DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D271DC9ED6A00AC82DB /* main.m */; };
 		E5294D2B1DC9ED6A00AC82DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D2A1DC9ED6A00AC82DB /* AppDelegate.m */; };
 		E5294D2E1DC9ED6A00AC82DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D2D1DC9ED6A00AC82DB /* ViewController.m */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		03A867B1205E0C2600A2A209 /* PBXContainerItemProxy */ = {
+		03D986FA205ECA6E0047E6A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E5294D1B1DC9ED6A00AC82DB /* Project object */;
 			proxyType = 1;
@@ -30,10 +30,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03A867AC205E0C2600A2A209 /* WebViewExpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebViewExpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03A867AE205E0C2600A2A209 /* WebViewExpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewExpUITests.swift; sourceTree = "<group>"; };
-		03A867B0205E0C2600A2A209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03A867B6205E0C4A00A2A209 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		03D986F5205ECA6E0047E6A7 /* WebViewExpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebViewExpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewExpUITests.m; sourceTree = "<group>"; };
+		03D986F9205ECA6E0047E6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03D986FF205ECC7D0047E6A7 /* WebViewExpUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebViewExpUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		03D98700205ECC7E0047E6A7 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		E5294D231DC9ED6A00AC82DB /* WebViewExp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebViewExp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5294D271DC9ED6A00AC82DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5294D291DC9ED6A00AC82DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,7 +52,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		03A867A9205E0C2600A2A209 /* Frameworks */ = {
+		03D986F2205ECA6E0047E6A7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -68,12 +69,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03A867AD205E0C2600A2A209 /* WebViewExpUITests */ = {
+		03D986F6205ECA6E0047E6A7 /* WebViewExpUITests */ = {
 			isa = PBXGroup;
 			children = (
-				03A867B6205E0C4A00A2A209 /* SnapshotHelper.swift */,
-				03A867AE205E0C2600A2A209 /* WebViewExpUITests.swift */,
-				03A867B0205E0C2600A2A209 /* Info.plist */,
+				03D98700205ECC7E0047E6A7 /* SnapshotHelper.swift */,
+				03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */,
+				03D986F9205ECA6E0047E6A7 /* Info.plist */,
+				03D986FF205ECC7D0047E6A7 /* WebViewExpUITests-Bridging-Header.h */,
 			);
 			path = WebViewExpUITests;
 			sourceTree = "<group>";
@@ -82,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				E5294D251DC9ED6A00AC82DB /* WebViewExp */,
-				03A867AD205E0C2600A2A209 /* WebViewExpUITests */,
+				03D986F6205ECA6E0047E6A7 /* WebViewExpUITests */,
 				E5294D241DC9ED6A00AC82DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				E5294D231DC9ED6A00AC82DB /* WebViewExp.app */,
-				03A867AC205E0C2600A2A209 /* WebViewExpUITests.xctest */,
+				03D986F5205ECA6E0047E6A7 /* WebViewExpUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,22 +129,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		03A867AB205E0C2600A2A209 /* WebViewExpUITests */ = {
+		03D986F4205ECA6E0047E6A7 /* WebViewExpUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03A867B3205E0C2600A2A209 /* Build configuration list for PBXNativeTarget "WebViewExpUITests" */;
+			buildConfigurationList = 03D986FC205ECA6E0047E6A7 /* Build configuration list for PBXNativeTarget "WebViewExpUITests" */;
 			buildPhases = (
-				03A867A8205E0C2600A2A209 /* Sources */,
-				03A867A9205E0C2600A2A209 /* Frameworks */,
-				03A867AA205E0C2600A2A209 /* Resources */,
+				03D986F1205ECA6E0047E6A7 /* Sources */,
+				03D986F2205ECA6E0047E6A7 /* Frameworks */,
+				03D986F3205ECA6E0047E6A7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				03A867B2205E0C2600A2A209 /* PBXTargetDependency */,
+				03D986FB205ECA6E0047E6A7 /* PBXTargetDependency */,
 			);
 			name = WebViewExpUITests;
 			productName = WebViewExpUITests;
-			productReference = 03A867AC205E0C2600A2A209 /* WebViewExpUITests.xctest */;
+			productReference = 03D986F5205ECA6E0047E6A7 /* WebViewExpUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		E5294D221DC9ED6A00AC82DB /* WebViewExp */ = {
@@ -172,8 +174,9 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = POLYV;
 				TargetAttributes = {
-					03A867AB205E0C2600A2A209 = {
+					03D986F4205ECA6E0047E6A7 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E5294D221DC9ED6A00AC82DB;
 					};
@@ -197,13 +200,13 @@
 			projectRoot = "";
 			targets = (
 				E5294D221DC9ED6A00AC82DB /* WebViewExp */,
-				03A867AB205E0C2600A2A209 /* WebViewExpUITests */,
+				03D986F4205ECA6E0047E6A7 /* WebViewExpUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		03A867AA205E0C2600A2A209 /* Resources */ = {
+		03D986F3205ECA6E0047E6A7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -223,12 +226,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		03A867A8205E0C2600A2A209 /* Sources */ = {
+		03D986F1205ECA6E0047E6A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03A867AF205E0C2600A2A209 /* WebViewExpUITests.swift in Sources */,
-				03A867B7205E0C4A00A2A209 /* SnapshotHelper.swift in Sources */,
+				03D986F8205ECA6E0047E6A7 /* WebViewExpUITests.m in Sources */,
+				03D98701205ECC7E0047E6A7 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,10 +250,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		03A867B2205E0C2600A2A209 /* PBXTargetDependency */ = {
+		03D986FB205ECA6E0047E6A7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E5294D221DC9ED6A00AC82DB /* WebViewExp */;
-			targetProxy = 03A867B1205E0C2600A2A209 /* PBXContainerItemProxy */;
+			targetProxy = 03D986FA205ECA6E0047E6A7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -266,12 +269,13 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		03A867B4205E0C2600A2A209 /* Debug */ = {
+		03D986FD205ECA6E0047E6A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -282,26 +286,28 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = WebViewExpUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bq.WebViewExpUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "WebViewExpUITests/WebViewExpUITests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = WebViewExp;
 			};
 			name = Debug;
 		};
-		03A867B5205E0C2600A2A209 /* Release */ = {
+		03D986FE205ECA6E0047E6A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -312,14 +318,15 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = WebViewExpUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bq.WebViewExpUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "WebViewExpUITests/WebViewExpUITests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = WebViewExp;
 			};
@@ -446,11 +453,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03A867B3205E0C2600A2A209 /* Build configuration list for PBXNativeTarget "WebViewExpUITests" */ = {
+		03D986FC205ECA6E0047E6A7 /* Build configuration list for PBXNativeTarget "WebViewExpUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03A867B4205E0C2600A2A209 /* Debug */,
-				03A867B5205E0C2600A2A209 /* Release */,
+				03D986FD205ECA6E0047E6A7 /* Debug */,
+				03D986FE205ECA6E0047E6A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
