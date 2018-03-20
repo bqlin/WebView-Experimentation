@@ -13,6 +13,10 @@ scheme("WebViewExpUITests")
 # Where should the resulting screenshots be stored?
 output_directory("./screenshots")
 
+languages([
+  "zh-Hans"
+])
+
 # remove the '#' to clear all previously generated screenshots before creating new ones
 clear_previous_screenshots(true)
 

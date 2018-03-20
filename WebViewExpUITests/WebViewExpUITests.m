@@ -34,7 +34,9 @@
 
 - (void)testExample {
 	// Xcode 8
-	[Snapshot snapshot:@"01LoginScreen" waitForLoadingIndicator:YES];
+	[Snapshot snapshot:@"01Home" waitForLoadingIndicator:YES];
+	[[[XCUIApplication alloc] init].toolbars.buttons[@"UIWebView"] tap];
+	[Snapshot snapshot:@"02WebView" waitForLoadingIndicator:YES];
 	
 	// Xcode 9
 //	[Snapshot snapshot:@"lunch" timeWaitingForIdle:1];

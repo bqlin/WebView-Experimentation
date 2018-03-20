@@ -183,6 +183,7 @@
 					E5294D221DC9ED6A00AC82DB = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = V7WL667MJM;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -422,6 +423,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -439,6 +441,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
