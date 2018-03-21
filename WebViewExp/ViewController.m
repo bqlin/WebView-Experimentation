@@ -10,9 +10,12 @@
 #import "WebViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface ViewController ()
+static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
-@property (weak, nonatomic) IBOutlet UITextField *urlTextField;
+@interface ViewController ()<UITextViewDelegate>
+
+
+@property (weak, nonatomic) IBOutlet UITextView *urlTextView;
 @property (nonatomic, strong) UIView *webView;
 
 @end
@@ -35,7 +38,7 @@
 	WebViewController *vc = (WebViewController *)segue.destinationViewController;
 	
 	if ([vc isKindOfClass:[WebViewController class]]) {
-		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlTextField.text]];
+		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlTextView.text]];
 		if ([self.webView respondsToSelector:@selector(loadRequest:)]) {
 			[self.webView performSelector:@selector(loadRequest:) withObject:request];
 		}
@@ -55,6 +58,18 @@
 - (WKWebView *)wkWebView {
 	WKWebView *webView = [[WKWebView alloc] init];
 	return webView;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+	NSString *text = textView.text;
+	NSRange range = [text rangeOfString:@"\n"];
+	if (range.length > 0) {
+		text = [text stringByReplacingCharactersInRange:range withString:@""];
+		textView.text = text;
+		[self performSegueWithIdentifier:GoWebViewSegueID sender:textView];
+	}
 }
 
 @end
