@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="2304" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,44 +26,82 @@
                                 <items>
                                     <barButtonItem title="UIWebView" id="9Tq-RK-Kfn">
                                         <connections>
-                                            <segue destination="1vd-Jg-cCz" kind="show" id="V1b-FV-jWu"/>
+                                            <segue destination="REM-ef-3gT" kind="show" id="Azm-Mu-lqA"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="WKWebView" id="vSi-cF-jOa">
                                         <connections>
-                                            <segue destination="XgX-ot-TZq" kind="show" id="wrf-PX-xaa"/>
+                                            <segue destination="XgX-ot-TZq" kind="show" id="mMU-S7-GK9"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Go" id="fCh-Zq-pa6"/>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UIWebView &amp; WKWebView" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekg-nw-vQ0">
-                                <rect key="frame" x="111" y="253.5" width="98" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35b-yA-6e7">
+                                <rect key="frame" x="126" y="426" width="30" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="GO"/>
+                                <connections>
+                                    <segue destination="1vd-Jg-cCz" kind="show" id="06l-sb-hCy"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.qq.com/" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fso-Cu-rTp">
+                                <rect key="frame" x="0.0" y="64" width="320" height="30"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X8V-PS-QOt">
+                                <rect key="frame" x="0.0" y="268.5" width="0.0" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WKWebView" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekg-nw-vQ0">
+                                        <rect key="frame" x="0.0" y="5.5" width="0.0" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bhr-Hn-ins">
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="webViewTypeChangeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="CG4-1K-kN7"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UIWebView" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDg-NJ-zDh">
+                                        <rect key="frame" x="0.0" y="5.5" width="0.0" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ekg-nw-vQ0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5PA-Av-ZLT"/>
+                            <constraint firstItem="X8V-PS-QOt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5pj-rQ-lDk"/>
                             <constraint firstAttribute="trailing" secondItem="xzl-aP-Fy7" secondAttribute="trailing" id="FJn-YG-LGh"/>
-                            <constraint firstItem="ekg-nw-vQ0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MaY-8L-Myj"/>
                             <constraint firstItem="xzl-aP-Fy7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XNf-zB-MHX"/>
+                            <constraint firstItem="Fso-Cu-rTp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="b6c-xb-Lch"/>
+                            <constraint firstAttribute="trailing" secondItem="Fso-Cu-rTp" secondAttribute="trailing" id="kkh-CL-w0x"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xzl-aP-Fy7" secondAttribute="bottom" id="pQx-s8-R47"/>
+                            <constraint firstItem="X8V-PS-QOt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qpK-ma-XbH"/>
+                            <constraint firstItem="Fso-Cu-rTp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yOw-97-xGC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="WebView Experimentation" id="Tgp-oL-AwU">
                         <barButtonItem key="backBarButtonItem" title=" " id="wsh-fO-Vuy"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="urlTextField" destination="Fso-Cu-rTp" id="dAL-nF-sda"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302" y="327"/>
+            <point key="canvasLocation" x="301.875" y="326.40845070422534"/>
         </scene>
-        <!--UIWebView-->
+        <!--Web View Controller-->
         <scene sceneID="Lpv-4q-08f">
             <objects>
-                <viewController title="UIWebView" id="1vd-Jg-cCz" customClass="UIWebViewExp" sceneMemberID="viewController">
+                <viewController id="1vd-Jg-cCz" customClass="WebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yy4-Oq-KI1"/>
                         <viewControllerLayoutGuide type="bottom" id="YuD-d6-dVH"/>
@@ -71,28 +109,60 @@
                     <view key="view" contentMode="scaleToFill" id="evu-9k-K6b">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOz-FL-h1X">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="dOz-FL-h1X" secondAttribute="trailing" id="1b4-eM-tT8"/>
-                            <constraint firstItem="YuD-d6-dVH" firstAttribute="top" secondItem="dOz-FL-h1X" secondAttribute="bottom" id="2mY-ej-rCw"/>
-                            <constraint firstItem="dOz-FL-h1X" firstAttribute="leading" secondItem="evu-9k-K6b" secondAttribute="leading" id="LCX-zc-vRh"/>
-                            <constraint firstItem="dOz-FL-h1X" firstAttribute="top" secondItem="Yy4-Oq-KI1" secondAttribute="bottom" id="TW5-sB-8zM"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iXl-Q5-IYE"/>
-                    <connections>
-                        <outlet property="webView" destination="dOz-FL-h1X" id="ZfL-lj-Xvh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfm-aU-B5L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-570" y="1125"/>
+        </scene>
+        <!--Web View Exp-->
+        <scene sceneID="Ggf-7G-4jw">
+            <objects>
+                <viewController id="REM-ef-3gT" customClass="UIWebViewExp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hWZ-xn-65z"/>
+                        <viewControllerLayoutGuide type="bottom" id="F6V-L2-5mF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OXc-tb-cD9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqs-Xh-RhE">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="F6V-L2-5mF" firstAttribute="top" secondItem="Kqs-Xh-RhE" secondAttribute="bottom" id="b9L-4o-7Eu"/>
+                            <constraint firstItem="Kqs-Xh-RhE" firstAttribute="leading" secondItem="OXc-tb-cD9" secondAttribute="leading" id="cEu-iv-Fhe"/>
+                            <constraint firstAttribute="trailing" secondItem="Kqs-Xh-RhE" secondAttribute="trailing" id="lqM-nw-8yT"/>
+                            <constraint firstItem="Kqs-Xh-RhE" firstAttribute="top" secondItem="hWZ-xn-65z" secondAttribute="bottom" id="vUD-vH-KwS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="76S-4O-9l4">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://www.baidu.com/" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="cOl-Bn-AzQ">
+                            <rect key="frame" x="56.5" y="7" width="207" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="REM-ef-3gT" id="4ZH-ty-Jf5"/>
+                            </connections>
+                        </textField>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textField" destination="cOl-Bn-AzQ" id="uhL-CT-jUz"/>
+                        <outlet property="webView" destination="Kqs-Xh-RhE" id="wfv-ez-DSa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HUa-y4-8Su" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-285" y="1732.3943661971832"/>
         </scene>
         <!--WKWebView-->
         <scene sceneID="57q-U7-SJe">
@@ -110,7 +180,7 @@
                     <navigationItem key="navigationItem" id="mcY-f7-89w">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="FyN-WE-IOA"/>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="11" id="4Kz-xZ-nkO">
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://www.baidu.com/" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="11" id="4Kz-xZ-nkO">
                             <rect key="frame" x="51.5" y="7" width="217" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -131,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4FT-hx-oHl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="317" y="1125"/>
+            <point key="canvasLocation" x="519" y="1407"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YaE-2K-gLA">

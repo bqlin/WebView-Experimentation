@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		035E536C206292E700B93F91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035E536A206292E700B93F91 /* LaunchScreen.storyboard */; };
 		03995D0220623FA20088019D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03995D0120623FA10088019D /* README.md */; };
+		03995D06206258B00088019D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03995D05206258B00088019D /* WebViewController.m */; };
 		03D986F8205ECA6E0047E6A7 /* WebViewExpUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */; };
 		03D98701205ECC7E0047E6A7 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D98700205ECC7E0047E6A7 /* SnapshotHelper.swift */; };
 		E5294D281DC9ED6A00AC82DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D271DC9ED6A00AC82DB /* main.m */; };
@@ -17,7 +19,6 @@
 		E5294D331DC9ED6B00AC82DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5294D321DC9ED6B00AC82DB /* Assets.xcassets */; };
 		E5294D3F1DC9EE9C00AC82DB /* UIWebViewExp.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D3E1DC9EE9C00AC82DB /* UIWebViewExp.m */; };
 		E587456A1F67E63E00C1EF3A /* WKWebViewExp.m in Sources */ = {isa = PBXBuildFile; fileRef = E58745691F67E63E00C1EF3A /* WKWebViewExp.m */; };
-		E5C253B81F68BE69007F257C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C253B71F68BE69007F257C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		035E536B206292E700B93F91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03995D0120623FA10088019D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		03995D04206258B00088019D /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		03995D05206258B00088019D /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		03D986F5205ECA6E0047E6A7 /* WebViewExpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebViewExpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewExpUITests.m; sourceTree = "<group>"; };
 		03D986F9205ECA6E0047E6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,7 +54,6 @@
 		E5294D3E1DC9EE9C00AC82DB /* UIWebViewExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewExp.m; sourceTree = "<group>"; };
 		E58745681F67E63E00C1EF3A /* WKWebViewExp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewExp.h; sourceTree = "<group>"; };
 		E58745691F67E63E00C1EF3A /* WKWebViewExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewExp.m; sourceTree = "<group>"; };
-		E5C253B71F68BE69007F257C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				E5294D3E1DC9EE9C00AC82DB /* UIWebViewExp.m */,
 				E58745681F67E63E00C1EF3A /* WKWebViewExp.h */,
 				E58745691F67E63E00C1EF3A /* WKWebViewExp.m */,
+				03995D04206258B00088019D /* WebViewController.h */,
+				03995D05206258B00088019D /* WebViewController.m */,
 			);
 			path = WebViewController;
 			sourceTree = "<group>";
@@ -121,7 +126,7 @@
 				E5294D2C1DC9ED6A00AC82DB /* ViewController.h */,
 				E5294D2D1DC9ED6A00AC82DB /* ViewController.m */,
 				E5294D2F1DC9ED6B00AC82DB /* Main.storyboard */,
-				E5C253B71F68BE69007F257C /* LaunchScreen.storyboard */,
+				035E536A206292E700B93F91 /* LaunchScreen.storyboard */,
 				E5294D321DC9ED6B00AC82DB /* Assets.xcassets */,
 				E5294D371DC9ED6B00AC82DB /* Info.plist */,
 				E5294D261DC9ED6A00AC82DB /* Supporting Files */,
@@ -229,8 +234,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5C253B81F68BE69007F257C /* LaunchScreen.storyboard in Resources */,
 				E5294D331DC9ED6B00AC82DB /* Assets.xcassets in Resources */,
+				035E536C206292E700B93F91 /* LaunchScreen.storyboard in Resources */,
 				03995D0220623FA20088019D /* README.md in Resources */,
 				E5294D311DC9ED6B00AC82DB /* Main.storyboard in Resources */,
 			);
@@ -253,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5294D2E1DC9ED6A00AC82DB /* ViewController.m in Sources */,
+				03995D06206258B00088019D /* WebViewController.m in Sources */,
 				E5294D3F1DC9EE9C00AC82DB /* UIWebViewExp.m in Sources */,
 				E5294D2B1DC9ED6A00AC82DB /* AppDelegate.m in Sources */,
 				E5294D281DC9ED6A00AC82DB /* main.m in Sources */,
@@ -271,6 +277,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		035E536A206292E700B93F91 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				035E536B206292E700B93F91 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		E5294D2F1DC9ED6B00AC82DB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -438,7 +452,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bq.webViewExp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -456,7 +470,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bq.webViewExp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
