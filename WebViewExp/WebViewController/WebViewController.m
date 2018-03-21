@@ -48,6 +48,7 @@ typedef void(^ControllerHandlerBlock)(void);
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	//NSLog(@"%s", __FUNCTION__);
+	[self.navigationController setToolbarHidden:NO animated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
@@ -62,6 +63,32 @@ typedef void(^ControllerHandlerBlock)(void);
 	NSDictionary *views = NSDictionaryOfVariableBindings(webView, top);
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[webView]|" options:0 metrics:nil views:views]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top][webView]|" options:0 metrics:nil views:views]];
+	[self addToolBarButtons];
+	
+}
+
+- (void)addToolBarButtons {
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(refreshAction:)];
+		UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
+	UIBarButtonItem *forwardButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"forward"] style:UIBarButtonItemStylePlain target:self action:@selector(forwardAction:)];
+	
+	UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+	
+	self.toolbarItems = @[flexibleSpace, refreshButton, fixedSpace, backButton, fixedSpace, forwardButton];
+}
+
+- (void)refreshAction:(UIBarButtonItem *)sender {
+	[self.wkWebView reload];
+	[self.uiWebView reload];
+}
+- (void)backAction:(UIBarButtonItem *)sender {
+	[self.wkWebView goBack];
+	[self.uiWebView goBack];
+}
+- (void)forwardAction:(UIBarButtonItem *)sender {
+	[self.wkWebView goForward];
+	[self.uiWebView goForward];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,6 +132,11 @@ typedef void(^ControllerHandlerBlock)(void);
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:searchBar.text]];
 	[self.uiWebView loadRequest:request];
 	[self.wkWebView loadRequest:request];
+	[searchBar endEditing:YES];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+	[self.view endEditing:YES];
 }
 
 @end

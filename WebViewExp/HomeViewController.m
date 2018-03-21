@@ -1,18 +1,18 @@
 //
-//  ViewController.m
+//  HomeViewController.m
 //  WebViewExp
 //
 //  Created by LinBq on 16/11/2.
 //  Copyright © 2016年 POLYV. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "HomeViewController.h"
 #import "WebViewController.h"
 #import <WebKit/WebKit.h>
 
 static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
-@interface ViewController ()<UITextViewDelegate>
+@interface HomeViewController ()<UITextViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextView *urlTextView;
@@ -20,11 +20,20 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
 @end
 
-@implementation ViewController
+@implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.webView = [[UIWebView alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self.navigationController setToolbarHidden:YES animated:YES];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+	[self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,6 +77,7 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 	if (range.length > 0) {
 		text = [text stringByReplacingCharactersInRange:range withString:@""];
 		textView.text = text;
+		[textView endEditing:YES];
 		[self performSegueWithIdentifier:GoWebViewSegueID sender:textView];
 	}
 }

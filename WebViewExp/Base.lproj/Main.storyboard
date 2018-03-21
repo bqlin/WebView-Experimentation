@@ -14,7 +14,7 @@
         <!--WebView Experimentation-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,10 +23,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xzl-aP-Fy7">
-                                <rect key="frame" x="0.0" y="288" width="568" height="32"/>
-                                <items/>
-                            </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X8V-PS-QOt">
                                 <rect key="frame" x="0.0" y="144.5" width="0.0" height="31"/>
                                 <subviews>
@@ -37,13 +33,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bhr-Hn-ins">
-                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                        <rect key="frame" x="272" y="0.0" width="51" height="31"/>
                                         <connections>
                                             <action selector="webViewTypeChangeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="CG4-1K-kN7"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UIWebView" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDg-NJ-zDh">
-                                        <rect key="frame" x="0.0" y="5.5" width="0.0" height="20.5"/>
+                                        <rect key="frame" x="321" y="5.5" width="0.0" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -67,10 +63,7 @@
                         <constraints>
                             <constraint firstItem="X8V-PS-QOt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5pj-rQ-lDk"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="FHz-kb-uva"/>
-                            <constraint firstAttribute="trailing" secondItem="xzl-aP-Fy7" secondAttribute="trailing" id="FJn-YG-LGh"/>
-                            <constraint firstItem="xzl-aP-Fy7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XNf-zB-MHX"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="nhK-8D-lfT"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xzl-aP-Fy7" secondAttribute="bottom" id="pQx-s8-R47"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T79-cS-QZM" secondAttribute="trailing" id="qCR-kc-vwD"/>
                             <constraint firstItem="X8V-PS-QOt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qpK-ma-XbH"/>
                             <constraint firstItem="X8V-PS-QOt" firstAttribute="top" secondItem="T79-cS-QZM" secondAttribute="bottom" constant="8" id="yw2-ac-KWA"/>

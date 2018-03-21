@@ -14,7 +14,7 @@
 		03D98701205ECC7E0047E6A7 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D98700205ECC7E0047E6A7 /* SnapshotHelper.swift */; };
 		E5294D281DC9ED6A00AC82DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D271DC9ED6A00AC82DB /* main.m */; };
 		E5294D2B1DC9ED6A00AC82DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D2A1DC9ED6A00AC82DB /* AppDelegate.m */; };
-		E5294D2E1DC9ED6A00AC82DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D2D1DC9ED6A00AC82DB /* ViewController.m */; };
+		E5294D2E1DC9ED6A00AC82DB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D2D1DC9ED6A00AC82DB /* HomeViewController.m */; };
 		E5294D311DC9ED6B00AC82DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5294D2F1DC9ED6B00AC82DB /* Main.storyboard */; };
 		E5294D331DC9ED6B00AC82DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5294D321DC9ED6B00AC82DB /* Assets.xcassets */; };
 		E5294D3F1DC9EE9C00AC82DB /* UIWebViewExp.m in Sources */ = {isa = PBXBuildFile; fileRef = E5294D3E1DC9EE9C00AC82DB /* UIWebViewExp.m */; };
@@ -45,8 +45,8 @@
 		E5294D271DC9ED6A00AC82DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5294D291DC9ED6A00AC82DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E5294D2A1DC9ED6A00AC82DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E5294D2C1DC9ED6A00AC82DB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E5294D2D1DC9ED6A00AC82DB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E5294D2C1DC9ED6A00AC82DB /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		E5294D2D1DC9ED6A00AC82DB /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		E5294D301DC9ED6B00AC82DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E5294D321DC9ED6B00AC82DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5294D371DC9ED6B00AC82DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,8 +123,8 @@
 				03995D03206240880088019D /* WebViewController */,
 				E5294D291DC9ED6A00AC82DB /* AppDelegate.h */,
 				E5294D2A1DC9ED6A00AC82DB /* AppDelegate.m */,
-				E5294D2C1DC9ED6A00AC82DB /* ViewController.h */,
-				E5294D2D1DC9ED6A00AC82DB /* ViewController.m */,
+				E5294D2C1DC9ED6A00AC82DB /* HomeViewController.h */,
+				E5294D2D1DC9ED6A00AC82DB /* HomeViewController.m */,
 				E5294D2F1DC9ED6B00AC82DB /* Main.storyboard */,
 				035E536A206292E700B93F91 /* LaunchScreen.storyboard */,
 				E5294D321DC9ED6B00AC82DB /* Assets.xcassets */,
@@ -257,7 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5294D2E1DC9ED6A00AC82DB /* ViewController.m in Sources */,
+				E5294D2E1DC9ED6A00AC82DB /* HomeViewController.m in Sources */,
 				03995D06206258B00088019D /* WebViewController.m in Sources */,
 				E5294D3F1DC9EE9C00AC82DB /* UIWebViewExp.m in Sources */,
 				E5294D2B1DC9ED6A00AC82DB /* AppDelegate.m in Sources */,
