@@ -2,11 +2,15 @@ PODS:
   - ZFSetting (0.0.1)
 
 DEPENDENCIES:
-  - ZFSetting
+  - ZFSetting (from `~/Workspace/Git/bq/ZFSetting`)
+
+EXTERNAL SOURCES:
+  ZFSetting:
+    :path: ~/Workspace/Git/bq/ZFSetting
 
 SPEC CHECKSUMS:
-  ZFSetting: bca423e72da4a93336a15597134a1fc4d849cdd6
+  ZFSetting: 13e44606537f21e379a756982a64a41cfcd78a2d
 
-PODFILE CHECKSUM: c77214b093f04add19c83ae40301067827567718
+PODFILE CHECKSUM: 29d09a79a22e288c8f27a0132a4a35485d7979db
 
 COCOAPODS: 1.4.0

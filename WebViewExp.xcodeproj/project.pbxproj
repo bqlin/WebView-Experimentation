@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03508275206901150004F2CC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03508274206901150004F2CC /* SettingViewController.m */; };
+		0350827B206903320004F2CC /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0350827A206903320004F2CC /* Settings.m */; };
 		035E536C206292E700B93F91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035E536A206292E700B93F91 /* LaunchScreen.storyboard */; };
 		03995D0220623FA20088019D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03995D0120623FA10088019D /* README.md */; };
 		03995D06206258B00088019D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03995D05206258B00088019D /* WebViewController.m */; };
@@ -37,6 +38,8 @@
 /* Begin PBXFileReference section */
 		03508273206901150004F2CC /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		03508274206901150004F2CC /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		03508279206903320004F2CC /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		0350827A206903320004F2CC /* Settings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		035E536B206292E700B93F91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03995D0120623FA10088019D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		03995D04206258B00088019D /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 		03508277206902790004F2CC /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				035082782069031A0004F2CC /* Model */,
 				E5294D291DC9ED6A00AC82DB /* AppDelegate.h */,
 				E5294D2A1DC9ED6A00AC82DB /* AppDelegate.m */,
 				E5294D2C1DC9ED6A00AC82DB /* HomeViewController.h */,
@@ -106,6 +110,15 @@
 				03508274206901150004F2CC /* SettingViewController.m */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		035082782069031A0004F2CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03508279206903320004F2CC /* Settings.h */,
+				0350827A206903320004F2CC /* Settings.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		03995D03206240880088019D /* WebViewController */ = {
@@ -422,6 +435,7 @@
 				03508275206901150004F2CC /* SettingViewController.m in Sources */,
 				E5294D2B1DC9ED6A00AC82DB /* AppDelegate.m in Sources */,
 				E5294D281DC9ED6A00AC82DB /* main.m in Sources */,
+				0350827B206903320004F2CC /* Settings.m in Sources */,
 				E587456A1F67E63E00C1EF3A /* WKWebViewExp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

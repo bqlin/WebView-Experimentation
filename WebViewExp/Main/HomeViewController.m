@@ -10,6 +10,7 @@
 #import "WebViewController.h"
 #import <WebKit/WebKit.h>
 #import <SafariServices/SafariServices.h>
+#import "SettingViewController.h"
 
 static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
@@ -92,5 +93,6 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 }
 
 - (IBAction)settingAction:(UIBarButtonItem *)sender {
+	[self.navigationController pushViewController:[SettingViewController new] animated:YES];
 }
 @end

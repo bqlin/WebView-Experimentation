@@ -22,7 +22,7 @@ UIWebView 与 WKWebView 测试。
 #### 通用
 
 - 允许链接预览
-- 允许缩放页面
+- 禁止缩放页面
 - 抑制增量渲染
 - 允许数据检测
 - 允许内嵌播放
@@ -32,7 +32,7 @@ UIWebView 与 WKWebView 测试。
 
 #### WKWebView
 
-- WK - 允许后退前进导航手势
+- WK - 允许手势导航
 
 #### UIWebView
 

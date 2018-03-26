@@ -6,7 +6,8 @@ target 'WebViewExp' do
   # use_frameworks!
 
   # Pods for WebViewExp
-  pod 'ZFSetting'#, :source => 'https://github.com/renzifeng/ZFSetting.git'
+  pod 'ZFSetting', :path => '~/Workspace/Git/bq/ZFSetting'
+  #pod 'PonyDebugger', :source => 'https://github.com/CocoaPods/Specs.git'
 
   target 'WebViewExpUITests' do
     inherit! :search_paths
