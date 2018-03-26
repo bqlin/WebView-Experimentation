@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "WebViewController.h"
 #import <WebKit/WebKit.h>
+#import <SafariServices/SafariServices.h>
 
 static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
@@ -66,6 +67,8 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 }
 - (WKWebView *)wkWebView {
 	WKWebView *webView = [[WKWebView alloc] init];
+	WKWebViewConfiguration *configuration = [WKWebViewConfiguration new];
+	configuration = nil;
 	return webView;
 }
 
@@ -81,5 +84,13 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 		[self performSegueWithIdentifier:GoWebViewSegueID sender:textView];
 	}
 }
+- (IBAction)test:(id)sender {
+	NSURL *URL = [NSURL URLWithString:self.urlTextView.text];
+	SFSafariViewController *safari = [[SFSafariViewController alloc] initWithURL:URL];
+//	[self.navigationController pushViewController:safari animated:YES];
+	[self presentViewController:safari animated:YES completion:nil];
+}
 
+- (IBAction)settingAction:(UIBarButtonItem *)sender {
+}
 @end
