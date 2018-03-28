@@ -15,15 +15,33 @@
 
 @implementation SettingViewController
 
+- (void)dealloc {
+	NSLog(@"%s", __FUNCTION__);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	self.title = @"设置";
+//	[self loadData];
 	[_allGroups addObjectsFromArray:@[
 									  [self generalSettings],
 									  [self wkWebViewSettings]
 									  ]];
 }
 
+- (void)loadData {
+	_allGroups = @[
+				   [self generalSettings],
+				   [self wkWebViewSettings]
+				   ].mutableCopy;
+}
+
+- (ZFSettingGroup *)dispalySettings {
+	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
+	group.header = @"显示";
+	return group;
+}
 
 - (ZFSettingGroup *)generalSettings {
 	Settings *settings = [Settings sharedSettings];
@@ -114,6 +132,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - action
 
+- (IBAction)restoreAction:(id)sender {
+	[[Settings sharedSettings] restoreToDefault];
+	[self loadData];
+	if ([self.view isKindOfClass:[UITableView class]]) {
+		UITableView *tableView = (UITableView *)self.view;
+		[tableView reloadData];
+	}
+}
 
 @end

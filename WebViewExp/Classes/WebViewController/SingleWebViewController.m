@@ -1,17 +1,17 @@
 //
-//  WebViewController.m
+//  SingleWebViewController.m
 //  WebViewExp
 //
 //  Created by Bq Lin on 2018/3/21.
 //  Copyright © 2018年 POLYV. All rights reserved.
 //
 
-#import "WebViewController.h"
+#import "SingleWebViewController.h"
 #import <WebKit/WebKit.h>
 
 typedef void(^ControllerHandlerBlock)(void);
 
-@interface WebViewController ()<UISearchBarDelegate>
+@interface SingleWebViewController ()<UISearchBarDelegate>
 
 @property (nonatomic, copy) ControllerHandlerBlock viewDidLoadHandler;
 
@@ -21,7 +21,7 @@ typedef void(^ControllerHandlerBlock)(void);
 
 @end
 
-@implementation WebViewController
+@implementation SingleWebViewController
 
 - (void)dealloc {
 	NSLog(@"%s", __FUNCTION__);

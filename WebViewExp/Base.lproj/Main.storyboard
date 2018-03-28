@@ -23,29 +23,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X8V-PS-QOt">
-                                <rect key="frame" x="0.0" y="242" width="0.0" height="84"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WKWebView" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekg-nw-vQ0">
-                                        <rect key="frame" x="0.0" y="32" width="0.0" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bhr-Hn-ins">
-                                        <rect key="frame" x="0.0" y="26.5" width="51" height="31"/>
-                                        <connections>
-                                            <action selector="webViewTypeChangeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="CG4-1K-kN7"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UIWebView" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDg-NJ-zDh">
-                                        <rect key="frame" x="0.0" y="32" width="0.0" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="http://www.qq.com/" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T79-cS-QZM">
                                 <rect key="frame" x="16" y="72" width="288" height="162"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -66,33 +43,63 @@
                                     <action selector="test:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qtU-3u-t7K"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eI9-Rr-Rd7">
+                                <rect key="frame" x="0.0" y="316" width="320" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="UIWebView"/>
+                                    <segment title="WKWebView"/>
+                                    <segment title="Safari"/>
+                                    <segment title="双屏"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="webViewTypeChangeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="ht5-g3-jFs"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="X8V-PS-QOt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5pj-rQ-lDk"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="FHz-kb-uva"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="nhK-8D-lfT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T79-cS-QZM" secondAttribute="trailing" id="qCR-kc-vwD"/>
-                            <constraint firstItem="X8V-PS-QOt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qpK-ma-XbH"/>
-                            <constraint firstItem="X8V-PS-QOt" firstAttribute="top" secondItem="T79-cS-QZM" secondAttribute="bottom" constant="8" id="yw2-ac-KWA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="WebView Experimentation" id="Tgp-oL-AwU">
                         <barButtonItem key="backBarButtonItem" title=" " id="wsh-fO-Vuy"/>
-                        <barButtonItem key="rightBarButtonItem" title="设置" id="GQH-dV-loJ">
+                        <barButtonItem key="rightBarButtonItem" title="设置" style="plain" id="GQH-dV-loJ">
                             <connections>
-                                <action selector="settingAction:" destination="BYZ-38-t0r" id="znh-LX-P2l"/>
+                                <segue destination="Uer-qL-zaD" kind="show" id="bdF-an-q4x"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="urlTextView" destination="T79-cS-QZM" id="IT5-sF-BN2"/>
-                        <segue destination="1vd-Jg-cCz" kind="show" identifier="GoWebViewSegue" id="RrI-iy-laC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="301.875" y="326.40845070422534"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="s3m-Yi-cNp">
+            <objects>
+                <viewController id="Uer-qL-zaD" customClass="SettingViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KI1-TG-ofR">
+                        <barButtonItem key="rightBarButtonItem" title="还原" id="7WP-Hy-sRi">
+                            <connections>
+                                <action selector="restoreAction:" destination="Uer-qL-zaD" id="vqi-hW-Uij"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Lxu-Gh-La7" kind="unwind" unwindAction="unwindToHome:" id="MkF-MS-uvP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVI-ot-yZt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Lxu-Gh-La7" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1052" y="325"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="Lpv-4q-08f">

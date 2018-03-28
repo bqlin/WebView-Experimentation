@@ -10,6 +10,8 @@
 
 @interface Settings : NSObject
 
+#pragma mark - 显示
+
 #pragma mark - 通用
 
 /// 允许链接预览 - 9

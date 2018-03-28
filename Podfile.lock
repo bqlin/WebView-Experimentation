@@ -1,7 +1,9 @@
 PODS:
+  - FDStackView (1.0.1)
   - ZFSetting (0.0.1)
 
 DEPENDENCIES:
+  - FDStackView
   - ZFSetting (from `~/Workspace/Git/bq/ZFSetting`)
 
 EXTERNAL SOURCES:
@@ -9,8 +11,9 @@ EXTERNAL SOURCES:
     :path: ~/Workspace/Git/bq/ZFSetting
 
 SPEC CHECKSUMS:
+  FDStackView: fc0697e5be2022c8af36ce66e9e2061006058ba8
   ZFSetting: 13e44606537f21e379a756982a64a41cfcd78a2d
 
-PODFILE CHECKSUM: 29d09a79a22e288c8f27a0132a4a35485d7979db
+PODFILE CHECKSUM: 2890d25b3017d75237e9a3347879ea649329cc53
 
 COCOAPODS: 1.4.0

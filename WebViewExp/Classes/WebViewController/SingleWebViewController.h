@@ -1,5 +1,5 @@
 //
-//  WebViewController.h
+//  SingleWebViewController.h
 //  WebViewExp
 //
 //  Created by Bq Lin on 2018/3/21.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebViewController : UIViewController
+@interface SingleWebViewController : UIViewController
 
 @property (nonatomic, strong) UIView *webView;
 

@@ -10,8 +10,9 @@
 		03508275206901150004F2CC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03508274206901150004F2CC /* SettingViewController.m */; };
 		0350827B206903320004F2CC /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0350827A206903320004F2CC /* Settings.m */; };
 		035E536C206292E700B93F91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035E536A206292E700B93F91 /* LaunchScreen.storyboard */; };
+		036BFBD9206B8970001CAB1B /* WebViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 036BFBD8206B8970001CAB1B /* WebViewBuilder.m */; };
 		03995D0220623FA20088019D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03995D0120623FA10088019D /* README.md */; };
-		03995D06206258B00088019D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03995D05206258B00088019D /* WebViewController.m */; };
+		03995D06206258B00088019D /* SingleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03995D05206258B00088019D /* SingleWebViewController.m */; };
 		03D986F8205ECA6E0047E6A7 /* WebViewExpUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */; };
 		03D98701205ECC7E0047E6A7 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D98700205ECC7E0047E6A7 /* SnapshotHelper.swift */; };
 		7878B965E1A6BFF4319E84D5 /* libPods-WebViewExp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEBA89A64078897B6B584D2 /* libPods-WebViewExp.a */; };
@@ -41,9 +42,11 @@
 		03508279206903320004F2CC /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		0350827A206903320004F2CC /* Settings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		035E536B206292E700B93F91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		036BFBD7206B8970001CAB1B /* WebViewBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewBuilder.h; sourceTree = "<group>"; };
+		036BFBD8206B8970001CAB1B /* WebViewBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewBuilder.m; sourceTree = "<group>"; };
 		03995D0120623FA10088019D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		03995D04206258B00088019D /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
-		03995D05206258B00088019D /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		03995D04206258B00088019D /* SingleWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleWebViewController.h; sourceTree = "<group>"; };
+		03995D05206258B00088019D /* SingleWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingleWebViewController.m; sourceTree = "<group>"; };
 		03D986F5205ECA6E0047E6A7 /* WebViewExpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebViewExpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewExpUITests.m; sourceTree = "<group>"; };
 		03D986F9205ECA6E0047E6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 		035082762069025D0004F2CC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				03508277206902790004F2CC /* Main */,
 				03995D03206240880088019D /* WebViewController */,
 			);
 			path = Classes;
@@ -101,13 +105,12 @@
 		03508277206902790004F2CC /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				035082782069031A0004F2CC /* Model */,
+				036BFBFC206B9192001CAB1B /* Settings */,
+				036BFBD6206B894F001CAB1B /* WebViewBuilder */,
 				E5294D291DC9ED6A00AC82DB /* AppDelegate.h */,
 				E5294D2A1DC9ED6A00AC82DB /* AppDelegate.m */,
 				E5294D2C1DC9ED6A00AC82DB /* HomeViewController.h */,
 				E5294D2D1DC9ED6A00AC82DB /* HomeViewController.m */,
-				03508273206901150004F2CC /* SettingViewController.h */,
-				03508274206901150004F2CC /* SettingViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -121,6 +124,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		036BFBD6206B894F001CAB1B /* WebViewBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				036BFBD7206B8970001CAB1B /* WebViewBuilder.h */,
+				036BFBD8206B8970001CAB1B /* WebViewBuilder.m */,
+			);
+			path = WebViewBuilder;
+			sourceTree = "<group>";
+		};
+		036BFBFC206B9192001CAB1B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				035082782069031A0004F2CC /* Model */,
+				03508273206901150004F2CC /* SettingViewController.h */,
+				03508274206901150004F2CC /* SettingViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		03995D03206240880088019D /* WebViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,8 +150,8 @@
 				E5294D3E1DC9EE9C00AC82DB /* UIWebViewExp.m */,
 				E58745681F67E63E00C1EF3A /* WKWebViewExp.h */,
 				E58745691F67E63E00C1EF3A /* WKWebViewExp.m */,
-				03995D04206258B00088019D /* WebViewController.h */,
-				03995D05206258B00088019D /* WebViewController.m */,
+				03995D04206258B00088019D /* SingleWebViewController.h */,
+				03995D05206258B00088019D /* SingleWebViewController.m */,
 			);
 			path = WebViewController;
 			sourceTree = "<group>";
@@ -190,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				035082762069025D0004F2CC /* Classes */,
-				03508277206902790004F2CC /* Main */,
 				E5294D261DC9ED6A00AC82DB /* Supporting Files */,
 			);
 			path = WebViewExp;
@@ -430,9 +451,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5294D2E1DC9ED6A00AC82DB /* HomeViewController.m in Sources */,
-				03995D06206258B00088019D /* WebViewController.m in Sources */,
+				03995D06206258B00088019D /* SingleWebViewController.m in Sources */,
 				E5294D3F1DC9EE9C00AC82DB /* UIWebViewExp.m in Sources */,
 				03508275206901150004F2CC /* SettingViewController.m in Sources */,
+				036BFBD9206B8970001CAB1B /* WebViewBuilder.m in Sources */,
 				E5294D2B1DC9ED6A00AC82DB /* AppDelegate.m in Sources */,
 				E5294D281DC9ED6A00AC82DB /* main.m in Sources */,
 				0350827B206903320004F2CC /* Settings.m in Sources */,
