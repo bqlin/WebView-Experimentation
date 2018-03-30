@@ -31,13 +31,7 @@
     // Do any additional setup after loading the view from its nib.
 	self.automaticallyAdjustsScrollViewInsets = NO;
 	self.title = @"双屏对比";
-	self.view.backgroundColor = [UIColor whiteColor];
-//	UIView *view1 = [UIView new];
-//	view1.backgroundColor = [UIColor yellowColor];
-//	[self.view addSubview:view1];
-//	[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
-//		make.edges.equalTo(self.view.mas_safeAreaLayoutGuide).inset(10.0);
-//	}];
+	self.view.backgroundColor = [UIColor blackColor];
 	
 	self.containerView = [[UIView alloc] init];
 	[self.view addSubview:self.containerView];
