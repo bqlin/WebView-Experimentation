@@ -66,7 +66,6 @@ typedef void(^ControllerHandlerBlock)(void);
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[webView]|" options:0 metrics:nil views:views]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top][webView]|" options:0 metrics:nil views:views]];
 	[self addToolBarButtons];
-	
 }
 
 - (void)addToolBarButtons {
@@ -78,6 +77,12 @@ typedef void(^ControllerHandlerBlock)(void);
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	
 	self.toolbarItems = @[flexibleSpace, refreshButton, fixedSpace, backButton, fixedSpace, forwardButton];
+	for (UIBarButtonItem *item in self.toolbarItems) {
+		if (item == fixedSpace || item == flexibleSpace) {
+			continue;
+		}
+		item.width = 44;
+	}
 }
 
 - (void)refreshAction:(UIBarButtonItem *)sender {

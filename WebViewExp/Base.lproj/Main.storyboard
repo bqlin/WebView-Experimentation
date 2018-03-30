@@ -8,10 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--WebView Experimentation-->
+        <!--WebView Exp-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" sceneMemberID="viewController">
@@ -59,13 +60,16 @@
                             <constraint firstAttribute="trailing" secondItem="eI9-Rr-Rd7" secondAttribute="trailing" id="r4O-g6-TTp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="WebView Experimentation" id="Tgp-oL-AwU">
+                    <navigationItem key="navigationItem" title="WebView Exp" id="Tgp-oL-AwU">
                         <barButtonItem key="backBarButtonItem" title=" " id="wsh-fO-Vuy"/>
-                        <barButtonItem key="rightBarButtonItem" title="设置" image="settings-1" style="plain" id="GQH-dV-loJ">
-                            <connections>
-                                <segue destination="Uer-qL-zaD" kind="show" id="bdF-an-q4x"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="设置" image="settings-1" style="plain" id="GQH-dV-loJ">
+                                <connections>
+                                    <segue destination="Uer-qL-zaD" kind="show" id="bdF-an-q4x"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="scan" image="scan" id="EDr-oa-thh"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="urlTextView" destination="T79-cS-QZM" id="IT5-sF-BN2"/>
@@ -116,6 +120,7 @@
     </scenes>
     <resources>
         <image name="garbage" width="22" height="22"/>
+        <image name="scan" width="24" height="20"/>
         <image name="settings-1" width="22" height="22"/>
     </resources>
 </document>

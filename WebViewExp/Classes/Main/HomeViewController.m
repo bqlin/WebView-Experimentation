@@ -26,13 +26,21 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[self setupUI];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	[self.navigationController setToolbarHidden:YES animated:YES];
-	
-	NSLog(@"%s", __FUNCTION__);
+- (void)setupUI {
+	UIBarButtonItem *goButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"rocket-launch"] style:UIBarButtonItemStylePlain target:self action:@selector(goAction:)];
+	UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+	self.toolbarItems = @[flexibleSpace, goButton, fixedSpace];
+	for (UIBarButtonItem *item in self.toolbarItems) {
+		if (item == fixedSpace || item == flexibleSpace) {
+			continue;
+		}
+		item.width = 44;
+	}
+	[self.navigationController setToolbarHidden:NO animated:YES];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -118,6 +126,10 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 }
 
 #pragma mark - Action
+
+- (void)goAction:(id)sender {
+	[self goWithType:self.webViewType sender:sender];
+}
 
 - (IBAction)unwindToHome:(UIStoryboardSegue *)unwindSegue {
 	NSLog(@"unwindSegue: %@", unwindSegue);
