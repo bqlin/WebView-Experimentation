@@ -66,6 +66,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="WebView Exp" id="Tgp-oL-AwU">
                         <barButtonItem key="backBarButtonItem" title=" " id="wsh-fO-Vuy"/>
+                        <barButtonItem key="leftBarButtonItem" title="clean" image="garbage" id="eZJ-vL-2b1">
+                            <connections>
+                                <action selector="cleanAction:" destination="BYZ-38-t0r" id="EUb-O5-gTg"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="设置" image="settings-1" style="plain" id="GQH-dV-loJ">
                                 <connections>
