@@ -68,7 +68,11 @@
                                     <segue destination="Uer-qL-zaD" kind="show" id="bdF-an-q4x"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="scan" image="scan" id="EDr-oa-thh"/>
+                            <barButtonItem title="scan" image="scan" id="EDr-oa-thh">
+                                <connections>
+                                    <action selector="scanQRCodeAction:" destination="BYZ-38-t0r" id="oRj-mm-BV4"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>

@@ -11,6 +11,7 @@
 #import "Settings.h"
 #import "WebViewBuilder.h"
 #import "DualWebViewController.h"
+#import "ZFScanViewController.h"
 
 static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
@@ -56,6 +57,7 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 - (NSURL *)inputURL {
 	NSString *url = self.urlTextView.text;
 	url = [url stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSURL *URL = [NSURL URLWithString:url];
 	return URL;
 }
@@ -140,5 +142,22 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 }
 - (IBAction)webViewTypeChangeAction:(UISegmentedControl *)sender {
 	self.webViewType = sender.selectedSegmentIndex;
+}
+
+- (IBAction)scanQRCodeAction:(UIBarButtonItem *)sender {
+	ZFScanViewController * vc = [[ZFScanViewController alloc] init];
+	__weak typeof(self) weakSelf = self;
+	vc.returnScanBarCodeValue = ^(NSString * barCodeString){
+		dispatch_async(dispatch_get_main_queue(), ^{
+			NSString *codeString = [barCodeString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+			// 解码
+			codeString = [codeString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+			// 编码
+			//codeString = [codeString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+			weakSelf.urlTextView.text = codeString;
+		});
+	};
+	
+	[self presentViewController:vc animated:YES completion:nil];
 }
 @end

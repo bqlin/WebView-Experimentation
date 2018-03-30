@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03395825206E1C4C00AD83C7 /* UIImage+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 03395811206E1C4B00AD83C7 /* UIImage+Zirkfied.m */; };
+		03395826206E1C4C00AD83C7 /* UIColor+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 03395812206E1C4B00AD83C7 /* UIColor+Zirkfied.m */; };
+		03395827206E1C4C00AD83C7 /* ZFConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 03395816206E1C4B00AD83C7 /* ZFConst.m */; };
+		03395828206E1C4C00AD83C7 /* ZFScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03395818206E1C4B00AD83C7 /* ZFScanViewController.m */; };
+		03395829206E1C4C00AD83C7 /* ZFMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0339581B206E1C4B00AD83C7 /* ZFMaskView.m */; };
+		0339582A206E1C4C00AD83C7 /* QRCodeScanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0339581D206E1C4B00AD83C7 /* QRCodeScanLine@2x.png */; };
+		0339582B206E1C4C00AD83C7 /* Down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0339581E206E1C4B00AD83C7 /* Down@2x.png */; };
+		0339582C206E1C4C00AD83C7 /* ScanQR3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0339581F206E1C4B00AD83C7 /* ScanQR3@2x.png */; };
+		0339582D206E1C4C00AD83C7 /* ScanQR1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03395820206E1C4B00AD83C7 /* ScanQR1@2x.png */; };
+		0339582E206E1C4C00AD83C7 /* ScanQR4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03395821206E1C4B00AD83C7 /* ScanQR4@2x.png */; };
+		0339582F206E1C4C00AD83C7 /* Flashlight_N@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03395822206E1C4B00AD83C7 /* Flashlight_N@2x.png */; };
+		03395830206E1C4C00AD83C7 /* ScanQR2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03395823206E1C4B00AD83C7 /* ScanQR2@2x.png */; };
+		03395831206E1C4C00AD83C7 /* Flashlight_H@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03395824206E1C4B00AD83C7 /* Flashlight_H@2x.png */; };
 		03508275206901150004F2CC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03508274206901150004F2CC /* SettingViewController.m */; };
 		0350827B206903320004F2CC /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0350827A206903320004F2CC /* Settings.m */; };
 		035E536C206292E700B93F91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035E536A206292E700B93F91 /* LaunchScreen.storyboard */; };
@@ -40,6 +53,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0339580E206E1C4B00AD83C7 /* ZFScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFScanViewController.h; sourceTree = "<group>"; };
+		03395810206E1C4B00AD83C7 /* UIColor+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Zirkfied.h"; sourceTree = "<group>"; };
+		03395811206E1C4B00AD83C7 /* UIImage+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Zirkfied.m"; sourceTree = "<group>"; };
+		03395812206E1C4B00AD83C7 /* UIColor+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Zirkfied.m"; sourceTree = "<group>"; };
+		03395813206E1C4B00AD83C7 /* UIImage+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Zirkfied.h"; sourceTree = "<group>"; };
+		03395815206E1C4B00AD83C7 /* ZFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFColor.h; sourceTree = "<group>"; };
+		03395816206E1C4B00AD83C7 /* ZFConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFConst.m; sourceTree = "<group>"; };
+		03395817206E1C4B00AD83C7 /* ZFConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFConst.h; sourceTree = "<group>"; };
+		03395818206E1C4B00AD83C7 /* ZFScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFScanViewController.m; sourceTree = "<group>"; };
+		0339581A206E1C4B00AD83C7 /* ZFMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFMaskView.h; sourceTree = "<group>"; };
+		0339581B206E1C4B00AD83C7 /* ZFMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFMaskView.m; sourceTree = "<group>"; };
+		0339581D206E1C4B00AD83C7 /* QRCodeScanLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodeScanLine@2x.png"; sourceTree = "<group>"; };
+		0339581E206E1C4B00AD83C7 /* Down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Down@2x.png"; sourceTree = "<group>"; };
+		0339581F206E1C4B00AD83C7 /* ScanQR3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR3@2x.png"; sourceTree = "<group>"; };
+		03395820206E1C4B00AD83C7 /* ScanQR1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR1@2x.png"; sourceTree = "<group>"; };
+		03395821206E1C4B00AD83C7 /* ScanQR4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR4@2x.png"; sourceTree = "<group>"; };
+		03395822206E1C4B00AD83C7 /* Flashlight_N@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flashlight_N@2x.png"; sourceTree = "<group>"; };
+		03395823206E1C4B00AD83C7 /* ScanQR2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR2@2x.png"; sourceTree = "<group>"; };
+		03395824206E1C4B00AD83C7 /* Flashlight_H@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flashlight_H@2x.png"; sourceTree = "<group>"; };
 		03508273206901150004F2CC /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		03508274206901150004F2CC /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		03508279206903320004F2CC /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
@@ -101,6 +133,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0339580D206E1C4B00AD83C7 /* ZFScan */ = {
+			isa = PBXGroup;
+			children = (
+				0339580F206E1C4B00AD83C7 /* Category */,
+				03395819206E1C4B00AD83C7 /* CustomView */,
+				03395814206E1C4B00AD83C7 /* Other */,
+				0339581C206E1C4B00AD83C7 /* resource */,
+				0339580E206E1C4B00AD83C7 /* ZFScanViewController.h */,
+				03395818206E1C4B00AD83C7 /* ZFScanViewController.m */,
+			);
+			path = ZFScan;
+			sourceTree = "<group>";
+		};
+		0339580F206E1C4B00AD83C7 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				03395810206E1C4B00AD83C7 /* UIColor+Zirkfied.h */,
+				03395811206E1C4B00AD83C7 /* UIImage+Zirkfied.m */,
+				03395812206E1C4B00AD83C7 /* UIColor+Zirkfied.m */,
+				03395813206E1C4B00AD83C7 /* UIImage+Zirkfied.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		03395814206E1C4B00AD83C7 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				03395815206E1C4B00AD83C7 /* ZFColor.h */,
+				03395816206E1C4B00AD83C7 /* ZFConst.m */,
+				03395817206E1C4B00AD83C7 /* ZFConst.h */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		03395819206E1C4B00AD83C7 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				0339581A206E1C4B00AD83C7 /* ZFMaskView.h */,
+				0339581B206E1C4B00AD83C7 /* ZFMaskView.m */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		0339581C206E1C4B00AD83C7 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				0339581D206E1C4B00AD83C7 /* QRCodeScanLine@2x.png */,
+				0339581E206E1C4B00AD83C7 /* Down@2x.png */,
+				0339581F206E1C4B00AD83C7 /* ScanQR3@2x.png */,
+				03395820206E1C4B00AD83C7 /* ScanQR1@2x.png */,
+				03395821206E1C4B00AD83C7 /* ScanQR4@2x.png */,
+				03395822206E1C4B00AD83C7 /* Flashlight_N@2x.png */,
+				03395823206E1C4B00AD83C7 /* ScanQR2@2x.png */,
+				03395824206E1C4B00AD83C7 /* Flashlight_H@2x.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
 		035082762069025D0004F2CC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +203,7 @@
 		03508277206902790004F2CC /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				0339580D206E1C4B00AD83C7 /* ZFScan */,
 				036BFBFC206B9192001CAB1B /* Settings */,
 				036BFBD6206B894F001CAB1B /* WebViewBuilder */,
 				E5294D291DC9ED6A00AC82DB /* AppDelegate.h */,
@@ -350,10 +441,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5294D331DC9ED6B00AC82DB /* Assets.xcassets in Resources */,
+				03395830206E1C4C00AD83C7 /* ScanQR2@2x.png in Resources */,
+				0339582B206E1C4C00AD83C7 /* Down@2x.png in Resources */,
+				0339582D206E1C4C00AD83C7 /* ScanQR1@2x.png in Resources */,
+				03395831206E1C4C00AD83C7 /* Flashlight_H@2x.png in Resources */,
 				035E536C206292E700B93F91 /* LaunchScreen.storyboard in Resources */,
 				03995D0220623FA20088019D /* README.md in Resources */,
 				036BFC01206B9CCB001CAB1B /* DualWebViewController.xib in Resources */,
 				E5294D311DC9ED6B00AC82DB /* Main.storyboard in Resources */,
+				0339582E206E1C4C00AD83C7 /* ScanQR4@2x.png in Resources */,
+				0339582F206E1C4C00AD83C7 /* Flashlight_N@2x.png in Resources */,
+				0339582C206E1C4C00AD83C7 /* ScanQR3@2x.png in Resources */,
+				0339582A206E1C4C00AD83C7 /* QRCodeScanLine@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,13 +575,18 @@
 				03995D06206258B00088019D /* SingleWebViewController.m in Sources */,
 				E5294D3F1DC9EE9C00AC82DB /* UIWebViewExp.m in Sources */,
 				03508275206901150004F2CC /* SettingViewController.m in Sources */,
+				03395828206E1C4C00AD83C7 /* ZFScanViewController.m in Sources */,
 				036BFBD9206B8970001CAB1B /* WebViewBuilder.m in Sources */,
+				03395826206E1C4C00AD83C7 /* UIColor+Zirkfied.m in Sources */,
+				03395825206E1C4C00AD83C7 /* UIImage+Zirkfied.m in Sources */,
 				E5294D2B1DC9ED6A00AC82DB /* AppDelegate.m in Sources */,
 				E5294D281DC9ED6A00AC82DB /* main.m in Sources */,
 				036BFC00206B9CCB001CAB1B /* DualWebViewController.m in Sources */,
 				03C210EF206CD3DA00A490B8 /* DualSplitView.m in Sources */,
 				0350827B206903320004F2CC /* Settings.m in Sources */,
 				E587456A1F67E63E00C1EF3A /* WKWebViewExp.m in Sources */,
+				03395829206E1C4C00AD83C7 /* ZFMaskView.m in Sources */,
+				03395827206E1C4C00AD83C7 /* ZFConst.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
