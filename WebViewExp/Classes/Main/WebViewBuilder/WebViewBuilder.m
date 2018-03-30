@@ -55,4 +55,25 @@
 	return safari;
 }
 
+- (id)updateSettingsWithWebView:(id)webView {
+	Settings *settings = [Settings sharedSettings];
+	if ([webView isKindOfClass:[UIWebView class]]) {
+		UIWebView *_webView = webView;
+		_webView.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
+		_webView.allowsInlineMediaPlayback = settings.allowsInlineMediaPlayback;
+		_webView.scalesPageToFit = settings.allowsScale;
+		_webView.suppressesIncrementalRendering = settings.suppressesIncrementalRendering;
+		_webView.dataDetectorTypes = settings.allowsDataDetect ? UIDataDetectorTypeAll : UIDataDetectorTypeNone;
+		_webView.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
+		if (@available(iOS 9.0, *)) {
+			_webView.allowsLinkPreview = settings.allowsLinkPreview;
+			_webView.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
+		}
+		return _webView;
+	} else if ([webView isKindOfClass:[WKWebView class]]) {
+		return [WebViewBuilder wkWebView];
+	}
+	return nil;
+}
+
 @end

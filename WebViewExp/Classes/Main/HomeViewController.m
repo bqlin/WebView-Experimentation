@@ -18,12 +18,17 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 @interface HomeViewController ()<UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *urlTextView;
-//@property (nonatomic, strong) id webView;
 @property (nonatomic, assign) WebViewType webViewType;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewBottomLayout;
+@property (nonatomic, assign) CGFloat textViewBottomLayoutConstant;
 
 @end
 
 @implementation HomeViewController
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,7 +46,10 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 		}
 		item.width = 44;
 	}
-	[self.navigationController setToolbarHidden:NO animated:YES];
+	self.textViewBottomLayoutConstant = self.textViewBottomLayout.constant;
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -52,6 +60,37 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
     [super didReceiveMemoryWarning];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self.navigationController setToolbarHidden:NO animated:YES];
+}
+
+#pragma mark - notification
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+	if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) return;
+	NSDictionary *userInfo = [notification userInfo];
+	double duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+	CGRect keyboardRect = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+	[UIView animateWithDuration:duration animations:^{
+		self.textViewBottomLayout.constant = keyboardRect.size.height+8;
+	} completion:^(BOOL finished) {
+		
+	}];
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification {
+}
+
+//当键退出时调用
+- (void)keyboardWillHide:(NSNotification *)notification {
+	NSDictionary *userInfo = [notification userInfo];
+	double duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+	[UIView animateWithDuration:duration animations:^{
+		self.textViewBottomLayout.constant = self.textViewBottomLayoutConstant;
+	}];
+}
+
 #pragma mark - private
 
 - (NSURL *)inputURL {
@@ -60,27 +99,6 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 	url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSURL *URL = [NSURL URLWithString:url];
 	return URL;
-}
-
-- (id)updateSettingsWithWebView:(id)webView {
-	Settings *settings = [Settings sharedSettings];
-	if ([webView isKindOfClass:[UIWebView class]]) {
-		UIWebView *_webView = webView;
-		_webView.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
-		_webView.allowsInlineMediaPlayback = settings.allowsInlineMediaPlayback;
-		_webView.scalesPageToFit = settings.allowsScale;
-		_webView.suppressesIncrementalRendering = settings.suppressesIncrementalRendering;
-		_webView.dataDetectorTypes = settings.allowsDataDetect ? UIDataDetectorTypeAll : UIDataDetectorTypeNone;
-		_webView.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
-		if (@available(iOS 9.0, *)) {
-			_webView.allowsLinkPreview = settings.allowsLinkPreview;
-			_webView.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
-		}
-		return _webView;
-	} else if ([webView isKindOfClass:[WKWebView class]]) {
-		return [WebViewBuilder wkWebView];
-	}
-	return nil;
 }
 
 - (void)goWithType:(WebViewType)type sender:(id)sender {
@@ -120,12 +138,6 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 		[self goWithType:self.webViewType sender:textView];
 	}
 }
-- (IBAction)test:(id)sender {
-	NSURL *URL = [NSURL URLWithString:self.urlTextView.text];
-	SFSafariViewController *safari = [[SFSafariViewController alloc] initWithURL:URL];
-//	[self.navigationController pushViewController:safari animated:YES];
-	[self presentViewController:safari animated:YES completion:nil];
-}
 
 #pragma mark - Action
 
@@ -133,13 +145,13 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 	[self goWithType:self.webViewType sender:sender];
 }
 
+- (IBAction)test:(id)sender {
+}
+
 - (IBAction)unwindToHome:(UIStoryboardSegue *)unwindSegue {
 	NSLog(@"unwindSegue: %@", unwindSegue);
 }
 
-- (IBAction)webViewTypeSwitchAction:(UISwitch *)sender {
-	//self.webView = sender.on ? [self uiWebView] : [self wkWebView];
-}
 - (IBAction)webViewTypeChangeAction:(UISegmentedControl *)sender {
 	self.webViewType = sender.selectedSegmentIndex;
 }

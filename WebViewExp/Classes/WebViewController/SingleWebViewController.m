@@ -37,11 +37,11 @@ typedef void(^ControllerHandlerBlock)(void);
 	
 	self.automaticallyAdjustsScrollViewInsets = NO;
 	
-	UISearchBar *searchBar = [[UISearchBar alloc] init];
-	searchBar.searchBarStyle = UISearchBarStyleMinimal;
-	searchBar.text = @"https://www.baidu.com";
-	searchBar.delegate = self;
-	self.navigationItem.titleView = searchBar;
+//	UISearchBar *searchBar = [[UISearchBar alloc] init];
+//	searchBar.searchBarStyle = UISearchBarStyleMinimal;
+//	searchBar.text = @"https://www.baidu.com";
+//	searchBar.delegate = self;
+//	self.navigationItem.titleView = searchBar;
 	//self.navigationItem.hidesSearchBarWhenScrolling;
 	
 	[self setupUI];
@@ -59,6 +59,10 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)setupUI {
 	UIView *webView = self.webView;
+//	if ([webView isKindOfClass:[UIWebView class]]) {
+//		self.title = @"";
+//	}
+	self.title = NSStringFromClass(webView.class);
 	[self.view addSubview:webView];
 	webView.translatesAutoresizingMaskIntoConstraints = NO;
 	id top = self.topLayoutGuide;
@@ -78,7 +82,8 @@ typedef void(^ControllerHandlerBlock)(void);
 	
 	self.toolbarItems = @[flexibleSpace, refreshButton, fixedSpace, backButton, fixedSpace, forwardButton];
 	for (UIBarButtonItem *item in self.toolbarItems) {
-		if (item == fixedSpace || item == flexibleSpace) {
+		// item == fixedSpace || 
+		if (item == flexibleSpace) {
 			continue;
 		}
 		item.width = 44;

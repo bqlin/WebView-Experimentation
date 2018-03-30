@@ -38,6 +38,9 @@
                             </textView>
                             <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eI9-Rr-Rd7">
                                 <rect key="frame" x="0.0" y="64" width="320" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="lkD-H7-Pow"/>
+                                </constraints>
                                 <segments>
                                     <segment title="UIWebView"/>
                                     <segment title="WKWebView"/>
@@ -52,6 +55,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="T79-cS-QZM" secondAttribute="bottom" constant="52" id="8kj-dG-Lg8"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="FHz-kb-uva"/>
                             <constraint firstItem="eI9-Rr-Rd7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ii1-0F-uzp"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="top" secondItem="eI9-Rr-Rd7" secondAttribute="bottom" constant="8" id="nhK-8D-lfT"/>
@@ -76,6 +80,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="textViewBottomLayout" destination="8kj-dG-Lg8" id="0Hz-Ds-hXh"/>
                         <outlet property="urlTextView" destination="T79-cS-QZM" id="IT5-sF-BN2"/>
                     </connections>
                 </viewController>
