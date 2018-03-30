@@ -73,8 +73,8 @@
 	CGFloat width = rect.size.width;
 	CGFloat height = rect.size.height;
 	//// Color Declarations
-	UIColor* tab0Color = [UIColor orangeColor];
-	UIColor* tab1Color = [UIColor redColor];
+	UIColor* tab0Color = [UIColor colorWithHue:0.771 saturation:0.400 brightness:1.000 alpha:1.000];
+	UIColor* tab1Color = [UIColor colorWithHue:0.478 saturation:0.349 brightness:1.000 alpha:1.000];
 	
 	CGFloat longWidth = (width + height)/2;
 	CGFloat shortWidth = (width - height)/2;

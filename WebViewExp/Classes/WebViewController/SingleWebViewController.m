@@ -59,9 +59,6 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)setupUI {
 	UIView *webView = self.webView;
-//	if ([webView isKindOfClass:[UIWebView class]]) {
-//		self.title = @"";
-//	}
 	self.title = NSStringFromClass(webView.class);
 	[self.view addSubview:webView];
 	webView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -82,7 +79,7 @@ typedef void(^ControllerHandlerBlock)(void);
 	
 	self.toolbarItems = @[flexibleSpace, refreshButton, fixedSpace, backButton, fixedSpace, forwardButton];
 	for (UIBarButtonItem *item in self.toolbarItems) {
-		// item == fixedSpace || 
+		// item == fixedSpace ||
 		if (item == flexibleSpace) {
 			continue;
 		}
@@ -112,7 +109,7 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)setWebView:(UIView *)webView {
 	_webView = webView;
-	webView.backgroundColor = [UIColor redColor];
+	//webView.backgroundColor = [UIColor redColor];
 	if (!webView) return;
 	if ([webView isKindOfClass:[UIWebView class]]) {
 		_uiWebView = (UIWebView *)webView;
