@@ -14,8 +14,10 @@
 
 #pragma mark - 通用
 
+// API_AVAILABLE(ios(11.0),tvos(11.0))
+
 /// 允许链接预览 - 9
-@property (nonatomic, assign) BOOL allowsLinkPreview;
+@property (nonatomic, assign) BOOL allowsLinkPreview API_AVAILABLE(ios(9.0));
 
 /// 禁止缩放页面
 @property (nonatomic, assign) BOOL allowsScale;
@@ -36,7 +38,7 @@
 @property (nonatomic, assign) BOOL mediaPlaybackAllowsAirPlay;
 
 /// 允许画中画
-@property (nonatomic, assign) BOOL allowsPictureInPictureMediaPlayback;
+@property (nonatomic, assign) BOOL allowsPictureInPictureMediaPlayback API_AVAILABLE(ios(9.0));
 
 #pragma mark - WKWebView
 

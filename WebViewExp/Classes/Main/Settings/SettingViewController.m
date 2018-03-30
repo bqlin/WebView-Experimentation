@@ -103,9 +103,15 @@
 		_settings.allowsPictureInPictureMediaPlayback = on;
 	};
 	
+	NSMutableArray *items = [NSMutableArray array];
+	[items addObjectsFromArray:@[allowsScale, suppressesIncrementalRendering, allowsDataDetect, allowsInlineMediaPlayback, banAutoPlay, mediaPlaybackAllowsAirPlay]];
+	if (@available(iOS 9.0, *)) {
+		[items addObjectsFromArray:@[allowsLinkPreview, allowsPictureInPictureMediaPlayback]];
+	}
+	
 	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
 	group.header = @"通用";
-	group.items = @[allowsLinkPreview, allowsScale, suppressesIncrementalRendering, allowsDataDetect, allowsInlineMediaPlayback, banAutoPlay, mediaPlaybackAllowsAirPlay, allowsPictureInPictureMediaPlayback];
+	group.items = items;
 	
 	return group;
 }

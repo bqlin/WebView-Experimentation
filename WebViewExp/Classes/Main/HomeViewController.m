@@ -10,6 +10,7 @@
 #import "SingleWebViewController.h"
 #import "Settings.h"
 #import "WebViewBuilder.h"
+#import "DualWebViewController.h"
 
 static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
@@ -25,14 +26,12 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	//self.webView = [[UIWebView alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[self.navigationController setToolbarHidden:YES animated:YES];
 	
-	//self.webView = [self updateSettingsWithWebView:self.webView];
 	NSLog(@"%s", __FUNCTION__);
 }
 
@@ -42,17 +41,6 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	SingleWebViewController *vc = (SingleWebViewController *)segue.destinationViewController;
-	
-	if ([vc isKindOfClass:[SingleWebViewController class]]) {
-		
-//		vc.webView = self.webView;
-//		self.webView = nil;
-	}
 }
 
 #pragma mark - private
@@ -70,49 +58,19 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 		UIWebView *_webView = webView;
 		_webView.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
 		_webView.allowsInlineMediaPlayback = settings.allowsInlineMediaPlayback;
-		_webView.allowsLinkPreview = settings.allowsLinkPreview;
 		_webView.scalesPageToFit = settings.allowsScale;
 		_webView.suppressesIncrementalRendering = settings.suppressesIncrementalRendering;
 		_webView.dataDetectorTypes = settings.allowsDataDetect ? UIDataDetectorTypeAll : UIDataDetectorTypeNone;
 		_webView.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
-		_webView.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
+		if (@available(iOS 9.0, *)) {
+			_webView.allowsLinkPreview = settings.allowsLinkPreview;
+			_webView.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
+		}
 		return _webView;
 	} else if ([webView isKindOfClass:[WKWebView class]]) {
-		return [self wkWebView];
+		return [WebViewBuilder wkWebView];
 	}
 	return nil;
-}
-
-- (UIWebView *)uiWebView {
-	Settings *settings = [Settings sharedSettings];
-	UIWebView *webView = [[UIWebView alloc] init];
-	
-	webView.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
-	webView.allowsInlineMediaPlayback = settings.allowsInlineMediaPlayback;
-	webView.allowsLinkPreview = settings.allowsLinkPreview;
-	webView.scalesPageToFit = settings.allowsScale;
-	webView.suppressesIncrementalRendering = settings.suppressesIncrementalRendering;
-	webView.dataDetectorTypes = settings.allowsDataDetect ? UIDataDetectorTypeAll : UIDataDetectorTypeNone;
-	webView.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
-	webView.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
-	
-	return webView;
-}
-- (WKWebView *)wkWebView {
-	Settings *settings = [Settings sharedSettings];
-	WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-	configuration.ignoresViewportScaleLimits = settings.allowsScale;
-	configuration.suppressesIncrementalRendering = settings.suppressesIncrementalRendering;
-	configuration.dataDetectorTypes = settings.allowsDataDetect ? WKDataDetectorTypeAll : WKDataDetectorTypeNone;
-	configuration.allowsInlineMediaPlayback = settings.allowsInlineMediaPlayback;
-	configuration.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
-	configuration.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
-	configuration.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
-	
-	WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
-	webView.allowsLinkPreview = settings.allowsLinkPreview;
-	webView.allowsBackForwardNavigationGestures = settings.allowsBackForwardNavigationGestures;
-	return webView;
 }
 
 - (void)goWithType:(WebViewType)type sender:(id)sender {
@@ -133,7 +91,9 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 			}];
 		}break;
 		case WebViewTypeBoth:{
-			
+			DualWebViewController *dualVc = [[DualWebViewController alloc] initWithNibName:nil bundle:nil];
+			dualVc.URL = [self inputURL];
+			[self.navigationController pushViewController:dualVc animated:YES];
 		}break;
 	}
 }

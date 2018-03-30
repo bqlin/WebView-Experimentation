@@ -17,12 +17,15 @@
 	
 	webView.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
 	webView.allowsInlineMediaPlayback = settings.allowsInlineMediaPlayback;
-	webView.allowsLinkPreview = settings.allowsLinkPreview;
 	webView.scalesPageToFit = settings.allowsScale;
 	webView.suppressesIncrementalRendering = settings.suppressesIncrementalRendering;
 	webView.dataDetectorTypes = settings.allowsDataDetect ? UIDataDetectorTypeAll : UIDataDetectorTypeNone;
 	webView.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
-	webView.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
+	
+	if (@available(iOS 9.0, *)) {
+		webView.allowsLinkPreview = settings.allowsLinkPreview;
+		webView.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
+	}
 	
 	return webView;
 }
@@ -35,11 +38,15 @@
 	configuration.allowsInlineMediaPlayback = settings.allowsInlineMediaPlayback;
 	configuration.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
 	configuration.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
-	configuration.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
+	if (@available(iOS 9.0, *)) {
+		configuration.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
+	}
 	
 	WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
 	webView.allowsLinkPreview = settings.allowsLinkPreview;
-	webView.allowsBackForwardNavigationGestures = settings.allowsBackForwardNavigationGestures;
+	if (@available(iOS 9.0, *)) {
+		webView.allowsBackForwardNavigationGestures = settings.allowsBackForwardNavigationGestures;
+	}
 	return webView;
 }
 

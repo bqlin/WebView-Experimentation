@@ -43,14 +43,16 @@ static id _sharedInstance = nil;
 
 - (void)restoreToDefault {
 	UIWebView *webView = [[UIWebView alloc] init];
-	_allowsLinkPreview = webView.allowsLinkPreview;
 	_allowsScale = webView.scalesPageToFit;
 	_suppressesIncrementalRendering = webView.suppressesIncrementalRendering;
 	_allowsDataDetect = !(webView.dataDetectorTypes & UIDataDetectorTypeNone);
 	_allowsInlineMediaPlayback = webView.allowsInlineMediaPlayback;
 	_banAutoPlay = webView.mediaPlaybackRequiresUserAction;
 	_mediaPlaybackAllowsAirPlay = webView.mediaPlaybackAllowsAirPlay;
-	_allowsPictureInPictureMediaPlayback = webView.allowsPictureInPictureMediaPlayback;
+	if (@available(iOS 9.0, *)) {
+		_allowsLinkPreview = webView.allowsLinkPreview;
+		_allowsPictureInPictureMediaPlayback = webView.allowsPictureInPictureMediaPlayback;
+	}
 	webView = nil;
 	
 	WKWebView *wkWebView = [[WKWebView alloc] init];

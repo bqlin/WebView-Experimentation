@@ -36,11 +36,13 @@ typedef void(^ControllerHandlerBlock)(void);
 	}
 	
 	self.automaticallyAdjustsScrollViewInsets = NO;
+	
 	UISearchBar *searchBar = [[UISearchBar alloc] init];
 	searchBar.searchBarStyle = UISearchBarStyleMinimal;
 	searchBar.text = @"https://www.baidu.com";
 	searchBar.delegate = self;
 	self.navigationItem.titleView = searchBar;
+	//self.navigationItem.hidesSearchBarWhenScrolling;
 	
 	[self setupUI];
 }
@@ -69,8 +71,8 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)addToolBarButtons {
 	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(refreshAction:)];
-		UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
-	UIBarButtonItem *forwardButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"forward"] style:UIBarButtonItemStylePlain target:self action:@selector(forwardAction:)];
+		UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
+	UIBarButtonItem *forwardButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"right-arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(forwardAction:)];
 	
 	UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
