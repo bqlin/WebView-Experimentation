@@ -13,11 +13,8 @@
 
 @interface DualSplitView ()
 
-@property (nonatomic, copy) NSString *tap0Name;
-@property (nonatomic, copy) NSString *tap1Name;
-
-@property (nonatomic, strong) UILabel *tap0Label;
-@property (nonatomic, strong) UILabel *tap1Label;
+@property (nonatomic, strong) NSArray<UILabel *> *labels;
+@property (nonatomic, strong) NSArray<UIColor *> *colors;
 
 @end
 
@@ -25,56 +22,62 @@
 
 #pragma mark - property
 
-- (UILabel *)tap0Label {
-	if (!_tap0Label) {
-		_tap0Label = [[UILabel alloc] initWithFrame:CGRectZero];
-		_tap0Label.textAlignment = NSTextAlignmentCenter;
+- (NSArray<UILabel *> *)labels {
+	if (!_labels) {
+		NSMutableArray *labels = [NSMutableArray array];
+		for (int i = 0; i < 2; i++) {
+			UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+			label.textAlignment = NSTextAlignmentCenter;
+			label.textColor = self.colors[i];
+			[labels addObject:label];
+		}
+		_labels = labels;
 	}
-	return _tap0Label;
+	return _labels;
 }
 
-- (UILabel *)tap1Label {
-	if (!_tap1Label) {
-		_tap1Label = [[UILabel alloc] initWithFrame:CGRectZero];
-		_tap1Label.textAlignment = NSTextAlignmentCenter;
+- (NSArray<UIColor *> *)colors {
+	if (!_colors) {
+		_colors = @[
+					[UIColor colorWithHue:0.478 saturation:0.349 brightness:1.000 alpha:1.000], [UIColor colorWithHue:0.771 saturation:0.400 brightness:1.000 alpha:1.000],
+//					[UIColor colorWithWhite:0.8 alpha:1], [UIColor colorWithHue:0.028 saturation:0.095 brightness:0.247 alpha:1.000],
+//					[UIColor colorWithHue:0.652 saturation:0.086 brightness:1.000 alpha:1.000], [UIColor colorWithHue:0.126 saturation:0.271 brightness:0.839 alpha:1.000],
+					];
 	}
-	return _tap1Label;
+	return _colors;
 }
 
 - (instancetype)initWithTapName:(NSString *)tapName otherTapName:(NSString *)otherTapName {
 	if (self = [super initWithFrame:CGRectZero]) {
-//		_tap0Name = tapName;
-//		_tap1Name = otherTapName;
-		self.tap0Label.text = tapName;
-		self.tap1Label.text = otherTapName;
+		self.labels[0].text = tapName;
+		self.labels[1].text = otherTapName;
 		[self setupUI];
 	}
 	return self;
 }
 
 - (void)setupUI {
-	[self addSubview:self.tap0Label];
-	[self addSubview:self.tap1Label];
-	[self.tap0Label makeConstraints:^(MASConstraintMaker *make) {
-		make.top.bottom.left.equalTo(0);
-		make.right.equalTo(self.tap1Label.left).offset(-30);
-		make.width.equalTo(self.tap1Label);
+	[self addSubview:self.labels[0]];
+	[self addSubview:self.labels[1]];
+	[self.labels[0] makeConstraints:^(MASConstraintMaker *make) {
+		make.top.left.equalTo(0);
+		make.bottom.equalTo(4);
+		make.right.equalTo(self.labels[1].left).offset(-30);
+		make.width.equalTo(self.labels[1]);
 	}];
-	[self.tap1Label makeConstraints:^(MASConstraintMaker *make) {
-		make.top.bottom.right.equalTo(0);
+	[self.labels[1] makeConstraints:^(MASConstraintMaker *make) {
+		make.bottom.right.equalTo(0);
+		make.top.equalTo(-4);
 	}];
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-	NSLog(@"rect: %@", NSStringFromCGRect(rect));
-	
 	CGFloat width = rect.size.width;
 	CGFloat height = rect.size.height;
 	//// Color Declarations
-	UIColor* tab0Color = [UIColor colorWithHue:0.771 saturation:0.400 brightness:1.000 alpha:1.000];
-	UIColor* tab1Color = [UIColor colorWithHue:0.478 saturation:0.349 brightness:1.000 alpha:1.000];
+	
+	UIColor* tab0Color = self.colors[1];
+	UIColor* tab1Color = self.colors[0];
 	
 	CGFloat longWidth = (width + height)/2;
 	CGFloat shortWidth = (width - height)/2;

@@ -10,7 +10,7 @@ target 'WebViewExp' do
   pod 'ZFSetting', :path => '~/Workspace/Git/bq/ZFSetting'
   #pod 'PonyDebugger', :source => 'https://github.com/CocoaPods/Specs.git'
   # pod 'FDStackView'
-  pod 'Masonry'
+  pod 'Masonry', :path => '~/Workspace/Git/Masonry'
 
   target 'WebViewExpUITests' do
     inherit! :search_paths

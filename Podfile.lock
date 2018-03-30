@@ -3,17 +3,19 @@ PODS:
   - ZFSetting (0.0.1)
 
 DEPENDENCIES:
-  - Masonry
+  - Masonry (from `~/Workspace/Git/Masonry`)
   - ZFSetting (from `~/Workspace/Git/bq/ZFSetting`)
 
 EXTERNAL SOURCES:
+  Masonry:
+    :path: ~/Workspace/Git/Masonry
   ZFSetting:
     :path: ~/Workspace/Git/bq/ZFSetting
 
 SPEC CHECKSUMS:
-  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  Masonry: 34afc06a8c34f8a4958de258dca1732dab49e8fe
   ZFSetting: 13e44606537f21e379a756982a64a41cfcd78a2d
 
-PODFILE CHECKSUM: 550a6edf684a6447e6d88f3e7d36dee521cc91ae
+PODFILE CHECKSUM: fe323ab938b4bb4b63fac2549ecda023910e4f31
 
 COCOAPODS: 1.4.0

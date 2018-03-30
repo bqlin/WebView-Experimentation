@@ -23,11 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	self.title = @"设置";
-//	[self loadData];
-	[_allGroups addObjectsFromArray:@[
-									  [self generalSettings],
-									  [self wkWebViewSettings]
-									  ]];
+	[self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -38,6 +34,7 @@
 - (void)loadData {
 	_allGroups = @[
 				   [self generalSettings],
+				   [self uiWebViewSettings],
 				   [self wkWebViewSettings]
 				   ].mutableCopy;
 }
@@ -57,13 +54,6 @@
 	allowsLinkPreview.switchOn = settings.allowsLinkPreview;
 	allowsLinkPreview.switchBlock = ^(BOOL on) {
 		_settings.allowsLinkPreview = on;
-	};
-	
-	// 禁止缩放页面
-	ZFSettingItem *allowsScale = [ZFSettingItem itemWithIcon:nil title:@"禁止缩放页面" type:ZFSettingItemTypeSwitch];
-	allowsScale.switchOn = settings.allowsScale;
-	allowsScale.switchBlock = ^(BOOL on) {
-		_settings.allowsScale = on;
 	};
 	
 	// 抑制增量渲染
@@ -88,10 +78,10 @@
 	};
 	
 	// 禁止自动播放
-	ZFSettingItem *banAutoPlay = [ZFSettingItem itemWithIcon:nil title:@"禁止自动播放" type:ZFSettingItemTypeSwitch];
-	banAutoPlay.switchOn = settings.banAutoPlay;
+	ZFSettingItem *banAutoPlay = [ZFSettingItem itemWithIcon:nil title:@"自动播放" type:ZFSettingItemTypeSwitch];
+	banAutoPlay.switchOn = !settings.banAutoPlay;
 	banAutoPlay.switchBlock = ^(BOOL on) {
-		_settings.banAutoPlay = on;
+		_settings.banAutoPlay = !on;
 	};
 	
 	// 允许 AirPlay
@@ -109,7 +99,7 @@
 	};
 	
 	NSMutableArray *items = [NSMutableArray array];
-	[items addObjectsFromArray:@[allowsScale, suppressesIncrementalRendering, allowsDataDetect, allowsInlineMediaPlayback, banAutoPlay, mediaPlaybackAllowsAirPlay]];
+	[items addObjectsFromArray:@[suppressesIncrementalRendering, allowsDataDetect, allowsInlineMediaPlayback, banAutoPlay, mediaPlaybackAllowsAirPlay]];
 	if (@available(iOS 9.0, *)) {
 		[items addObjectsFromArray:@[allowsLinkPreview, allowsPictureInPictureMediaPlayback]];
 	}
@@ -135,6 +125,23 @@
 	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
 	group.header = @"WKWebView";
 	group.items = @[allowsBackForwardNavigationGestures];
+	return group;
+}
+
+- (ZFSettingGroup *)uiWebViewSettings {
+	Settings *settings = [Settings sharedSettings];
+	__weak typeof(settings) _settings = settings;
+	
+	// 禁止缩放页面
+	ZFSettingItem *allowsScale = [ZFSettingItem itemWithIcon:nil title:@"允许缩放页面" type:ZFSettingItemTypeSwitch];
+	allowsScale.switchOn = settings.allowsScale;
+	allowsScale.switchBlock = ^(BOOL on) {
+		_settings.allowsScale = on;
+	};
+	
+	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
+	group.header = @"UIWebView";
+	group.items = @[allowsScale];
 	return group;
 }
 

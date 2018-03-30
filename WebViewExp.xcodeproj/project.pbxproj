@@ -25,7 +25,6 @@
 		035E536C206292E700B93F91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035E536A206292E700B93F91 /* LaunchScreen.storyboard */; };
 		036BFBD9206B8970001CAB1B /* WebViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 036BFBD8206B8970001CAB1B /* WebViewBuilder.m */; };
 		036BFC00206B9CCB001CAB1B /* DualWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 036BFBFE206B9CCB001CAB1B /* DualWebViewController.m */; };
-		036BFC01206B9CCB001CAB1B /* DualWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 036BFBFF206B9CCB001CAB1B /* DualWebViewController.xib */; };
 		03995D0220623FA20088019D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03995D0120623FA10088019D /* README.md */; };
 		03995D06206258B00088019D /* SingleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03995D05206258B00088019D /* SingleWebViewController.m */; };
 		03C210EF206CD3DA00A490B8 /* DualSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C210EE206CD3DA00A490B8 /* DualSplitView.m */; };
@@ -81,7 +80,6 @@
 		036BFBD8206B8970001CAB1B /* WebViewBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewBuilder.m; sourceTree = "<group>"; };
 		036BFBFD206B9CCB001CAB1B /* DualWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DualWebViewController.h; sourceTree = "<group>"; };
 		036BFBFE206B9CCB001CAB1B /* DualWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DualWebViewController.m; sourceTree = "<group>"; };
-		036BFBFF206B9CCB001CAB1B /* DualWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DualWebViewController.xib; sourceTree = "<group>"; };
 		03995D0120623FA10088019D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		03995D04206258B00088019D /* SingleWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleWebViewController.h; sourceTree = "<group>"; };
 		03995D05206258B00088019D /* SingleWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingleWebViewController.m; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 				03995D05206258B00088019D /* SingleWebViewController.m */,
 				036BFBFD206B9CCB001CAB1B /* DualWebViewController.h */,
 				036BFBFE206B9CCB001CAB1B /* DualWebViewController.m */,
-				036BFBFF206B9CCB001CAB1B /* DualWebViewController.xib */,
 				03C210F0206CD3DF00A490B8 /* View */,
 			);
 			path = WebViewController;
@@ -404,7 +401,7 @@
 					};
 					E5294D221DC9ED6A00AC82DB = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = V7WL667MJM;
+						DevelopmentTeam = 8BMZBNN3Q5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -447,7 +444,6 @@
 				03395831206E1C4C00AD83C7 /* Flashlight_H@2x.png in Resources */,
 				035E536C206292E700B93F91 /* LaunchScreen.storyboard in Resources */,
 				03995D0220623FA20088019D /* README.md in Resources */,
-				036BFC01206B9CCB001CAB1B /* DualWebViewController.xib in Resources */,
 				E5294D311DC9ED6B00AC82DB /* Main.storyboard in Resources */,
 				0339582E206E1C4C00AD83C7 /* ScanQR4@2x.png in Resources */,
 				0339582F206E1C4C00AD83C7 /* Flashlight_N@2x.png in Resources */,
@@ -777,11 +773,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V7WL667MJM;
+				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bq.webViewExp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bq.webViewExp.intest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -796,11 +792,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V7WL667MJM;
+				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bq.webViewExp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bq.webViewExp.intest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

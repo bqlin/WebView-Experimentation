@@ -63,9 +63,10 @@ typedef void(^ControllerHandlerBlock)(void);
 	[self.view addSubview:webView];
 	webView.translatesAutoresizingMaskIntoConstraints = NO;
 	id top = self.topLayoutGuide;
-	NSDictionary *views = NSDictionaryOfVariableBindings(webView, top);
+	id bottom = self.bottomLayoutGuide;
+	NSDictionary *views = NSDictionaryOfVariableBindings(webView, top, bottom);
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[webView]|" options:0 metrics:nil views:views]];
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top][webView]|" options:0 metrics:nil views:views]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top][webView][bottom]|" options:0 metrics:nil views:views]];
 	[self addToolBarButtons];
 }
 

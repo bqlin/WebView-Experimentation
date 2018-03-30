@@ -32,9 +32,7 @@
 + (WKWebView *)wkWebView {
 	Settings *settings = [Settings sharedSettings];
 	WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-	configuration.ignoresViewportScaleLimits = settings.allowsScale;
 	configuration.suppressesIncrementalRendering = settings.suppressesIncrementalRendering;
-	configuration.dataDetectorTypes = settings.allowsDataDetect ? WKDataDetectorTypeAll : WKDataDetectorTypeNone;
 	configuration.allowsInlineMediaPlayback = settings.allowsInlineMediaPlayback;
 	configuration.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
 	configuration.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
@@ -43,9 +41,13 @@
 	}
 	
 	WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
-	webView.allowsLinkPreview = settings.allowsLinkPreview;
 	if (@available(iOS 9.0, *)) {
+		webView.allowsLinkPreview = settings.allowsLinkPreview;
 		webView.allowsBackForwardNavigationGestures = settings.allowsBackForwardNavigationGestures;
+	}
+	if (@available(iOS 10.0, *)) {
+		configuration.dataDetectorTypes = settings.allowsDataDetect ? WKDataDetectorTypeAll : WKDataDetectorTypeNone;
+		configuration.ignoresViewportScaleLimits = settings.allowsScale;
 	}
 	return webView;
 }

@@ -31,15 +31,37 @@
     // Do any additional setup after loading the view from its nib.
 	self.automaticallyAdjustsScrollViewInsets = NO;
 	self.title = @"双屏对比";
+	self.view.backgroundColor = [UIColor whiteColor];
+//	UIView *view1 = [UIView new];
+//	view1.backgroundColor = [UIColor yellowColor];
+//	[self.view addSubview:view1];
+//	[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+//		make.edges.equalTo(self.view.mas_safeAreaLayoutGuide).inset(10.0);
+//	}];
 	
 	self.containerView = [[UIView alloc] init];
 	[self.view addSubview:self.containerView];
 	UIView *superview = self.view;
-	[self.containerView makeConstraints:^(MASConstraintMaker *make) {
-		make.top.equalTo(self.mas_topLayoutGuide);
-		make.bottom.equalTo(self.mas_bottomLayoutGuide);
-		make.left.right.equalTo(superview);
-	}];
+	
+	if (@available(iOS 11.0, *)) {
+		[self.containerView makeConstraints:^(MASConstraintMaker *make) {
+			make.edges.equalTo(self.view.mas_safeAreaLayoutGuide);
+//			make.center.equalTo(self.view.mas_safeAreaLayoutGuide);
+//			make.width.height.equalTo(self.view.mas_safeAreaLayoutGuide);
+		}];
+	} else {
+		[self.containerView makeConstraints:^(MASConstraintMaker *make) {
+			make.top.equalTo(self.mas_topLayoutGuide);
+			make.bottom.equalTo(self.mas_bottomLayoutGuide);
+			make.left.right.equalTo(superview);
+		}];
+	}
+//	[self.containerView makeConstraints:^(MASConstraintMaker *make) {
+//		make.top.equalTo(self.mas_topLayoutGuide);
+//		make.bottom.equalTo(self.mas_bottomLayoutGuide);
+//		make.left.right.equalTo(superview);
+//	}];
+	
 	[self.containerView addSubview:self.splitView];
 	[self.containerView addSubview:self.uiWebView];
 	[self.containerView addSubview:self.wkWebView];
