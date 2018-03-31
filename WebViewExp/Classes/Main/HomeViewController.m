@@ -166,7 +166,7 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 }
 
 - (IBAction)unwindToHome:(UIStoryboardSegue *)unwindSegue {
-	NSLog(@"unwindSegue: %@", unwindSegue);
+	//NSLog(@"unwindSegue: %@", unwindSegue);
 }
 - (IBAction)cleanAction:(UIBarButtonItem *)sender {
 	self.urlTextView.text = nil;

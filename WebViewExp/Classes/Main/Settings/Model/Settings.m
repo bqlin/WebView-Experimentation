@@ -57,7 +57,6 @@ static id _sharedInstance = nil;
 	
 	WKWebView *wkWebView = [[WKWebView alloc] init];
 	_allowsBackForwardNavigationGestures = wkWebView.allowsBackForwardNavigationGestures;
-	NSLog(@"%s", __FUNCTION__);
 }
 
 @end

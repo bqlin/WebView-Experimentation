@@ -39,9 +39,37 @@
 				   ].mutableCopy;
 }
 
-- (ZFSettingGroup *)dispalySettings {
+- (ZFSettingGroup *)uiWebViewSettings {
+	Settings *settings = [Settings sharedSettings];
+	__weak typeof(settings) _settings = settings;
+	
+	// 禁止缩放页面
+	ZFSettingItem *allowsScale = [ZFSettingItem itemWithIcon:nil title:@"允许缩放页面" type:ZFSettingItemTypeSwitch];
+	allowsScale.switchOn = settings.allowsScale;
+	allowsScale.switchBlock = ^(BOOL on) {
+		_settings.allowsScale = on;
+	};
+	
 	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
-	group.header = @"显示";
+	group.header = @"UIWebView";
+	group.items = @[allowsScale];
+	return group;
+}
+
+- (ZFSettingGroup *)wkWebViewSettings {
+	Settings *settings = [Settings sharedSettings];
+	__weak typeof(settings) _settings = settings;
+	
+	// 允许手势导航
+	ZFSettingItem *allowsBackForwardNavigationGestures = [ZFSettingItem itemWithIcon:nil title:@"允许手势导航" type:ZFSettingItemTypeSwitch];
+	allowsBackForwardNavigationGestures.switchOn = settings.allowsBackForwardNavigationGestures;
+	allowsBackForwardNavigationGestures.switchBlock = ^(BOOL on) {
+		_settings.allowsBackForwardNavigationGestures = on;
+	};
+	
+	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
+	group.header = @"WKWebView";
+	group.items = @[allowsBackForwardNavigationGestures];
 	return group;
 }
 
@@ -106,42 +134,9 @@
 	
 	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
 	group.header = @"通用";
+	group.footer = @"上述设置将应用于 UIWebView 和 WKWebView";
 	group.items = items;
 	
-	return group;
-}
-
-- (ZFSettingGroup *)wkWebViewSettings {
-	Settings *settings = [Settings sharedSettings];
-	__weak typeof(settings) _settings = settings;
-	
-	// 允许手势导航
-	ZFSettingItem *allowsBackForwardNavigationGestures = [ZFSettingItem itemWithIcon:nil title:@"允许手势导航" type:ZFSettingItemTypeSwitch];
-	allowsBackForwardNavigationGestures.switchOn = settings.allowsBackForwardNavigationGestures;
-	allowsBackForwardNavigationGestures.switchBlock = ^(BOOL on) {
-		_settings.allowsBackForwardNavigationGestures = on;
-	};
-	
-	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
-	group.header = @"WKWebView";
-	group.items = @[allowsBackForwardNavigationGestures];
-	return group;
-}
-
-- (ZFSettingGroup *)uiWebViewSettings {
-	Settings *settings = [Settings sharedSettings];
-	__weak typeof(settings) _settings = settings;
-	
-	// 禁止缩放页面
-	ZFSettingItem *allowsScale = [ZFSettingItem itemWithIcon:nil title:@"允许缩放页面" type:ZFSettingItemTypeSwitch];
-	allowsScale.switchOn = settings.allowsScale;
-	allowsScale.switchBlock = ^(BOOL on) {
-		_settings.allowsScale = on;
-	};
-	
-	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
-	group.header = @"UIWebView";
-	group.items = @[allowsScale];
 	return group;
 }
 

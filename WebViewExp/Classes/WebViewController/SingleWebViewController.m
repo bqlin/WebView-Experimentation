@@ -29,7 +29,6 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	_fullscreen = YES;
 	if (self.viewDidLoadHandler) {
 		self.viewDidLoadHandler();
 		self.viewDidLoadHandler = nil;
@@ -49,12 +48,10 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	//NSLog(@"%s", __FUNCTION__);
 	[self.navigationController setToolbarHidden:NO animated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	//NSLog(@"%s", __FUNCTION__);
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -149,7 +146,6 @@ typedef void(^ControllerHandlerBlock)(void);
 	} else if ([webView isKindOfClass:[WKWebView class]]) {
 		_wkWebView = (WKWebView *)webView;
 	}
-	NSLog(@"webView: %@", webView);
 }
 
 #pragma mark - private
@@ -170,7 +166,6 @@ typedef void(^ControllerHandlerBlock)(void);
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-	//NSLog(@"%s - %@", __FUNCTION__, [NSThread currentThread]);
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:searchBar.text]];
 	[self.uiWebView loadRequest:request];
 	[self.wkWebView loadRequest:request];

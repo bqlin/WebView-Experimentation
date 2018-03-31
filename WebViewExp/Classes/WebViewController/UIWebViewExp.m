@@ -38,7 +38,6 @@
 
 
 - (IBAction)go:(id)sender {
-    NSLog(@"%s", __FUNCTION__);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.textField.text]];
     [self.webView loadRequest:request];
 }
