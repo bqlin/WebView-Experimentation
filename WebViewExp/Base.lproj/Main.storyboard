@@ -112,7 +112,7 @@
             <objects>
                 <viewController id="Uer-qL-zaD" customClass="SettingViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="KI1-TG-ofR">
-                        <barButtonItem key="rightBarButtonItem" title="还原" image="garbage" id="7WP-Hy-sRi">
+                        <barButtonItem key="rightBarButtonItem" title="还原" image="reset" id="7WP-Hy-sRi">
                             <connections>
                                 <action selector="restoreAction:" destination="Uer-qL-zaD" id="vqi-hW-Uij"/>
                             </connections>
@@ -148,6 +148,7 @@
     </scenes>
     <resources>
         <image name="garbage" width="22" height="22"/>
+        <image name="reset" width="24" height="24"/>
         <image name="rocket-launch" width="28" height="40"/>
         <image name="scan" width="24" height="20"/>
         <image name="settings-1" width="22" height="22"/>
