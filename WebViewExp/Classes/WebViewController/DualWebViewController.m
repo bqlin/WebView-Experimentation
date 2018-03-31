@@ -29,8 +29,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+	[self setupUI];
+}
+
+- (void)setupUI {
 	self.automaticallyAdjustsScrollViewInsets = NO;
-	self.title = @"双屏对比";
+	self.title = @"UIWebView vs WKWebView";
 	self.view.backgroundColor = [UIColor blackColor];
 	
 	self.containerView = [[UIView alloc] init];
@@ -40,8 +44,6 @@
 	if (@available(iOS 11.0, *)) {
 		[self.containerView makeConstraints:^(MASConstraintMaker *make) {
 			make.edges.equalTo(self.view.mas_safeAreaLayoutGuide);
-//			make.center.equalTo(self.view.mas_safeAreaLayoutGuide);
-//			make.width.height.equalTo(self.view.mas_safeAreaLayoutGuide);
 		}];
 	} else {
 		[self.containerView makeConstraints:^(MASConstraintMaker *make) {
@@ -50,11 +52,6 @@
 			make.left.right.equalTo(superview);
 		}];
 	}
-//	[self.containerView makeConstraints:^(MASConstraintMaker *make) {
-//		make.top.equalTo(self.mas_topLayoutGuide);
-//		make.bottom.equalTo(self.mas_bottomLayoutGuide);
-//		make.left.right.equalTo(superview);
-//	}];
 	
 	[self.containerView addSubview:self.splitView];
 	[self.containerView addSubview:self.uiWebView];
@@ -63,6 +60,18 @@
 	self.containerView.clipsToBounds = YES;
 	self.splitView.clipsToBounds = YES;
 	[self updateConstraintsForTraitCollection:self.traitCollection];
+	
+	[self addToolBarButtons];
+}
+
+- (void)addToolBarButtons {
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(refreshAction:)];
+	self.navigationItem.rightBarButtonItem = refreshButton;
+}
+
+- (void)refreshAction:(UIBarButtonItem *)sender {
+	[self.wkWebView reload];
+	[self.uiWebView reload];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

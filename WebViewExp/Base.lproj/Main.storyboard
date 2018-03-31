@@ -36,6 +36,17 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="HQc-Id-ZGw"/>
                                 </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hub-6I-O81">
+                                <rect key="frame" x="272" y="270" width="24" height="34.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="A0p-Ix-0KK"/>
+                                    <constraint firstAttribute="width" secondItem="Hub-6I-O81" secondAttribute="height" multiplier="7:10" id="pZh-yb-jHl"/>
+                                </constraints>
+                                <state key="normal" image="rocket-launch"/>
+                                <connections>
+                                    <action selector="goAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c1d-QU-HLG"/>
+                                </connections>
+                            </button>
                             <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eI9-Rr-Rd7">
                                 <rect key="frame" x="0.0" y="64" width="320" height="29"/>
                                 <constraints>
@@ -52,17 +63,6 @@
                                     <action selector="webViewTypeChangeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="ht5-g3-jFs"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hub-6I-O81">
-                                <rect key="frame" x="272" y="270" width="24" height="34.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="A0p-Ix-0KK"/>
-                                    <constraint firstAttribute="width" secondItem="Hub-6I-O81" secondAttribute="height" multiplier="7:10" id="pZh-yb-jHl"/>
-                                </constraints>
-                                <state key="normal" image="rocket-launch"/>
-                                <connections>
-                                    <action selector="goAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c1d-QU-HLG"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
