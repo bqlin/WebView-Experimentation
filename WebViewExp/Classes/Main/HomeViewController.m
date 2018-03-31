@@ -21,6 +21,7 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 @property (nonatomic, assign) WebViewType webViewType;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewBottomLayout;
 @property (nonatomic, assign) CGFloat textViewBottomLayoutConstant;
+@property (weak, nonatomic) IBOutlet UIButton *goButton;
 
 @end
 
@@ -37,17 +38,10 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
 - (void)setupUI {
 	[Settings sharedSettings];
-	UIBarButtonItem *goButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"rocket-launch"] style:UIBarButtonItemStylePlain target:self action:@selector(goAction:)];
-	UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-	self.toolbarItems = @[flexibleSpace, goButton, fixedSpace];
-	for (UIBarButtonItem *item in self.toolbarItems) {
-		if (item == fixedSpace || item == flexibleSpace) {
-			continue;
-		}
-		item.width = 44;
-	}
+	//[self addBarItems];
+	self.goButton.transform = CGAffineTransformMakeRotation(-M_PI_2);
 	self.textViewBottomLayoutConstant = self.textViewBottomLayout.constant;
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -63,7 +57,7 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	[self.navigationController setToolbarHidden:NO animated:YES];
+	[self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 #pragma mark - notification
@@ -93,6 +87,19 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 }
 
 #pragma mark - private
+
+- (void)addBarItems {
+	UIBarButtonItem *goButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"rocket-launch"] style:UIBarButtonItemStylePlain target:self action:@selector(goAction:)];
+	UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+	self.toolbarItems = @[flexibleSpace, goButton, fixedSpace];
+	for (UIBarButtonItem *item in self.toolbarItems) {
+		if (item == fixedSpace || item == flexibleSpace) {
+			continue;
+		}
+		item.width = 44;
+	}
+}
 
 - (NSURL *)inputURL {
 	NSString *url = self.urlTextView.text;
@@ -142,8 +149,16 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 
 #pragma mark - Action
 
-- (void)goAction:(id)sender {
+- (IBAction)goAction:(UIButton *)sender {
+	CGPoint center = sender.center;
 	[self goWithType:self.webViewType sender:sender];
+	[UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		sender.center = CGPointMake(0, center.y);
+		sender.alpha = 0;
+	} completion:^(BOOL finished) {
+		sender.center = center;
+		sender.alpha = 1;
+	}];
 }
 
 - (IBAction)test:(id)sender {

@@ -17,7 +17,7 @@ typedef void(^ControllerHandlerBlock)(void);
 
 @property (nonatomic, strong, readonly) UIWebView *uiWebView;
 @property (nonatomic, weak, readonly) WKWebView *wkWebView;
-//@property (weak, nonatomic) IBOutlet UIView *webViewPlacehodler;
+@property (nonatomic, assign) BOOL fullscreen;
 
 @end
 
@@ -29,7 +29,7 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+	_fullscreen = YES;
 	if (self.viewDidLoadHandler) {
 		self.viewDidLoadHandler();
 		self.viewDidLoadHandler = nil;
@@ -55,6 +55,10 @@ typedef void(^ControllerHandlerBlock)(void);
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	//NSLog(@"%s", __FUNCTION__);
+}
+
+- (BOOL)prefersStatusBarHidden {
+	return self.fullscreen;
 }
 
 - (void)setupUI {
@@ -86,6 +90,34 @@ typedef void(^ControllerHandlerBlock)(void);
 		}
 		item.width = 44;
 	}
+	
+	UIBarButtonItem *fullscreenButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"fullscreen"] style:UIBarButtonItemStylePlain target:self action:@selector(fullscreenAction:)];
+	self.navigationItem.rightBarButtonItem = fullscreenButton;
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+	[coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+		[self updateConstraintsForTraitCollection:newCollection];
+	} completion:nil];
+}
+
+- (void)updateConstraintsForTraitCollection:(UITraitCollection *)collection {
+	//BOOL landscape = collection.verticalSizeClass == UIUserInterfaceSizeClassCompact;
+	self.fullscreen = NO;
+}
+
+#pragma mark - property
+
+- (void)setFullscreen:(BOOL)fullscreen {
+	_fullscreen = fullscreen;
+	[self.navigationController setToolbarHidden:fullscreen animated:YES];
+	[self.navigationController setNavigationBarHidden:fullscreen animated:YES];
+}
+
+#pragma mark - action
+
+- (void)fullscreenAction:(id)sender {
+	self.fullscreen = YES;
 }
 
 - (void)refreshAction:(UIBarButtonItem *)sender {

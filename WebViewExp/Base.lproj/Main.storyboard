@@ -52,12 +52,25 @@
                                     <action selector="webViewTypeChangeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="ht5-g3-jFs"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hub-6I-O81">
+                                <rect key="frame" x="272" y="270" width="24" height="34.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="A0p-Ix-0KK"/>
+                                    <constraint firstAttribute="width" secondItem="Hub-6I-O81" secondAttribute="height" multiplier="7:10" id="pZh-yb-jHl"/>
+                                </constraints>
+                                <state key="normal" image="rocket-launch"/>
+                                <connections>
+                                    <action selector="goAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c1d-QU-HLG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="T79-cS-QZM" secondAttribute="bottom" constant="52" id="8kj-dG-Lg8"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="FHz-kb-uva"/>
+                            <constraint firstItem="Hub-6I-O81" firstAttribute="top" secondItem="T79-cS-QZM" secondAttribute="bottom" constant="8" id="cNU-XX-1mr"/>
                             <constraint firstItem="eI9-Rr-Rd7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ii1-0F-uzp"/>
+                            <constraint firstItem="Hub-6I-O81" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="-8" id="nPA-hb-t9C"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="top" secondItem="eI9-Rr-Rd7" secondAttribute="bottom" constant="8" id="nhK-8D-lfT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T79-cS-QZM" secondAttribute="trailing" id="qCR-kc-vwD"/>
                             <constraint firstItem="eI9-Rr-Rd7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qpM-NT-eR9"/>
@@ -66,7 +79,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="WebView Exp" id="Tgp-oL-AwU">
                         <barButtonItem key="backBarButtonItem" title=" " id="wsh-fO-Vuy"/>
-                        <barButtonItem key="leftBarButtonItem" title="clean" image="garbage" id="eZJ-vL-2b1">
+                        <barButtonItem key="leftBarButtonItem" title="清空" image="garbage" id="eZJ-vL-2b1">
                             <connections>
                                 <action selector="cleanAction:" destination="BYZ-38-t0r" id="EUb-O5-gTg"/>
                             </connections>
@@ -77,7 +90,7 @@
                                     <segue destination="Uer-qL-zaD" kind="show" id="bdF-an-q4x"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="scan" image="scan" id="EDr-oa-thh">
+                            <barButtonItem title="扫码" image="scan" id="EDr-oa-thh">
                                 <connections>
                                     <action selector="scanQRCodeAction:" destination="BYZ-38-t0r" id="oRj-mm-BV4"/>
                                 </connections>
@@ -85,6 +98,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="goButton" destination="Hub-6I-O81" id="Hog-zQ-huB"/>
                         <outlet property="textViewBottomLayout" destination="8kj-dG-Lg8" id="0Hz-Ds-hXh"/>
                         <outlet property="urlTextView" destination="T79-cS-QZM" id="IT5-sF-BN2"/>
                     </connections>
@@ -134,6 +148,7 @@
     </scenes>
     <resources>
         <image name="garbage" width="22" height="22"/>
+        <image name="rocket-launch" width="28" height="40"/>
         <image name="scan" width="24" height="20"/>
         <image name="settings-1" width="22" height="22"/>
     </resources>
