@@ -8,7 +8,6 @@
 
 #import "HomeViewController.h"
 #import "SingleWebViewController.h"
-#import "Settings.h"
 #import "WebViewBuilder.h"
 #import "DualWebViewController.h"
 #import "ZFScanViewController.h"
@@ -37,7 +36,6 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 }
 
 - (void)setupUI {
-	[Settings sharedSettings];
 	//[self addBarItems];
 	self.goButton.transform = CGAffineTransformMakeRotation(-M_PI_2);
 	self.textViewBottomLayoutConstant = self.textViewBottomLayout.constant;

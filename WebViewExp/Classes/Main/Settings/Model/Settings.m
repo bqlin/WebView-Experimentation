@@ -9,6 +9,8 @@
 #import "Settings.h"
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+#import <YYModel.h>
+static NSString * const SettingsKey = @"com.bq.webviewlab.settings";
 
 @implementation Settings
 
@@ -17,8 +19,7 @@ static id _sharedInstance = nil;
 + (instancetype)sharedSettings {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		_sharedInstance = [[self alloc] init];
-		[_sharedInstance commonInit];
+		_sharedInstance = [self settingsWithUserDefaults];
 	});
 	return _sharedInstance;
 }
@@ -37,8 +38,24 @@ static id _sharedInstance = nil;
 	return _sharedInstance;
 }
 
-- (void)commonInit {
-	[self restoreToDefault];
++ (instancetype)settingsWithUserDefaults {
+	NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+	NSData *settingsData = [user dataForKey:SettingsKey];
+	Settings *settings = nil;
+	if (settingsData.length) {
+		settings = [self yy_modelWithJSON:settingsData];
+	} else {
+		settings = [[self alloc] init];
+		[settings restoreToDefault];
+	}
+	return settings;
+}
+
+- (void)writeSettings {
+	NSData *settingsData = self.yy_modelToJSONData;
+	NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+	[user setObject:settingsData forKey:SettingsKey];
+	[user synchronize];
 }
 
 - (void)restoreToDefault {

@@ -16,7 +16,8 @@
 @implementation SettingViewController
 
 - (void)dealloc {
-	NSLog(@"%s", __FUNCTION__);
+	[[Settings sharedSettings] writeSettings];
+	//NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)viewDidLoad {

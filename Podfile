@@ -11,6 +11,7 @@ target 'WebViewExp' do
   #pod 'PonyDebugger', :source => 'https://github.com/CocoaPods/Specs.git'
   # pod 'FDStackView'
   pod 'Masonry', :path => '~/Workspace/Git/Masonry'
+  pod 'YYModel'
 
   target 'WebViewExpUITests' do
     inherit! :search_paths

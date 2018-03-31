@@ -50,4 +50,7 @@
 /// 恢复默认设置
 - (void)restoreToDefault;
 
+/// 保存值
+- (void)writeSettings;
+
 @end
