@@ -55,7 +55,7 @@ static id _sharedInstance = nil;
 	NSData *settingsData = self.yy_modelToJSONData;
 	NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
 	[user setObject:settingsData forKey:SettingsKey];
-	[user synchronize];
+	//[user synchronize];
 }
 
 - (void)restoreToDefault {

@@ -107,7 +107,7 @@
 	};
 	
 	// 禁止自动播放
-	ZFSettingItem *banAutoPlay = [ZFSettingItem itemWithIcon:nil title:@"自动播放" type:ZFSettingItemTypeSwitch];
+	ZFSettingItem *banAutoPlay = [ZFSettingItem itemWithIcon:nil title:@"允许自动播放" type:ZFSettingItemTypeSwitch];
 	banAutoPlay.switchOn = !settings.banAutoPlay;
 	banAutoPlay.switchBlock = ^(BOOL on) {
 		_settings.banAutoPlay = !on;

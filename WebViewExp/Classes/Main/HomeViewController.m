@@ -13,6 +13,7 @@
 #import "ZFScanViewController.h"
 
 static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
+static NSString * const DefaultURLKey = @"defaultURL_preference";
 
 @interface HomeViewController ()<UITextViewDelegate>
 
@@ -22,9 +23,26 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 @property (nonatomic, assign) CGFloat textViewBottomLayoutConstant;
 @property (weak, nonatomic) IBOutlet UIButton *goButton;
 
+@property (nonatomic, copy) NSString *lastUrl;
+@property (nonatomic, strong) NSString *userUrl;
+
 @end
 
 @implementation HomeViewController
+
+#pragma mark - property
+
+- (NSString *)userUrl {
+	NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+	return [user stringForKey:DefaultURLKey];
+}
+- (void)setUserUrl:(NSString *)userUrl {
+	NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+	[user setObject:userUrl forKey:DefaultURLKey];
+	//[user synchronize];
+}
+
+#pragma mark - view controller
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -36,7 +54,12 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 }
 
 - (void)setupUI {
-	//[self addBarItems];
+	NSString *userUrl = self.userUrl;
+	if (!userUrl.length) {
+		userUrl = @"https://xw.qq.com";
+	}
+	self.urlTextView.text = userUrl;
+	self.lastUrl = userUrl;
 	self.goButton.transform = CGAffineTransformMakeRotation(-M_PI_2);
 	self.textViewBottomLayoutConstant = self.textViewBottomLayout.constant;
 	
@@ -102,6 +125,11 @@ static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 - (NSURL *)inputURL {
 	NSString *url = self.urlTextView.text;
 	url = [url stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	if (url.length > 0 && ![url isEqualToString:self.lastUrl]) { // url 与上次不一样则归档
+		self.userUrl = url;
+		self.lastUrl = url;
+		self.urlTextView.text = url;
+	}
 	url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSURL *URL = [NSURL URLWithString:url];
 	return URL;
