@@ -36,7 +36,8 @@
 	_allGroups = @[
 				   [self generalSettings],
 				   [self uiWebViewSettings],
-				   [self wkWebViewSettings]
+				   [self wkWebViewSettings],
+				   [self otherSettings]
 				   ].mutableCopy;
 }
 
@@ -138,6 +139,28 @@
 	group.footer = @"上述设置将应用于 UIWebView 和 WKWebView";
 	group.items = items;
 	
+	return group;
+}
+
+- (ZFSettingGroup *)otherSettings {
+	// 反馈
+	ZFSettingItem *feedback = [ZFSettingItem itemWithIcon:nil title:@"前往 issues 反馈问题" type:ZFSettingItemTypeArrow];
+	feedback.operation = ^{
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/bqlin/WebView-Experimentation/issues"]];
+	};
+	
+	// 关于作者
+	ZFSettingItem *aboutAuthor = [ZFSettingItem itemWithIcon:nil title:@"关于作者" type:ZFSettingItemTypeArrow];
+	aboutAuthor.operation = ^{
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/bqlin"]];
+	};
+	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
+	group.header = @"其他";
+	NSDictionary *appInfo = [NSBundle mainBundle].infoDictionary;
+	NSString *appName = appInfo[@"CFBundleDisplayName"];
+	NSString *version = appInfo[@"CFBundleShortVersionString"];
+	group.footer = [NSString stringWithFormat:@"© 2017 BqLin, %@. %@", appName, version];
+	group.items = @[feedback, aboutAuthor];
 	return group;
 }
 
