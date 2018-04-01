@@ -419,7 +419,7 @@
 					};
 					E5294D221DC9ED6A00AC82DB = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 8BMZBNN3Q5;
+						DevelopmentTeam = V7WL667MJM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -793,11 +793,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
+				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bq.webViewExp.intest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bq.webViewExp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -812,11 +812,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
+				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bq.webViewExp.intest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bq.webViewExp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
