@@ -7,10 +7,10 @@ target 'WebViewExp' do
   # use_frameworks!
 
   # Pods for WebViewExp
-  pod 'ZFSetting', :path => '~/Workspace/Git/bq/ZFSetting'
+  pod 'ZFSetting', :path => '../ZFSetting'
   #pod 'PonyDebugger', :source => 'https://github.com/CocoaPods/Specs.git'
   # pod 'FDStackView'
-  pod 'Masonry', :path => '~/Workspace/Git/Masonry'
+  pod 'Masonry', :path => '../../Masonry'
   pod 'YYModel'
 
   target 'WebViewExpUITests' do
