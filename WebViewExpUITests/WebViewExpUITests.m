@@ -34,9 +34,56 @@
 
 - (void)testExample {
 	// Xcode 8
-	[Snapshot snapshot:@"01Home" waitForLoadingIndicator:YES];
-	[[[XCUIApplication alloc] init].toolbars.buttons[@"UIWebView"] tap];
-	[Snapshot snapshot:@"02WebView" waitForLoadingIndicator:YES];
+	XCUIApplication *app = [[XCUIApplication alloc] init];
+	[XCUIDevice sharedDevice].orientation = UIDeviceOrientationPortrait;
+	
+	// WK，竖屏带键盘
+	[app.buttons[@"WKWebView"] tap];
+	[[[[[[app.otherElements containingType:XCUIElementTypeNavigationBar identifier:@"WebView Lab"] childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeTextView].element tap];
+	[Snapshot snapshot:@"00" waitForLoadingIndicator:YES];
+	
+	// 横屏带键盘
+	[XCUIDevice sharedDevice].orientation = UIDeviceOrientationLandscapeLeft;
+	sleep(2);
+	[Snapshot snapshot:@"01" waitForLoadingIndicator:YES];
+	
+	// 竖屏，切入
+	[XCUIDevice sharedDevice].orientation = UIDeviceOrientationPortrait;
+	XCUIElement *rocketLaunchButton = app.buttons[@"rocket launch"];
+	[rocketLaunchButton tap];
+	sleep(5);
+	[Snapshot snapshot:@"02" waitForLoadingIndicator:YES];
+	
+	// 横屏
+	[XCUIDevice sharedDevice].orientation = UIDeviceOrientationLandscapeLeft;
+	sleep(1);
+	[Snapshot snapshot:@"03" waitForLoadingIndicator:YES];
+	
+	// 竖屏，返回，切 Safari
+	[XCUIDevice sharedDevice].orientation = UIDeviceOrientationPortrait;
+	[app.navigationBars[@"WKWebView"].buttons[@" "] tap];
+	[app.buttons[@"Safari"] tap];
+	[rocketLaunchButton tap];
+	sleep(5);
+	[Snapshot snapshot:@"04" waitForLoadingIndicator:YES];
+	
+	// 横屏
+	[XCUIDevice sharedDevice].orientation = UIDeviceOrientationLandscapeLeft;
+	sleep(1);
+	[Snapshot snapshot:@"05" waitForLoadingIndicator:YES];
+	
+	// 竖屏，返回，且双屏
+	[XCUIDevice sharedDevice].orientation = UIDeviceOrientationPortrait;
+	[app.buttons[@"完成"] tap];
+	[app.buttons[@"双屏"] tap];
+	[rocketLaunchButton tap];
+	sleep(5);
+	[Snapshot snapshot:@"06" waitForLoadingIndicator:YES];
+	
+	// 横屏
+	[XCUIDevice sharedDevice].orientation = UIDeviceOrientationLandscapeLeft;
+	sleep(1);
+	[Snapshot snapshot:@"07" waitForLoadingIndicator:YES];
 	
 	// Xcode 9
 //	[Snapshot snapshot:@"lunch" timeWaitingForIdle:1];
