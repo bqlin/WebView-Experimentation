@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "Settings.h"
+#import "BqConstant.h"
 
 @interface SettingViewController ()
 
@@ -130,7 +131,7 @@
 	
 	NSMutableArray *items = [NSMutableArray array];
 	[items addObjectsFromArray:@[suppressesIncrementalRendering, allowsDataDetect, allowsInlineMediaPlayback, banAutoPlay, mediaPlaybackAllowsAirPlay]];
-	if (@available(iOS 9.0, *)) {
+	if (BQ_AVAILABLE(9)) {
 		[items addObjectsFromArray:@[allowsLinkPreview, allowsPictureInPictureMediaPlayback]];
 	}
 	

@@ -8,6 +8,7 @@
 
 #import "WebViewBuilder.h"
 #import "Settings.h"
+#import "BqConstant.h"
 
 @implementation WebViewBuilder
 
@@ -22,7 +23,7 @@
 	webView.dataDetectorTypes = settings.allowsDataDetect ? UIDataDetectorTypeAll : UIDataDetectorTypeNone;
 	webView.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
 	
-	if (@available(iOS 9.0, *)) {
+	if (BQ_AVAILABLE(9)) {
 		webView.allowsLinkPreview = settings.allowsLinkPreview;
 		webView.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
 	}
@@ -36,16 +37,16 @@
 	configuration.allowsInlineMediaPlayback = settings.allowsInlineMediaPlayback;
 	configuration.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
 	configuration.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
-	if (@available(iOS 9.0, *)) {
+	if (BQ_AVAILABLE(9)) {
 		configuration.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
 	}
 	
 	WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
-	if (@available(iOS 9.0, *)) {
+	if (BQ_AVAILABLE(9)) {
 		webView.allowsLinkPreview = settings.allowsLinkPreview;
 		webView.allowsBackForwardNavigationGestures = settings.allowsBackForwardNavigationGestures;
 	}
-	if (@available(iOS 10.0, *)) {
+	if (BQ_AVAILABLE(10)) {
 		configuration.dataDetectorTypes = settings.allowsDataDetect ? WKDataDetectorTypeAll : WKDataDetectorTypeNone;
 		configuration.ignoresViewportScaleLimits = settings.allowsScale;
 	}
@@ -67,7 +68,7 @@
 		_webView.suppressesIncrementalRendering = settings.suppressesIncrementalRendering;
 		_webView.dataDetectorTypes = settings.allowsDataDetect ? UIDataDetectorTypeAll : UIDataDetectorTypeNone;
 		_webView.mediaPlaybackAllowsAirPlay = settings.mediaPlaybackAllowsAirPlay;
-		if (@available(iOS 9.0, *)) {
+		if (BQ_AVAILABLE(9)) {
 			_webView.allowsLinkPreview = settings.allowsLinkPreview;
 			_webView.allowsPictureInPictureMediaPlayback = settings.allowsPictureInPictureMediaPlayback;
 		}

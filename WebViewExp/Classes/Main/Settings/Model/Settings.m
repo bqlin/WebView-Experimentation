@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 #import <YYModel.h>
+#import "BqConstant.h"
+
 static NSString * const SettingsKey = @"com.bq.webviewlab.settings";
 
 @implementation Settings
@@ -66,7 +68,8 @@ static id _sharedInstance = nil;
 	_allowsInlineMediaPlayback = webView.allowsInlineMediaPlayback;
 	_banAutoPlay = webView.mediaPlaybackRequiresUserAction;
 	_mediaPlaybackAllowsAirPlay = webView.mediaPlaybackAllowsAirPlay;
-	if (@available(iOS 9.0, *)) {
+	
+	if (BQ_AVAILABLE(9)) {
 		_allowsLinkPreview = webView.allowsLinkPreview;
 		_allowsPictureInPictureMediaPlayback = webView.allowsPictureInPictureMediaPlayback;
 	}

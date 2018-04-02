@@ -12,6 +12,7 @@
 #import "WebViewBuilder.h"
 #import <Masonry.h>
 #import "DualSplitView.h"
+#import "BqConstant.h"
 
 @interface DualWebViewController ()
 
@@ -41,7 +42,7 @@
 	[self.view addSubview:self.containerView];
 	UIView *superview = self.view;
 	
-	if (@available(iOS 11.0, *)) {
+	if (BQ_AVAILABLE(11)) {
 		[self.containerView makeConstraints:^(MASConstraintMaker *make) {
 			make.edges.equalTo(self.view.mas_safeAreaLayoutGuide);
 		}];

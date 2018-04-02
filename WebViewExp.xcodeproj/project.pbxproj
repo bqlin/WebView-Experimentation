@@ -81,6 +81,7 @@
 		03508274206901150004F2CC /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		03508279206903320004F2CC /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		0350827A206903320004F2CC /* Settings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		0356C29120726762003BDEBC /* BqConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BqConstant.h; sourceTree = "<group>"; };
 		035E536B206292E700B93F91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		036BFBD7206B8970001CAB1B /* WebViewBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewBuilder.h; sourceTree = "<group>"; };
 		036BFBD8206B8970001CAB1B /* WebViewBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewBuilder.m; sourceTree = "<group>"; };
@@ -226,6 +227,7 @@
 				E5294D2A1DC9ED6A00AC82DB /* AppDelegate.m */,
 				E5294D2C1DC9ED6A00AC82DB /* HomeViewController.h */,
 				E5294D2D1DC9ED6A00AC82DB /* HomeViewController.m */,
+				0356C29120726762003BDEBC /* BqConstant.h */,
 			);
 			path = Main;
 			sourceTree = "<group>";
