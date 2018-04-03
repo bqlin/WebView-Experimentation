@@ -39,7 +39,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="VH5-Qu-mgW">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="VH5-Qu-mgW">
                                         <rect key="frame" x="43.5" y="0.0" width="200" height="113"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="VH5-Qu-mgW" secondAttribute="height" multiplier="16:9" id="HnP-BQ-AOk"/>
