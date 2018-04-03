@@ -37,8 +37,13 @@
 	XCUIApplication *app = [[XCUIApplication alloc] init];
 	[XCUIDevice sharedDevice].orientation = UIDeviceOrientationPortrait;
 	
+	// 设置
+	[app.navigationBars[@"WebView Lab"].buttons[@"\u8bbe\u7f6e"] tap];
+	[Snapshot snapshot:@"settings" waitForLoadingIndicator:YES];
+	[app.navigationBars[@"\u8bbe\u7f6e"].buttons[@"\u8fd4\u56de"] tap];
+	
 	// WK，竖屏带键盘
-	[app.buttons[@"WKWebView"] tap];
+	[app.segmentedControls.buttons[@"WKWebView"] tap];
 	[[[[[[app.otherElements containingType:XCUIElementTypeNavigationBar identifier:@"WebView Lab"] childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeTextView].element tap];
 	[Snapshot snapshot:@"00" waitForLoadingIndicator:YES];
 	
@@ -62,7 +67,7 @@
 	// 竖屏，返回，切 Safari
 	[XCUIDevice sharedDevice].orientation = UIDeviceOrientationPortrait;
 	[app.navigationBars[@"WKWebView"].buttons[@" "] tap];
-	[app.buttons[@"Safari"] tap];
+	[app.segmentedControls.buttons[@"Safari"] tap];
 	[rocketLaunchButton tap];
 	sleep(5);
 	[Snapshot snapshot:@"04" waitForLoadingIndicator:YES];
