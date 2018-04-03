@@ -11,10 +11,13 @@
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_11_0
 // available for iOS 11
-#define BQ_AVAILABLE(v) @available(iOS v, *)
+
 #else
 // can not use iOS 11 API
-#define BQ_AVAILABLE(v) ([UIDevice currentDevice].systemVersion.floatValue > (v))
+
 #endif
+
+#define BQ_AVAILABLE(v) @available(iOS v, *)
+//#define BQ_AVAILABLE(v) ([UIDevice currentDevice].systemVersion.floatValue > (v))
 
 #endif /* BqConstant_h */
