@@ -47,7 +47,7 @@
 	__weak typeof(settings) _settings = settings;
 	
 	// 禁止缩放页面
-	ZFSettingItem *allowsScale = [ZFSettingItem itemWithIcon:nil title:@"允许缩放页面" type:ZFSettingItemTypeSwitch];
+	ZFSettingItem *allowsScale = [ZFSettingItem itemWithIcon:nil title:@"允许页面缩放" type:ZFSettingItemTypeSwitch];
 	allowsScale.switchOn = settings.allowsScale;
 	allowsScale.switchBlock = ^(BOOL on) {
 		_settings.allowsScale = on;
