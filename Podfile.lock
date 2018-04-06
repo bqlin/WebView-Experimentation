@@ -1,9 +1,11 @@
 PODS:
+  - KVOController (1.2.0)
   - Masonry (1.1.0)
   - YYModel (1.0.4)
   - ZFSetting (0.0.1)
 
 DEPENDENCIES:
+  - KVOController
   - Masonry (from `../../Masonry`)
   - YYModel
   - ZFSetting (from `../ZFSetting`)
@@ -15,10 +17,11 @@ EXTERNAL SOURCES:
     :path: ../ZFSetting
 
 SPEC CHECKSUMS:
+  KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   Masonry: 34afc06a8c34f8a4958de258dca1732dab49e8fe
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZFSetting: 13e44606537f21e379a756982a64a41cfcd78a2d
 
-PODFILE CHECKSUM: 4f5c954aa5ff3d73a11f2090c1481791a6ac72e2
+PODFILE CHECKSUM: f6b6cd102250a572dd31a1bb6110e1a4d3443862
 
 COCOAPODS: 1.4.0
