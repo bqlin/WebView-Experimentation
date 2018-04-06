@@ -33,10 +33,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go" enablesReturnKeyAutomatically="YES" textContentType="url"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="HQc-Id-ZGw"/>
@@ -91,9 +90,9 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="设置" image="settings-1" style="plain" id="GQH-dV-loJ">
+                            <barButtonItem title="设置" image="settings-1" id="GQH-dV-loJ">
                                 <connections>
-                                    <segue destination="Uer-qL-zaD" kind="show" id="bdF-an-q4x"/>
+                                    <segue destination="Uer-qL-zaD" kind="show" identifier="" id="bdF-an-q4x"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="扫码" image="scan" id="EDr-oa-thh">

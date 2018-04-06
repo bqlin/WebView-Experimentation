@@ -24,6 +24,7 @@ typedef void(^ControllerHandlerBlock)(void);
 @property (nonatomic, strong) UIProgressView *loadingProgressView;
 @property (nonatomic, weak) UIBarButtonItem *backButton;
 @property (nonatomic, weak) UIBarButtonItem *forwardButton;
+@property (nonatomic, strong) UIBarButtonItem *refreshButton;
 
 @property (nonatomic, assign) BOOL canGoBack;
 @property (nonatomic, assign) BOOL canGoForward;
@@ -99,7 +100,8 @@ typedef void(^ControllerHandlerBlock)(void);
 }
 
 - (void)addToolBarButtons {
-	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(refreshAction:)];
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(refreshAction:)];
+	self.refreshButton = refreshButton;
 	
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
 	backButton.enabled = NO;
@@ -191,6 +193,7 @@ typedef void(^ControllerHandlerBlock)(void);
 	dispatch_async(dispatch_get_main_queue(), ^{
 		//loading ? [self.loadingIndicator startAnimating] : [self.loadingIndicator stopAnimating];
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = loading;
+		self.refreshButton.image = [UIImage imageNamed:loading ? @"cancel" : @"refresh"];
 	});
 }
 - (void)setLoadingProgress:(CGFloat)loadingProgress {
@@ -207,8 +210,16 @@ typedef void(^ControllerHandlerBlock)(void);
 }
 
 - (void)refreshAction:(UIBarButtonItem *)sender {
-	[self.wkWebView reload];
-	[self.uiWebView reload];
+	if (self.loading) {
+		[self.wkWebView stopLoading];
+		[self.uiWebView stopLoading];
+		if (self.uiWebView) {
+			self.loading = NO;
+		}
+	} else {
+		[self.wkWebView reload];
+		[self.uiWebView reload];
+	}
 }
 - (void)backAction:(UIBarButtonItem *)sender {
 	[self.wkWebView goBack];
