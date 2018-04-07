@@ -783,6 +783,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_ACTIVITY_MODE = "";
+				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -802,6 +804,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_ACTIVITY_MODE = "";
 				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = WebViewExp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

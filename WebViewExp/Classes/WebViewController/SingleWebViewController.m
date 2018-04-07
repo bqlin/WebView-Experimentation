@@ -31,6 +31,8 @@ typedef void(^ControllerHandlerBlock)(void);
 @property (nonatomic, assign) BOOL loading;
 @property (nonatomic, assign) CGFloat loadingProgress;
 
+@property (nonatomic, strong) NSURLRequest *currentRequest;
+
 @end
 
 @implementation SingleWebViewController
@@ -111,10 +113,13 @@ typedef void(^ControllerHandlerBlock)(void);
 	forwardButton.enabled = NO;
 	self.forwardButton = forwardButton;
 	
+	// info
+	UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"info"] style:UIBarButtonItemStylePlain target:self action:@selector(showCurrentInfo:)];
+	
 	UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	
-	self.toolbarItems = @[flexibleSpace, refreshButton, fixedSpace, backButton, fixedSpace, forwardButton];
+	self.toolbarItems = @[infoButton, flexibleSpace, refreshButton, fixedSpace, backButton, fixedSpace, forwardButton];
 	for (UIBarButtonItem *item in self.toolbarItems) {
 		// item == fixedSpace ||
 		if (item == flexibleSpace) {
@@ -123,8 +128,9 @@ typedef void(^ControllerHandlerBlock)(void);
 		item.width = 44;
 	}
 	
+	// full screen
 	UIBarButtonItem *fullscreenButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"fullscreen"] style:UIBarButtonItemStylePlain target:self action:@selector(fullscreenAction:)];
-	self.navigationItem.rightBarButtonItem = fullscreenButton;
+	self.navigationItem.rightBarButtonItems = @[fullscreenButton];
 	
 	// loading indicator
 	UIActivityIndicatorView *loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -212,6 +218,11 @@ typedef void(^ControllerHandlerBlock)(void);
 	});
 }
 
+//- (void)setCurrentRequest:(NSURLRequest *)currentRequest {
+//	_currentRequest = currentRequest;
+//	NSLog(@"currentRequest: %@", currentRequest);
+//}
+
 #pragma mark - action
 
 - (void)fullscreenAction:(id)sender {
@@ -259,6 +270,35 @@ typedef void(^ControllerHandlerBlock)(void);
 	});
 }
 
+- (NSURL *)currentURL {
+	if (self.uiWebView) {
+		return self.uiWebView.request.URL;
+	} else if (self.wkWebView) {
+		return self.wkWebView.URL;
+	}
+	return nil;
+}
+
+- (void)showCurrentInfo:(id)sender {
+	NSString *url = [self currentURL].absoluteString;
+	// 解码
+	url = [url stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"URL" message:url preferredStyle:UIAlertControllerStyleActionSheet];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+	}]];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"复制链接" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+		pasteboard.string = url;
+	}]];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"详细信息" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+	}]];
+	[self presentViewController:alertController animated:YES completion:^{
+		
+	}];
+}
+
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -275,9 +315,10 @@ typedef void(^ControllerHandlerBlock)(void);
 
 #pragma mark - UIWebViewDelegate
 
-//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-//	return YES;
-//}
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+	self.currentRequest = request;
+	return YES;
+}
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 	self.loading = YES;
 }
@@ -292,11 +333,16 @@ typedef void(^ControllerHandlerBlock)(void);
 
 #pragma mark - WKNavigationDelegate
 
-- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-	NSLog(@"didFailNavigation: %@", error);
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(nonnull WKNavigationAction *)navigationAction decisionHandler:(nonnull void (^)(WKNavigationActionPolicy))decisionHandler {
+	self.currentRequest = navigationAction.request;
+	if (decisionHandler) decisionHandler(WKNavigationActionPolicyAllow);
 }
+
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
 	NSLog(@"didFailProvisionalNavigation: %@", error);
+}
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+	NSLog(@"didFailNavigation: %@", error);
 }
 
 @end
