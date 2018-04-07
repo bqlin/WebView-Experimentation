@@ -9,8 +9,9 @@
 #import "SettingViewController.h"
 #import "Settings.h"
 #import "BqConstant.h"
+#import <StoreKit/StoreKit.h>
 
-@interface SettingViewController ()
+@interface SettingViewController ()<SKStoreProductViewControllerDelegate>
 
 @end
 
@@ -38,7 +39,8 @@
 				   [self generalSettings],
 				   [self uiWebViewSettings],
 				   [self wkWebViewSettings],
-				   [self otherSettings]
+				   [self additionalSettings],
+				   [self feedback]
 				   ].mutableCopy;
 }
 
@@ -143,11 +145,36 @@
 	return group;
 }
 
-- (ZFSettingGroup *)otherSettings {
+- (ZFSettingGroup *)additionalSettings {
+	Settings *settings = [Settings sharedSettings];
+	__weak typeof(settings) _settings = settings;
+	
+	// 启用剪贴板
+	ZFSettingItem *enablePasteboardDetect = [ZFSettingItem itemWithIcon:nil title:@"开屏检测剪贴板" type:ZFSettingItemTypeSwitch];
+	enablePasteboardDetect.switchOn = settings.enablePasteboardDetect;
+	enablePasteboardDetect.switchBlock = ^(BOOL on) {
+		_settings.enablePasteboardDetect = on;
+	};
+	
+	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
+	group.header = @"附加功能";
+	group.items = @[enablePasteboardDetect];
+	
+	return group;
+}
+
+- (ZFSettingGroup *)feedback {
 	// 反馈
 	ZFSettingItem *feedback = [ZFSettingItem itemWithIcon:nil title:@"前往 issues 反馈问题" type:ZFSettingItemTypeArrow];
 	feedback.operation = ^{
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/bqlin/WebView-Experimentation/issues"]];
+	};
+	
+	// 评分
+	__weak typeof(self) weakSelf = self;
+	ZFSettingItem *rateMe = [ZFSettingItem itemWithIcon:nil title:@"前往评分" type:ZFSettingItemTypeArrow];
+	rateMe.operation = ^{
+		[weakSelf rateMe:nil];
 	};
 	
 	// 关于作者
@@ -156,12 +183,12 @@
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/bqlin"]];
 	};
 	ZFSettingGroup *group = [[ZFSettingGroup alloc] init];
-	group.header = @"其他";
+	group.header = @"反馈";
 	NSDictionary *appInfo = [NSBundle mainBundle].infoDictionary;
 	NSString *appName = appInfo[@"CFBundleDisplayName"];
 	NSString *version = appInfo[@"CFBundleShortVersionString"];
 	group.footer = [NSString stringWithFormat:@"© 2017 BqLin, %@. %@", appName, version];
-	group.items = @[feedback, aboutAuthor];
+	group.items = @[feedback, rateMe, aboutAuthor];
 	return group;
 }
 
@@ -179,6 +206,38 @@
 		[self loadData];
 		[tableView reloadData];
 	}
+}
+
+- (void)rateMe:(id)sender {
+	BOOL canRequestReview = [SKStoreReviewController respondsToSelector:@selector(requestReview)];
+	//canRequestReview = NO;
+	if(canRequestReview) {
+		[[UIApplication sharedApplication].keyWindow endEditing:YES];
+		// iOS 10.3 以上支持
+		[SKStoreReviewController requestReview];
+	} else {
+		NSString *appID = @"1360201545";
+		//NSString *reviewUrl = [NSString stringWithFormat: @"itms-apps://itunes.apple.com/app/id%@?action=write-review", appID];
+		//[[UIApplication sharedApplication] openURL:[NSURL URLWithString:reviewUrl]];
+		
+		SKStoreProductViewController *storeProductViewContorller = [[SKStoreProductViewController alloc] init];
+		storeProductViewContorller.delegate = self;
+		__weak typeof(self) weakSelf = self;
+		[storeProductViewContorller loadProductWithParameters:
+		 @{SKStoreProductParameterITunesItemIdentifier: appID} completionBlock:^(BOOL result, NSError *error) {
+			 if(error) {
+				 NSLog(@"error: %@", error);
+			 } else {
+				 [weakSelf presentViewController:storeProductViewContorller animated:YES completion:^{}];
+			 }
+		 }];
+	}
+}
+
+#pragma mark - SKStoreProductViewControllerDelegate
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 @end

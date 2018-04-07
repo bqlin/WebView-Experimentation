@@ -11,6 +11,7 @@
 #import "WebViewBuilder.h"
 #import "DualWebViewController.h"
 #import "ZFScanViewController.h"
+#import "Settings.h"
 
 static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 static NSString * const DefaultURLKey = @"defaultURL_preference";
@@ -51,6 +52,7 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self setupUI];
+	[self checkPasteboard];
 }
 
 - (void)setupUI {
@@ -80,6 +82,13 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[self.navigationController setToolbarHidden:YES animated:YES];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
+	NSLog(@"%s", __FUNCTION__);
+}
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+	NSLog(@"%s", __FUNCTION__);
 }
 
 #pragma mark - notification
@@ -99,6 +108,10 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 - (void)keyboardDidShow:(NSNotification *)notification {
 }
 
+- (void)applicationWillEnterForeground:(NSNotification *)notification {
+	[self checkPasteboard];
+}
+
 //当键退出时调用
 - (void)keyboardWillHide:(NSNotification *)notification {
 	NSDictionary *userInfo = [notification userInfo];
@@ -109,6 +122,52 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 }
 
 #pragma mark - private
+
+- (void)checkPasteboard {
+	if (![Settings sharedSettings].enablePasteboardDetect) return;
+	UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+	if (!pasteboard.string.length) return;
+	NSString *pasteString = nil;
+	for (NSURL *URL in pasteboard.URLs) {
+		if ([URL.absoluteString isEqualToString:self.urlTextView.text]) continue;
+		pasteString = URL.absoluteString;
+		break;
+	}
+	//NSLog(@"paste: %@", pasteString);
+	if (!pasteString.length) {
+		// 遇到 http 分拆 URL，取第一个与文本框不同的 URL
+		NSString *tempString = pasteboard.string;
+		tempString = [tempString stringByReplacingOccurrencesOfString:@"http" withString:@" http"];
+		NSArray *subStrings = [tempString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		for (NSString *subString in subStrings) {
+			//NSLog(@"sub: %@", subString);
+			if (!subString.length || [subString isEqualToString:self.urlTextView.text]) continue;
+			@try {
+				if ([subString hasPrefix:@"http://"] || [subString hasPrefix:@"https://"]) {
+					pasteString = subString;
+					break;
+				}
+			} @catch (NSException *exception) {
+			} @finally {
+			}
+		}
+	}
+	if (!pasteString.length) return;
+	
+	NSString *decodeString = [pasteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"使用剪贴板链接？" message:decodeString preferredStyle:UIAlertControllerStyleAlert];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+	}]];
+	__weak typeof(self) weakSelf = self;
+	[alertController addAction:[UIAlertAction actionWithTitle:@"使用" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		weakSelf.urlTextView.text = pasteString;
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+	}]];
+	[self presentViewController:alertController animated:YES completion:^{
+		
+	}];
+}
 
 - (void)addBarItems {
 	UIBarButtonItem *goButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"rocket-launch"] style:UIBarButtonItemStylePlain target:self action:@selector(goAction:)];

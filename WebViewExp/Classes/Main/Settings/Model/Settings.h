@@ -10,7 +10,10 @@
 
 @interface Settings : NSObject
 
-#pragma mark - 显示
+#pragma mark - 其他
+
+/// 启用剪贴板识别
+@property (nonatomic, assign) BOOL enablePasteboardDetect;
 
 #pragma mark - 通用
 
