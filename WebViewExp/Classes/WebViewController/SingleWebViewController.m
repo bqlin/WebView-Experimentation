@@ -156,6 +156,7 @@ typedef void(^ControllerHandlerBlock)(void);
 - (void)setWebView:(UIView *)webView {
 	_webView = webView;
 	//webView.backgroundColor = [UIColor redColor];
+	__weak typeof(self) weakSelf = self;
 	if (!webView) return;
 	if ([webView isKindOfClass:[UIWebView class]]) {
 		_uiWebView = (UIWebView *)webView;
@@ -163,8 +164,11 @@ typedef void(^ControllerHandlerBlock)(void);
 	} else if ([webView isKindOfClass:[WKWebView class]]) {
 		_wkWebView = (WKWebView *)webView;
 		_wkWebView.navigationDelegate = self;
+		//_wkWebView.estimatedProgress
+		[self.KVOController observe:_wkWebView keyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+			weakSelf.loadingProgress = weakSelf.wkWebView.estimatedProgress;
+		}];
 	}
-	__weak typeof(self) weakSelf = self;
 	[self.KVOController observe:_webView keyPath:@"canGoBack" options:NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
 		weakSelf.canGoBack = [[weakSelf.webView valueForKey:@"canGoBack"] boolValue];
 	}];
@@ -194,6 +198,11 @@ typedef void(^ControllerHandlerBlock)(void);
 		//loading ? [self.loadingIndicator startAnimating] : [self.loadingIndicator stopAnimating];
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = loading;
 		self.refreshButton.image = [UIImage imageNamed:loading ? @"cancel" : @"refresh"];
+		if (self.loadingProgress > 0) {
+			[UIView animateWithDuration:0.25 animations:^{
+				self.loadingProgressView.alpha = loading;
+			}];
+		}
 	});
 }
 - (void)setLoadingProgress:(CGFloat)loadingProgress {
