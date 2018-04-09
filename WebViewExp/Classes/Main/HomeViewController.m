@@ -83,12 +83,10 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 	[super viewWillAppear:animated];
 	[self.navigationController setToolbarHidden:YES animated:YES];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
-	NSLog(@"%s", __FUNCTION__);
 }
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
-	NSLog(@"%s", __FUNCTION__);
 }
 
 #pragma mark - notification

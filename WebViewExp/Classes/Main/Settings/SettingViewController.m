@@ -10,6 +10,7 @@
 #import "Settings.h"
 #import "BqConstant.h"
 #import <StoreKit/StoreKit.h>
+#import "BqUtil.h"
 
 @interface SettingViewController ()<SKStoreProductViewControllerDelegate>
 
@@ -226,7 +227,8 @@
 		[storeProductViewContorller loadProductWithParameters:
 		 @{SKStoreProductParameterITunesItemIdentifier: appID} completionBlock:^(BOOL result, NSError *error) {
 			 if(error) {
-				 NSLog(@"error: %@", error);
+				 //NSLog(@"error: %@", error);
+				 [BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
 			 } else {
 				 [weakSelf presentViewController:storeProductViewContorller animated:YES completion:^{}];
 			 }

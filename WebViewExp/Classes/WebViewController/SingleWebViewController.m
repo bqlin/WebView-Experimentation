@@ -9,6 +9,7 @@
 #import "SingleWebViewController.h"
 #import <WebKit/WebKit.h>
 #import <KVOController/KVOController.h>
+#import "BqUtil.h"
 
 typedef void(^ControllerHandlerBlock)(void);
 
@@ -312,7 +313,6 @@ typedef void(^ControllerHandlerBlock)(void);
 	[self.view endEditing:YES];
 }
 
-
 #pragma mark - UIWebViewDelegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -328,7 +328,8 @@ typedef void(^ControllerHandlerBlock)(void);
 	self.canGoBack = webView.canGoBack;
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-	NSLog(@"error: %@", error);
+	//NSLog(@"error: %@", error);
+	[BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
 }
 
 #pragma mark - WKNavigationDelegate
@@ -339,10 +340,12 @@ typedef void(^ControllerHandlerBlock)(void);
 }
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-	NSLog(@"didFailProvisionalNavigation: %@", error);
+	//NSLog(@"didFailProvisionalNavigation: %@", error);
+	[BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
 }
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-	NSLog(@"didFailNavigation: %@", error);
+	//NSLog(@"didFailNavigation: %@", error);
+	[BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
 }
 
 @end
