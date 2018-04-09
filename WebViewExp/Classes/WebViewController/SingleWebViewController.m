@@ -282,6 +282,10 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)showCurrentInfo:(id)sender {
 	NSString *url = [self currentURL].absoluteString;
+	if (!url.length) {
+		[BqUtil alertWithTitle:nil message:@"无法获取 URL" delegate:self];
+		return;
+	}
 	// 解码
 	url = [url stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"URL" message:url preferredStyle:UIAlertControllerStyleActionSheet];
@@ -292,12 +296,15 @@ typedef void(^ControllerHandlerBlock)(void);
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		pasteboard.string = url;
 	}]];
-	[alertController addAction:[UIAlertAction actionWithTitle:@"详细信息" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-		[alertController dismissViewControllerAnimated:YES completion:^{}];
-	}]];
-	[self presentViewController:alertController animated:YES completion:^{
-		
-	}];
+//	[alertController addAction:[UIAlertAction actionWithTitle:@"详细信息" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//		[alertController dismissViewControllerAnimated:YES completion:^{}];
+//	}]];
+	[self presentViewController:alertController animated:YES completion:^{}];
+}
+
+- (void)showError:(NSError *)error {
+	self.loading = NO;
+	[BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -329,7 +336,7 @@ typedef void(^ControllerHandlerBlock)(void);
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
 	//NSLog(@"error: %@", error);
-	[BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
+	[self showError:error];
 }
 
 #pragma mark - WKNavigationDelegate
@@ -341,11 +348,11 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
 	//NSLog(@"didFailProvisionalNavigation: %@", error);
-	[BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
+	[self showError:error];
 }
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
 	//NSLog(@"didFailNavigation: %@", error);
-	[BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
+	[self showError:error];
 }
 
 @end
