@@ -62,7 +62,10 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 	if (!userUrl.length) {
 		userUrl = @"https://xw.qq.com";
 	}
-	//userUrl = @"https://github.com/bqlin";
+#if Xcode9
+#else
+	userUrl = @"https://github.com/bqlin";
+#endif
 	self.urlTextView.text = userUrl;
 	self.lastUrl = userUrl;
 	self.goButton.transform = CGAffineTransformMakeRotation(-M_PI_2);
