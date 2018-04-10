@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) UIView *webView;
 
+@property (nonatomic, assign) BOOL showNavigationBarLoadingIndicator;
+
 @end

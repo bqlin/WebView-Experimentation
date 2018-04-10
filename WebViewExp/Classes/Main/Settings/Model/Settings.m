@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 #import <YYModel.h>
-#import "BqConstant.h"
+#import "BqUtil.h"
 
 static NSString * const SettingsKey = @"com.bq.webviewlab.settings";
 

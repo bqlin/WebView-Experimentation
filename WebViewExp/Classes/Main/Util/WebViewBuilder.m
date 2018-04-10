@@ -8,7 +8,7 @@
 
 #import "WebViewBuilder.h"
 #import "Settings.h"
-#import "BqConstant.h"
+#import "BqUtil.h"
 
 @implementation WebViewBuilder
 

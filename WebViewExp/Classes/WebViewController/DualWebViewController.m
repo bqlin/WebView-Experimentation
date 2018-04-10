@@ -12,7 +12,7 @@
 #import "WebViewBuilder.h"
 #import <Masonry.h>
 #import "DualSplitView.h"
-#import "BqConstant.h"
+#import "BqUtil.h"
 
 @interface DualWebViewController ()
 
@@ -44,7 +44,7 @@
 	
 	if (BQ_AVAILABLE(11)) {
 		[self.containerView makeConstraints:^(MASConstraintMaker *make) {
-			make.edges.equalTo(self.view.mas_safeAreaLayoutGuide);
+			make.edges.equalTo(superview.mas_safeAreaLayoutGuide);
 		}];
 	} else {
 		[self.containerView makeConstraints:^(MASConstraintMaker *make) {
@@ -122,7 +122,6 @@
 - (DualSplitView *)splitView {
 	if (!_splitView) {
 		_splitView = [[DualSplitView alloc] initWithTapName:@"WKWebView" otherTapName:@"UIWebView"];
-		_splitView.backgroundColor = [UIColor cyanColor];
 	}
 	return _splitView;
 }
@@ -179,7 +178,6 @@
 			make.width.equalTo(self.wkWebView).priorityMedium();
 			make.left.top.bottom.equalTo(0);
 			make.right.equalTo(self.wkWebView.left).offset(-splitMargin).priorityMedium();
-			
 		}];
 		[self.wkWebView remakeConstraints:^(MASConstraintMaker *make) {
 			make.right.top.bottom.equalTo(0);
@@ -194,7 +192,6 @@
 			make.width.equalTo(superview.height);
 			make.height.equalTo(splitMargin);
 		}];
-
 	} else {
 		_splitView.transform = CGAffineTransformIdentity;
 		[self.splitView setNeedsDisplay];

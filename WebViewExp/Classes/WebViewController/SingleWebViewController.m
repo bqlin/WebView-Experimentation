@@ -41,6 +41,7 @@ typedef void(^ControllerHandlerBlock)(void);
 - (void)dealloc {
 	NSLog(@"%s", __FUNCTION__);
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -64,10 +65,10 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	[self.navigationController setToolbarHidden:NO animated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+	[self.navigationController setToolbarHidden:NO animated:YES];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -100,6 +101,11 @@ typedef void(^ControllerHandlerBlock)(void);
 		[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top][loadingProgress]" options:0 metrics:nil views:views]];
 		self.loadingProgressView = loadingProgress;
 	}
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceOrientationDidChange:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+}
+
+- (void)interfaceOrientationDidChange:(NSNotification *)notification {
+	self.fullscreen = NO;
 }
 
 - (void)addToolBarButtons {
@@ -115,7 +121,10 @@ typedef void(^ControllerHandlerBlock)(void);
 	self.forwardButton = forwardButton;
 	
 	// info
-	UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"info"] style:UIBarButtonItemStylePlain target:self action:@selector(showCurrentInfo:)];
+	UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+	[infoBtn setImage:[UIImage imageNamed:@"info"] forState:UIControlStateNormal];
+	[infoBtn addTarget:self action:@selector(showCurrentInfo:) forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithCustomView:infoBtn];
 	
 	UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -149,7 +158,6 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)updateConstraintsForTraitCollection:(UITraitCollection *)collection {
 	//BOOL landscape = collection.verticalSizeClass == UIUserInterfaceSizeClassCompact;
-	self.fullscreen = NO;
 }
 
 #pragma mark - property
@@ -202,7 +210,7 @@ typedef void(^ControllerHandlerBlock)(void);
 - (void)setLoading:(BOOL)loading {
 	_loading = loading;
 	dispatch_async(dispatch_get_main_queue(), ^{
-		//loading ? [self.loadingIndicator startAnimating] : [self.loadingIndicator stopAnimating];
+		self.showNavigationBarLoadingIndicator && loading ? [self.loadingIndicator startAnimating] : [self.loadingIndicator stopAnimating];
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = loading;
 		self.refreshButton.image = [UIImage imageNamed:loading ? @"cancel" : @"refresh"];
 		if (self.loadingProgress > 0) {
@@ -280,7 +288,7 @@ typedef void(^ControllerHandlerBlock)(void);
 	return nil;
 }
 
-- (void)showCurrentInfo:(id)sender {
+- (void)showCurrentInfo:(UIButton *)sender {
 	NSString *url = [self currentURL].absoluteString;
 	if (!url.length) {
 		[BqUtil alertWithTitle:nil message:@"无法获取 URL" delegate:self];
@@ -299,6 +307,12 @@ typedef void(^ControllerHandlerBlock)(void);
 //	[alertController addAction:[UIAlertAction actionWithTitle:@"详细信息" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 //		[alertController dismissViewControllerAnimated:YES completion:^{}];
 //	}]];
+	if (IS_IPAD) {
+		UIPopoverPresentationController *popPresenter = [alertController popoverPresentationController];
+		popPresenter.sourceView = sender;
+		popPresenter.sourceRect = sender.bounds;
+		popPresenter.permittedArrowDirections = UIPopoverArrowDirectionDown;
+	}
 	[self presentViewController:alertController animated:YES completion:^{}];
 }
 

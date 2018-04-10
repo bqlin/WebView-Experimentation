@@ -10,8 +10,10 @@
 #import "SingleWebViewController.h"
 #import "WebViewBuilder.h"
 #import "DualWebViewController.h"
+#import "DualPadViewController.h"
 #import "ZFScanViewController.h"
 #import "Settings.h"
+#import "BqUtil.h"
 
 static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 static NSString * const DefaultURLKey = @"defaultURL_preference";
@@ -211,7 +213,13 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 			}];
 		}break;
 		case WebViewTypeBoth:{
-			DualWebViewController *dualVc = [[DualWebViewController alloc] initWithNibName:nil bundle:nil];
+			UIViewController<DualWebViewControllerProtocol> *dualVc = nil;
+			if(IS_IPAD){
+				dualVc = [[DualPadViewController alloc] initWithNibName:nil bundle:nil];
+			} else {
+				dualVc = [[DualWebViewController alloc] initWithNibName:nil bundle:nil];
+			}
+			
 			dualVc.URL = [self inputURL];
 			[self.navigationController pushViewController:dualVc animated:YES];
 		}break;

@@ -8,7 +8,6 @@
 
 #import "SettingViewController.h"
 #import "Settings.h"
-#import "BqConstant.h"
 #import <StoreKit/StoreKit.h>
 #import "BqUtil.h"
 
