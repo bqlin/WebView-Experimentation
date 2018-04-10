@@ -124,6 +124,7 @@ typedef void(^ControllerHandlerBlock)(void);
 	UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 	[infoBtn setImage:[UIImage imageNamed:@"info"] forState:UIControlStateNormal];
 	[infoBtn addTarget:self action:@selector(showCurrentInfo:) forControlEvents:UIControlEventTouchUpInside];
+	[infoBtn sizeToFit];
 	UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithCustomView:infoBtn];
 	
 	UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
