@@ -42,6 +42,7 @@
 	[self.view addSubview:self.containerView];
 	UIView *superview = self.view;
 	
+#if XCode9
 	if (BQ_AVAILABLE(11)) {
 		[self.containerView makeConstraints:^(MASConstraintMaker *make) {
 			make.edges.equalTo(superview.mas_safeAreaLayoutGuide);
@@ -53,6 +54,13 @@
 			make.left.right.equalTo(superview);
 		}];
 	}
+#else
+	[self.containerView makeConstraints:^(MASConstraintMaker *make) {
+		make.top.equalTo(self.mas_topLayoutGuide);
+		make.bottom.equalTo(self.mas_bottomLayoutGuide);
+		make.left.right.equalTo(superview);
+	}];
+#endif
 	
 	[self.containerView addSubview:self.splitView];
 	[self.containerView addSubview:self.uiWebView];

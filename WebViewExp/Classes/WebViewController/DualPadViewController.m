@@ -79,6 +79,7 @@
 }
 
 - (void)layoutUI {
+#if XCode9
 	if (BQ_AVAILABLE(11)) {
 		[self.containerView makeConstraints:^(MASConstraintMaker *make) {
 			make.edges.equalTo(self.view.mas_safeAreaLayoutGuide);
@@ -90,6 +91,13 @@
 			make.left.right.equalTo(self.view);
 		}];
 	}
+#else
+	[self.containerView makeConstraints:^(MASConstraintMaker *make) {
+		make.top.equalTo(self.mas_topLayoutGuide);
+		make.bottom.equalTo(self.mas_bottomLayoutGuide);
+		make.left.right.equalTo(self.view);
+	}];
+#endif
 	
 	CGFloat splitMargin = 30;
 	_splitView.transform = CGAffineTransformMakeRotation(-M_PI_2);
