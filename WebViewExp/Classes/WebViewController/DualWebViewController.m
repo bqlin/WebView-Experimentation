@@ -42,7 +42,7 @@
 	[self.view addSubview:self.containerView];
 	UIView *superview = self.view;
 	
-#if XCode9
+#if Xcode9
 	if (BQ_AVAILABLE(11)) {
 		[self.containerView makeConstraints:^(MASConstraintMaker *make) {
 			make.edges.equalTo(superview.mas_safeAreaLayoutGuide);

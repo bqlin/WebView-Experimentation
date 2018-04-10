@@ -6,9 +6,9 @@
 //  Copyright © 2018年 Bq. All rights reserved.
 //
 
-#define XCode9 __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_11_0
+#define Xcode9 __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
 
-#if XCode9
+#if Xcode9
 // available for iOS 11
 #define BQ_AVAILABLE(v) @available(iOS v, *)
 
