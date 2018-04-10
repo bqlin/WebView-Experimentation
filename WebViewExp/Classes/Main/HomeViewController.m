@@ -191,24 +191,30 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 		self.urlTextView.text = url;
 	}
 	url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	if (!url.length) {
+		[BqUtil alertWithTitle:nil message:@"URL 不能为空" delegate:self];
+		return nil;
+	}
 	NSURL *URL = [NSURL URLWithString:url];
 	return URL;
 }
 
 - (void)goWithType:(WebViewType)type sender:(id)sender {
+	NSURL *URL = [self inputURL];
+	if (!URL) return;
 	switch (type) {
 		case WebViewTypeUIWebView:
 		case WebViewTypeWKWebView:{
 			SingleWebViewController *vc = [[SingleWebViewController alloc] initWithNibName:nil bundle:nil];
 			vc.webView = type == WebViewTypeUIWebView ? [WebViewBuilder uiWebView] : [WebViewBuilder wkWebView];
-			NSURLRequest *request = [NSURLRequest requestWithURL:[self inputURL]];
+			NSURLRequest *request = [NSURLRequest requestWithURL:URL];
 			if ([vc.webView respondsToSelector:@selector(loadRequest:)]) {
 				[vc.webView performSelector:@selector(loadRequest:) withObject:request];
 			}
 			[self.navigationController pushViewController:vc animated:YES];
 		}break;
 		case WebViewTypeSafari:{
-			[self presentViewController:[WebViewBuilder safariWithURL:[self inputURL]] animated:YES completion:^{
+			[self presentViewController:[WebViewBuilder safariWithURL:URL] animated:YES completion:^{
 				
 			}];
 		}break;
@@ -220,7 +226,7 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 				dualVc = [[DualWebViewController alloc] initWithNibName:nil bundle:nil];
 			}
 			
-			dualVc.URL = [self inputURL];
+			dualVc.URL = URL;
 			[self.navigationController pushViewController:dualVc animated:YES];
 		}break;
 	}
