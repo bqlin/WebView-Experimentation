@@ -12,6 +12,7 @@ UIWebView 与 WKWebView 测试。
 - 支持修改请求；
   - 修改请求头信息；
 - 支持 loadjs；
+- 评价跳转采用跳转到 App Store；
 
 ---
 

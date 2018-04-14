@@ -210,7 +210,7 @@
 
 - (void)rateMe:(id)sender {
 	BOOL canRequestReview = [SKStoreReviewController respondsToSelector:@selector(requestReview)];
-	//canRequestReview = NO;
+	canRequestReview = NO;
 	if(canRequestReview) {
 		[[UIApplication sharedApplication].keyWindow endEditing:YES];
 		// iOS 10.3 以上支持
