@@ -8,10 +8,10 @@
 
 #import "SettingViewController.h"
 #import "Settings.h"
-#import <StoreKit/StoreKit.h>
+//#import <StoreKit/StoreKit.h>
 #import "BqUtil.h"
 
-@interface SettingViewController ()<SKStoreProductViewControllerDelegate>
+@interface SettingViewController ()//<SKStoreProductViewControllerDelegate>
 
 @end
 
@@ -209,36 +209,36 @@
 }
 
 - (void)rateMe:(id)sender {
-	BOOL canRequestReview = [SKStoreReviewController respondsToSelector:@selector(requestReview)];
-	canRequestReview = NO;
-	if(canRequestReview) {
-		[[UIApplication sharedApplication].keyWindow endEditing:YES];
-		// iOS 10.3 以上支持
-		[SKStoreReviewController requestReview];
-	} else {
-		NSString *appID = @"1360201545";
-		//NSString *reviewUrl = [NSString stringWithFormat: @"itms-apps://itunes.apple.com/app/id%@?action=write-review", appID];
-		//[[UIApplication sharedApplication] openURL:[NSURL URLWithString:reviewUrl]];
-		
-		SKStoreProductViewController *storeProductViewContorller = [[SKStoreProductViewController alloc] init];
-		storeProductViewContorller.delegate = self;
-		__weak typeof(self) weakSelf = self;
-		[storeProductViewContorller loadProductWithParameters:
-		 @{SKStoreProductParameterITunesItemIdentifier: appID} completionBlock:^(BOOL result, NSError *error) {
-			 if(error) {
-				 //NSLog(@"error: %@", error);
-				 [BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
-			 } else {
-				 [weakSelf presentViewController:storeProductViewContorller animated:YES completion:^{}];
-			 }
-		 }];
-	}
+	NSString *appID = @"1360201545";
+	NSString *reviewUrl = [NSString stringWithFormat: @"itms-apps://itunes.apple.com/app/id%@", appID];//?action=write-review
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:reviewUrl]];
+	
+//	BOOL canRequestReview = [SKStoreReviewController respondsToSelector:@selector(requestReview)];
+//	canRequestReview = NO;
+//	if(canRequestReview) {
+//		[[UIApplication sharedApplication].keyWindow endEditing:YES];
+//		// iOS 10.3 以上支持
+//		[SKStoreReviewController requestReview];
+//	} else {
+//		SKStoreProductViewController *storeProductViewContorller = [[SKStoreProductViewController alloc] init];
+//		storeProductViewContorller.delegate = self;
+//		__weak typeof(self) weakSelf = self;
+//		[storeProductViewContorller loadProductWithParameters:
+//		 @{SKStoreProductParameterITunesItemIdentifier: appID} completionBlock:^(BOOL result, NSError *error) {
+//			 if(error) {
+//				 //NSLog(@"error: %@", error);
+//				 [BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
+//			 } else {
+//				 [weakSelf presentViewController:storeProductViewContorller animated:YES completion:^{}];
+//			 }
+//		 }];
+//	}
 }
 
-#pragma mark - SKStoreProductViewControllerDelegate
-
-- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
-	[self dismissViewControllerAnimated:YES completion:^{}];
-}
+//#pragma mark - SKStoreProductViewControllerDelegate
+//
+//- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+//	[self dismissViewControllerAnimated:YES completion:^{}];
+//}
 
 @end
