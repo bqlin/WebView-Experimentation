@@ -10,6 +10,8 @@
 #import <WebKit/WebKit.h>
 #import <KVOController/KVOController.h>
 #import "BqUtil.h"
+#import "RequestDetailViewController.h"
+#import "NSString+Bq.h"
 
 typedef void(^ControllerHandlerBlock)(void);
 
@@ -296,7 +298,7 @@ typedef void(^ControllerHandlerBlock)(void);
 		return;
 	}
 	// 解码
-	url = [url stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	url = url.decodeUrl;
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"URL" message:url preferredStyle:UIAlertControllerStyleActionSheet];
 	[alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 		[alertController dismissViewControllerAnimated:YES completion:^{}];
@@ -305,9 +307,14 @@ typedef void(^ControllerHandlerBlock)(void);
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		pasteboard.string = url;
 	}]];
-//	[alertController addAction:[UIAlertAction actionWithTitle:@"详细信息" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//		[alertController dismissViewControllerAnimated:YES completion:^{}];
-//	}]];
+	__weak typeof(self) weakSelf = self;
+	[alertController addAction:[UIAlertAction actionWithTitle:@"查看请求" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+		RequestDetailViewController *requestDetail = [[RequestDetailViewController alloc] initWithNibName:nil bundle:nil];
+		requestDetail.request = weakSelf.currentRequest;
+		UIViewController *vc = [[UINavigationController alloc] initWithRootViewController:requestDetail];
+		[weakSelf presentViewController:vc animated:YES completion:^{}];
+	}]];
 	if (IS_IPAD) {
 		UIPopoverPresentationController *popPresenter = [alertController popoverPresentationController];
 		popPresenter.sourceView = sender;

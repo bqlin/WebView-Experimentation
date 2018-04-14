@@ -14,6 +14,7 @@
 #import "ZFScanViewController.h"
 #import "Settings.h"
 #import "BqUtil.h"
+#import "NSString+Bq.h"
 
 static NSString * const GoWebViewSegueID = @"GoWebViewSegue";
 static NSString * const DefaultURLKey = @"defaultURL_preference";
@@ -157,7 +158,7 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 	}
 	if (!pasteString.length) return;
 	
-	NSString *decodeString = [pasteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSString *decodeString = pasteString.decodeUrl;
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"使用剪贴板链接？" message:decodeString preferredStyle:UIAlertControllerStyleAlert];
 	[alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 		[alertController dismissViewControllerAnimated:YES completion:^{}];
@@ -193,7 +194,7 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 		self.lastUrl = url;
 		self.urlTextView.text = url;
 	}
-	url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	url = url.encodeUrl;
 	if (!url.length) {
 		[BqUtil alertWithTitle:nil message:@"URL 不能为空" delegate:self];
 		return nil;
@@ -282,11 +283,7 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 	__weak typeof(self) weakSelf = self;
 	vc.returnScanBarCodeValue = ^(NSString * barCodeString){
 		dispatch_async(dispatch_get_main_queue(), ^{
-			NSString *codeString = [barCodeString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-			// 解码
-			codeString = [codeString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-			// 编码
-			//codeString = [codeString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+			NSString *codeString = [barCodeString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].decodeUrl;
 			weakSelf.urlTextView.text = codeString;
 		});
 	};

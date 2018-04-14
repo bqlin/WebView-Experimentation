@@ -32,6 +32,8 @@
 		03995D0220623FA20088019D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03995D0120623FA10088019D /* README.md */; };
 		03995D06206258B00088019D /* SingleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03995D05206258B00088019D /* SingleWebViewController.m */; };
 		03C210EF206CD3DA00A490B8 /* DualSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C210EE206CD3DA00A490B8 /* DualSplitView.m */; };
+		03C311202081806500C9ED09 /* RequestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3111F2081806500C9ED09 /* RequestDetailViewController.m */; };
+		03C3112320819E6800C9ED09 /* NSString+Bq.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3112220819E6800C9ED09 /* NSString+Bq.m */; };
 		03D986F8205ECA6E0047E6A7 /* WebViewExpUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */; };
 		03D98701205ECC7E0047E6A7 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D98700205ECC7E0047E6A7 /* SnapshotHelper.swift */; };
 		7878B965E1A6BFF4319E84D5 /* libPods-WebViewExp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEBA89A64078897B6B584D2 /* libPods-WebViewExp.a */; };
@@ -96,6 +98,10 @@
 		03995D05206258B00088019D /* SingleWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingleWebViewController.m; sourceTree = "<group>"; };
 		03C210ED206CD3DA00A490B8 /* DualSplitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DualSplitView.h; sourceTree = "<group>"; };
 		03C210EE206CD3DA00A490B8 /* DualSplitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DualSplitView.m; sourceTree = "<group>"; };
+		03C3111E2081806500C9ED09 /* RequestDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestDetailViewController.h; sourceTree = "<group>"; };
+		03C3111F2081806500C9ED09 /* RequestDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestDetailViewController.m; sourceTree = "<group>"; };
+		03C3112120819E6800C9ED09 /* NSString+Bq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Bq.h"; sourceTree = "<group>"; };
+		03C3112220819E6800C9ED09 /* NSString+Bq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Bq.m"; sourceTree = "<group>"; };
 		03D986F5205ECA6E0047E6A7 /* WebViewExpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebViewExpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewExpUITests.m; sourceTree = "<group>"; };
 		03D986F9205ECA6E0047E6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -203,6 +209,8 @@
 				0348325A206F1DF400B7B1E1 /* UIColor+PLVVod.m */,
 				03483256206F1DF400B7B1E1 /* UINavigationController+PLVVod.h */,
 				0348325B206F1DF400B7B1E1 /* UINavigationController+PLVVod.m */,
+				03C3112120819E6800C9ED09 /* NSString+Bq.h */,
+				03C3112220819E6800C9ED09 /* NSString+Bq.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -266,6 +274,8 @@
 			children = (
 				03995D04206258B00088019D /* SingleWebViewController.h */,
 				03995D05206258B00088019D /* SingleWebViewController.m */,
+				03C3111E2081806500C9ED09 /* RequestDetailViewController.h */,
+				03C3111F2081806500C9ED09 /* RequestDetailViewController.m */,
 				036D84BD207BB7610073C84F /* DualWebViewControllerProtocol.h */,
 				036BFBFD206B9CCB001CAB1B /* DualWebViewController.h */,
 				036BFBFE206B9CCB001CAB1B /* DualWebViewController.m */,
@@ -597,11 +607,13 @@
 				03395826206E1C4C00AD83C7 /* UIColor+Zirkfied.m in Sources */,
 				03395825206E1C4C00AD83C7 /* UIImage+Zirkfied.m in Sources */,
 				E5294D2B1DC9ED6A00AC82DB /* AppDelegate.m in Sources */,
+				03C3112320819E6800C9ED09 /* NSString+Bq.m in Sources */,
 				E5294D281DC9ED6A00AC82DB /* main.m in Sources */,
 				036BFC00206B9CCB001CAB1B /* DualWebViewController.m in Sources */,
 				03483262206F1DF500B7B1E1 /* UINavigationController+PLVVod.m in Sources */,
 				03C210EF206CD3DA00A490B8 /* DualSplitView.m in Sources */,
 				0350827B206903320004F2CC /* Settings.m in Sources */,
+				03C311202081806500C9ED09 /* RequestDetailViewController.m in Sources */,
 				03483261206F1DF500B7B1E1 /* UIColor+PLVVod.m in Sources */,
 				03395829206E1C4C00AD83C7 /* ZFMaskView.m in Sources */,
 				03395827206E1C4C00AD83C7 /* ZFConst.m in Sources */,
