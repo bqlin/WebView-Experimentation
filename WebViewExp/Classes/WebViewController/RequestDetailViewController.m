@@ -207,12 +207,12 @@ static NSString *NSStringFromNSURLRequestNetworkServiceType(NSURLRequestNetworkS
 	NSMutableString *subInfo = [NSMutableString string];
 	for (id key in infos.allKeys) {
 		id value = infos[key];
+		for (int i = 0; i < level; i ++) {
+			[subInfo appendString:@"\t"];
+		}
 		if ([value isKindOfClass:[NSDictionary class]]) {
-			[subInfo appendString:[self subInfos:value level:level+1]];
+			[subInfo appendFormat:@"%@: \n%@", key, [self subInfos:value level:level+1]];
 		} else {
-			for (int i = 0; i < level; i ++) {
-				[subInfo appendString:@"\t"];
-			}
 			[subInfo appendFormat:@"%@: %@\n", key, value];
 		}
 	}

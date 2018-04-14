@@ -294,7 +294,7 @@ typedef void(^ControllerHandlerBlock)(void);
 - (void)showCurrentInfo:(UIButton *)sender {
 	NSString *url = [self currentURL].absoluteString;
 	if (!url.length) {
-		[BqUtil alertWithTitle:nil message:@"无法获取 URL" delegate:self];
+		//[BqUtil alertWithTitle:nil message:@"无法获取 URL" delegate:self];
 		return;
 	}
 	// 解码
