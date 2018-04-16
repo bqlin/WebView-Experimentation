@@ -117,10 +117,10 @@ static const CGFloat BqFontSize = 14.0;
 	[descriptions addObject:@{@"allHTTPHeaderFields": request.allHTTPHeaderFields}];
 	[descriptions addObject:@"\n"];
 	
-	[descriptions addObject:@{@"timeoutInterval": @(request.timeoutInterval)}];
-	[descriptions addObject:@{@"HTTPShouldHandleCookies": @(request.HTTPShouldHandleCookies)}];
-	[descriptions addObject:@{@"HTTPShouldUsePipelining": @(request.HTTPShouldUsePipelining)}];
-	[descriptions addObject:@{@"allowsCellularAccess": @(request.allowsCellularAccess)}];
+	[descriptions addObject:@{@"timeoutInterval": [NSString stringWithFormat:@"%@s", @(request.timeoutInterval)]}];
+	[descriptions addObject:@{@"HTTPShouldHandleCookies": request.HTTPShouldHandleCookies ? @"true" : @"false"}];
+	[descriptions addObject:@{@"HTTPShouldUsePipelining": request.HTTPShouldUsePipelining ? @"true" : @"false"}];
+	[descriptions addObject:@{@"allowsCellularAccess": request.allowsCellularAccess ? @"true" : @"false"}];
 	[descriptions addObject:@"\n"];
 	
 	[descriptions addObject:@{@"cachePolicy": NSStringFromNSURLRequestCachePolicy(request.cachePolicy)}];

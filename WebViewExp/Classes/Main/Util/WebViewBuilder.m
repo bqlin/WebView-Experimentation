@@ -79,4 +79,20 @@
 	return nil;
 }
 
++ (void)applySettingsToRequest:(NSMutableURLRequest *)request {
+	// 有值则设置，无值则不设置或置空
+	RequestSettings *settings = [Settings sharedSettings].request;
+	for (NSString *key in settings.headerFields) {
+		if (![key isKindOfClass:[NSString class]]) continue;
+		[request setValue:settings.headerFields[key] forHTTPHeaderField:key];
+	}
+	request.timeoutInterval = settings.timeoutInterval;
+	request.allowsCellularAccess = settings.allowsCellularAccess;
+	request.cachePolicy = settings.cachePolicy;
+	if (settings.httpMethod.length) request.HTTPMethod = settings.httpMethod;
+	// httpBody
+	NSData *HTTPBody = [settings.httpBody dataUsingEncoding:NSUTF8StringEncoding];
+	request.HTTPBody = HTTPBody;
+}
+
 @end

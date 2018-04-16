@@ -23,4 +23,7 @@ typedef NS_ENUM(NSInteger, WebViewType) {
 + (WKWebView *)wkWebView;
 + (SFSafariViewController *)safariWithURL:(NSURL *)URL;
 
+/// 应用设置到请求
++ (void)applySettingsToRequest:(NSMutableURLRequest *)request;
+
 @end
