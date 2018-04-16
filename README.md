@@ -13,6 +13,7 @@ UIWebView 与 WKWebView 测试。
   - 修改请求头信息；
 - 支持 loadjs；
 - 评价跳转采用跳转到 App Store；
+- 剪贴板不再提示某一URL；
 
 ---
 
@@ -72,6 +73,16 @@ UIWebView 与 WKWebView 测试。
 - WK - 允许手势导航
 
 #### UIWebView
+
+### 请求配置
+
+- User-Agent
+- 请求头信息
+- 请求方法
+- 正文数据
+- 超时
+- 允许蜂窝接入
+- 缓存策略
 
 ### 浏览器操作
 

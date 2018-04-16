@@ -211,7 +211,13 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 		case WebViewTypeWKWebView:{
 			SingleWebViewController *vc = [[SingleWebViewController alloc] initWithNibName:nil bundle:nil];
 			vc.webView = type == WebViewTypeUIWebView ? [WebViewBuilder uiWebView] : [WebViewBuilder wkWebView];
-			NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+			NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+			[request setValue:@"XXXXXXXXXXXXX" forHTTPHeaderField:@"AUser-Agent"];
+			[request setValue:@"XXXXXXXXXXXXX" forHTTPHeaderField:@"User-Agent"];
+			[request setValue:@"xxv" forHTTPHeaderField:@"AB"];
+			request.HTTPBody = [@"WWQQQ" dataUsingEncoding:NSUTF8StringEncoding];
+			request.allowsCellularAccess = NO;
+			NSLog(@"request fields: %@", request.allHTTPHeaderFields);
 			if ([vc.webView respondsToSelector:@selector(loadRequest:)]) {
 				[vc.webView performSelector:@selector(loadRequest:) withObject:request];
 			}

@@ -34,6 +34,8 @@
 		03C210EF206CD3DA00A490B8 /* DualSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C210EE206CD3DA00A490B8 /* DualSplitView.m */; };
 		03C311202081806500C9ED09 /* RequestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3111F2081806500C9ED09 /* RequestDetailViewController.m */; };
 		03C3112320819E6800C9ED09 /* NSString+Bq.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3112220819E6800C9ED09 /* NSString+Bq.m */; };
+		03C311262084493A00C9ED09 /* EditRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C311252084493A00C9ED09 /* EditRequestViewController.m */; };
+		03C3112920844EE800C9ED09 /* RequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3112820844EE800C9ED09 /* RequestSettings.m */; };
 		03D986F8205ECA6E0047E6A7 /* WebViewExpUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */; };
 		03D98701205ECC7E0047E6A7 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D98700205ECC7E0047E6A7 /* SnapshotHelper.swift */; };
 		7878B965E1A6BFF4319E84D5 /* libPods-WebViewExp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEBA89A64078897B6B584D2 /* libPods-WebViewExp.a */; };
@@ -102,6 +104,11 @@
 		03C3111F2081806500C9ED09 /* RequestDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestDetailViewController.m; sourceTree = "<group>"; };
 		03C3112120819E6800C9ED09 /* NSString+Bq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Bq.h"; sourceTree = "<group>"; };
 		03C3112220819E6800C9ED09 /* NSString+Bq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Bq.m"; sourceTree = "<group>"; };
+		03C311242084493A00C9ED09 /* EditRequestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditRequestViewController.h; sourceTree = "<group>"; };
+		03C311252084493A00C9ED09 /* EditRequestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditRequestViewController.m; sourceTree = "<group>"; };
+		03C3112720844EE800C9ED09 /* RequestSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestSettings.h; sourceTree = "<group>"; };
+		03C3112820844EE800C9ED09 /* RequestSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestSettings.m; sourceTree = "<group>"; };
+		03C3112A20844F4900C9ED09 /* SettingProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingProtocol.h; sourceTree = "<group>"; };
 		03D986F5205ECA6E0047E6A7 /* WebViewExpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebViewExpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewExpUITests.m; sourceTree = "<group>"; };
 		03D986F9205ECA6E0047E6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -244,6 +251,9 @@
 			children = (
 				03508279206903320004F2CC /* Settings.h */,
 				0350827A206903320004F2CC /* Settings.m */,
+				03C3112A20844F4900C9ED09 /* SettingProtocol.h */,
+				03C3112720844EE800C9ED09 /* RequestSettings.h */,
+				03C3112820844EE800C9ED09 /* RequestSettings.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +275,8 @@
 				035082782069031A0004F2CC /* Model */,
 				03508273206901150004F2CC /* SettingViewController.h */,
 				03508274206901150004F2CC /* SettingViewController.m */,
+				03C311242084493A00C9ED09 /* EditRequestViewController.h */,
+				03C311252084493A00C9ED09 /* EditRequestViewController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -601,6 +613,7 @@
 				03995D06206258B00088019D /* SingleWebViewController.m in Sources */,
 				036D84B9207B9BC30073C84F /* BqUtil.m in Sources */,
 				03508275206901150004F2CC /* SettingViewController.m in Sources */,
+				03C3112920844EE800C9ED09 /* RequestSettings.m in Sources */,
 				03395828206E1C4C00AD83C7 /* ZFScanViewController.m in Sources */,
 				036BFBD9206B8970001CAB1B /* WebViewBuilder.m in Sources */,
 				036D84BC207BB67E0073C84F /* DualPadViewController.m in Sources */,
@@ -612,6 +625,7 @@
 				036BFC00206B9CCB001CAB1B /* DualWebViewController.m in Sources */,
 				03483262206F1DF500B7B1E1 /* UINavigationController+PLVVod.m in Sources */,
 				03C210EF206CD3DA00A490B8 /* DualSplitView.m in Sources */,
+				03C311262084493A00C9ED09 /* EditRequestViewController.m in Sources */,
 				0350827B206903320004F2CC /* Settings.m in Sources */,
 				03C311202081806500C9ED09 /* RequestDetailViewController.m in Sources */,
 				03483261206F1DF500B7B1E1 /* UIColor+PLVVod.m in Sources */,

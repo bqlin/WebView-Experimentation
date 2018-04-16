@@ -326,6 +326,7 @@ typedef void(^ControllerHandlerBlock)(void);
 
 - (void)showError:(NSError *)error {
 	self.loading = NO;
+	if (error.code == -999) return;
 	[BqUtil alertWithTitle:nil message:error.localizedDescription delegate:self];
 }
 

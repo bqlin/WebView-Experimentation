@@ -60,10 +60,30 @@ static NSString *NSStringFromNSURLRequestNetworkServiceType(NSURLRequestNetworkS
 	}
 }
 
+static const CGFloat BqFontSize = 14.0;
+
 @interface RequestDetailViewController ()
 
 @property (nonatomic, strong) UITextView *requestTextView;
 @property (nonatomic, strong) NSArray *requstInfos;
+
+@end
+
+@interface NSMutableAttributedString (Bq)
+
+- (void)appendString:(NSString *)aString;
+
+@end
+
+@implementation NSMutableAttributedString (Bq)
+
+- (void)appendString:(NSString *)aString {
+	NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:aString attributes:
+  @{
+	NSFontAttributeName: [UIFont systemFontOfSize:BqFontSize]
+	}];
+	[self appendAttributedString:attrString];
+}
 
 @end
 
@@ -77,6 +97,9 @@ static NSString *NSStringFromNSURLRequestNetworkServiceType(NSURLRequestNetworkS
 		_requestTextView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 		_requestTextView.layer.cornerRadius = 4.0;
 		_requestTextView.editable = NO;
+		if (@available(iOS 11.0, *)) {
+			_requestTextView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+		}
 	}
 	return _requestTextView;
 }
@@ -116,6 +139,7 @@ static NSString *NSStringFromNSURLRequestNetworkServiceType(NSURLRequestNetworkS
 
 - (void)setupUI {
 	self.view.backgroundColor = [UIColor whiteColor];
+	self.automaticallyAdjustsScrollViewInsets = NO;
 	//self.title = self.request.URL.absoluteString.decodeUrl;
 	self.title = @"请求详情";
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
@@ -154,7 +178,7 @@ static NSString *NSStringFromNSURLRequestNetworkServiceType(NSURLRequestNetworkS
 	}];
 #endif
 	
-	self.requestTextView.text = [self requestDescription];
+	self.requestTextView.attributedText = [self requestDescription];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -191,11 +215,11 @@ static NSString *NSStringFromNSURLRequestNetworkServiceType(NSURLRequestNetworkS
 
 #pragma mark - private
 
-- (NSString *)requestDescription {
-	NSMutableString *requestDescription = [NSMutableString string];
+- (NSAttributedString *)requestDescription {
+	NSMutableAttributedString *requestDescription = [[NSMutableAttributedString alloc] init];
 	for (id info in self.requstInfos) {
 		if ([info isKindOfClass:[NSDictionary class]]) {
-			[requestDescription appendString:[self subInfos:info level:0]];
+			[requestDescription appendAttributedString:[self subInfos:info level:0]];
 		} else {
 			[requestDescription appendString:info];
 		}
@@ -203,17 +227,20 @@ static NSString *NSStringFromNSURLRequestNetworkServiceType(NSURLRequestNetworkS
 	//NSLog(@"request: \n%@", requestDescription);
 	return requestDescription;
 }
-- (NSString *)subInfos:(NSDictionary *)infos level:(int)level {
-	NSMutableString *subInfo = [NSMutableString string];
+- (NSAttributedString *)subInfos:(NSDictionary *)infos level:(int)level {
+	NSMutableAttributedString *subInfo = [[NSMutableAttributedString alloc] init];
 	for (id key in infos.allKeys) {
 		id value = infos[key];
 		for (int i = 0; i < level; i ++) {
 			[subInfo appendString:@"\t"];
 		}
+		NSAttributedString *attriKeyString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: ", key] attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:BqFontSize]}];
+		[subInfo appendAttributedString:attriKeyString];
 		if ([value isKindOfClass:[NSDictionary class]]) {
-			[subInfo appendFormat:@"%@: \n%@", key, [self subInfos:value level:level+1]];
+			[subInfo appendString:@"\n"];
+			[subInfo appendAttributedString:[self subInfos:value level:level+1]];
 		} else {
-			[subInfo appendFormat:@"%@: %@\n", key, value];
+			[subInfo appendString:[NSString stringWithFormat:@"%@\n", value]];
 		}
 	}
 	return subInfo;

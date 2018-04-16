@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RequestSettings.h"
 
 @interface Settings : NSObject
 
@@ -18,6 +19,8 @@
 #pragma mark - 通用
 
 // API_AVAILABLE(ios(11.0),tvos(11.0))
+
+// TODO: 使用类规划设置
 
 /// 允许链接预览 - 9
 @property (nonatomic, assign) BOOL allowsLinkPreview API_AVAILABLE(ios(9.0));
@@ -47,6 +50,8 @@
 
 /// 允许手势导航
 @property (nonatomic, assign) BOOL allowsBackForwardNavigationGestures;
+
+@property (nonatomic, strong) RequestSettings *request;
 
 + (instancetype)sharedSettings;
 
