@@ -13,6 +13,7 @@ target 'WebViewExp' do
   pod 'Masonry', :path => '../../Masonry'
   pod 'YYModel'
   pod 'KVOController'
+  pod 'IQKeyboardManager'
 
   target 'WebViewExpUITests' do
     inherit! :search_paths

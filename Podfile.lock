@@ -1,10 +1,12 @@
 PODS:
+  - IQKeyboardManager (5.0.8)
   - KVOController (1.2.0)
   - Masonry (1.1.0)
   - YYModel (1.0.4)
   - ZFSetting (0.0.1)
 
 DEPENDENCIES:
+  - IQKeyboardManager
   - KVOController
   - Masonry (from `../../Masonry`)
   - YYModel
@@ -17,11 +19,12 @@ EXTERNAL SOURCES:
     :path: ../ZFSetting
 
 SPEC CHECKSUMS:
+  IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   Masonry: 34afc06a8c34f8a4958de258dca1732dab49e8fe
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZFSetting: 13e44606537f21e379a756982a64a41cfcd78a2d
 
-PODFILE CHECKSUM: f6b6cd102250a572dd31a1bb6110e1a4d3443862
+PODFILE CHECKSUM: b85fc7f2678f5d846a430979aa4e899c5a52f3e4
 
 COCOAPODS: 1.4.0
