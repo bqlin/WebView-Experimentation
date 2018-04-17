@@ -26,6 +26,7 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewBottomLayout;
 @property (nonatomic, assign) CGFloat textViewBottomLayoutConstant;
 @property (weak, nonatomic) IBOutlet UIButton *goButton;
+@property (weak, nonatomic) IBOutlet UIButton *requestSettingButton;
 
 @property (nonatomic, copy) NSString *lastUrl;
 @property (nonatomic, strong) NSString *userUrl;
@@ -277,6 +278,7 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 
 - (IBAction)webViewTypeChangeAction:(UISegmentedControl *)sender {
 	self.webViewType = sender.selectedSegmentIndex;
+	self.requestSettingButton.enabled = self.webViewType != WebViewTypeSafari;
 }
 
 - (IBAction)scanQRCodeAction:(UIBarButtonItem *)sender {

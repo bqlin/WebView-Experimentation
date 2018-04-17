@@ -9,6 +9,7 @@
 #import "EditRequestViewController.h"
 #import "Settings.h"
 #import "SingleSelectionTableViewController.h"
+#import "HeaderFieldViewController.h"
 
 typedef NS_ENUM(NSInteger, BqRequestSettingType) {
 	BqRequestSettingTypeHeaderFields,
@@ -45,10 +46,12 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 @interface EditRequestViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *uaTextView;
+@property (weak, nonatomic) IBOutlet UILabel *headerFieldDetailLabel;
 @property (weak, nonatomic) IBOutlet UITextView *httpBodyTextView;
 @property (weak, nonatomic) IBOutlet UITextField *httpMethodTextField;
 @property (weak, nonatomic) IBOutlet UITextField *timeoutTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *allowsCellularSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *cahcePolicyDetailLabel;
 
 @property (nonatomic, strong) RequestSettings *settings;
 
@@ -118,7 +121,27 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - navigation
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.destinationViewController isKindOfClass:[HeaderFieldViewController class]]) {
+		HeaderFieldViewController *vc = segue.destinationViewController;
+		vc.headerFields = self.settings.headerFields;
+		__weak typeof(self) weakSelf = self;
+		vc.headerFieldsChnageHandler = ^(HeaderFieldViewController *__weak controller) {
+			weakSelf.settings.headerFields = controller.headerFields;
+			dispatch_async(dispatch_get_main_queue(), ^{
+				NSString *text = nil;
+				if (controller.headerFields.count) {
+					text = [NSString stringWithFormat:@"%zd", controller.headerFields.count];
+				} else {
+					text = @"无";
+				}
+				weakSelf.headerFieldDetailLabel.text = text;
+			});
+		};
+	}
+}
 
 #pragma mark - action
 
@@ -177,7 +200,5 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 	}
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-
 
 @end

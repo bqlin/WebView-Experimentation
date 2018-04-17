@@ -319,7 +319,7 @@ typedef void(^ControllerHandlerBlock)(void);
 		UIPopoverPresentationController *popPresenter = [alertController popoverPresentationController];
 		popPresenter.sourceView = sender;
 		popPresenter.sourceRect = sender.bounds;
-		popPresenter.permittedArrowDirections = UIPopoverArrowDirectionDown;
+		popPresenter.permittedArrowDirections = UIPopoverArrowDirectionAny;
 	}
 	[self presentViewController:alertController animated:YES completion:^{}];
 }

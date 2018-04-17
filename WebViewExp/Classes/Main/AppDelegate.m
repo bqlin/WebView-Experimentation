@@ -15,6 +15,12 @@
 
 @implementation AppDelegate
 
+- (NSMutableDictionary *)tempDictionary {
+	if (!_tempDictionary) {
+		_tempDictionary = [NSMutableDictionary dictionary];
+	}
+	return _tempDictionary;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
