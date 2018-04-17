@@ -15,6 +15,15 @@ static NSString * const CellReuseIdentifier = @"reuseIdentifier";
 
 @implementation SingleSelectionTableViewController
 
+#pragma mark - property
+
+- (void)setSelectedIndex:(NSInteger)selectedIndex {
+	_selectedIndex = selectedIndex;
+	if (self.selectedIndexChangeHandler) self.selectedIndexChangeHandler(self);
+}
+
+#pragma mark - view controller
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	

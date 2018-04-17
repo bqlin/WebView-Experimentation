@@ -392,7 +392,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="allowsCellularSwitch" destination="lY2-Zk-f6x" id="QvV-pf-zwc"/>
-                        <outlet property="cahcePolicyDetailLabel" destination="wCF-Jn-cWM" id="PN5-Ve-T6v"/>
+                        <outlet property="cachcePolicyDetailLabel" destination="wCF-Jn-cWM" id="QfK-lY-6iS"/>
                         <outlet property="headerFieldDetailLabel" destination="Kvl-MN-Ukg" id="vpB-gi-TQG"/>
                         <outlet property="httpBodyTextView" destination="C1w-Gy-Zcy" id="C6U-TJ-2wJ"/>
                         <outlet property="httpMethodTextField" destination="hul-fS-0ao" id="VMi-dE-Gox"/>

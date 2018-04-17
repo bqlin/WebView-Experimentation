@@ -51,7 +51,7 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 @property (weak, nonatomic) IBOutlet UITextField *httpMethodTextField;
 @property (weak, nonatomic) IBOutlet UITextField *timeoutTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *allowsCellularSwitch;
-@property (weak, nonatomic) IBOutlet UILabel *cahcePolicyDetailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cachcePolicyDetailLabel;
 
 @property (nonatomic, strong) RequestSettings *settings;
 
@@ -104,7 +104,23 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 	self.timeoutTextField.text = @(self.settings.timeoutInterval).description;
 	self.httpMethodTextField.text = self.settings.httpMethod;
 	self.allowsCellularSwitch.on = self.settings.allowsCellularAccess;
+	[self updateHeaderFieldUI];
+	[self updateCachcePolicyUI];
 }
+
+- (void)updateHeaderFieldUI {
+	NSString *text = nil;
+	if (self.settings.headerFields.count) {
+		text = [NSString stringWithFormat:@"%zd", self.settings.headerFields.count];
+	} else {
+		text = @"无";
+	}
+	self.headerFieldDetailLabel.text = text;
+}
+- (void)updateCachcePolicyUI {
+	self.cachcePolicyDetailLabel.text = NSStringFromNSURLRequestCachePolicy(self.settings.cachePolicy);
+}
+
 - (void)updateSettingFromUI {
 	self.settings.globalUserAgent = self.uaTextView.text;
 	self.settings.httpBody = self.httpBodyTextView.text;
@@ -131,13 +147,7 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 		vc.headerFieldsChnageHandler = ^(HeaderFieldViewController *__weak controller) {
 			weakSelf.settings.headerFields = controller.headerFields;
 			dispatch_async(dispatch_get_main_queue(), ^{
-				NSString *text = nil;
-				if (controller.headerFields.count) {
-					text = [NSString stringWithFormat:@"%zd", controller.headerFields.count];
-				} else {
-					text = @"无";
-				}
-				weakSelf.headerFieldDetailLabel.text = text;
+				[weakSelf updateHeaderFieldUI];
 			});
 		};
 	}
@@ -186,13 +196,20 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 			} break;
 			case BqRequestSettingTypeCachePolicy:{
 				NSMutableArray *cacheChoises = [NSMutableArray array];
-				for (int i = 0; i < NSURLRequestReloadRevalidatingCacheData; i++) {
+				for (int i = 0; i < NSURLRequestReloadIgnoringLocalAndRemoteCacheData; i++) {
 					[cacheChoises addObject:NSStringFromNSURLRequestCachePolicy(i)];
 				}
 				SingleSelectionTableViewController *vc = [[SingleSelectionTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 				vc.choices = cacheChoises;
 				vc.selectedIndex = self.settings.cachePolicy;
 				vc.title = @"缓存策略";
+				__weak typeof(self) weakSelf = self;
+				vc.selectedIndexChangeHandler = ^(SingleSelectionTableViewController *__weak controller) {
+					weakSelf.settings.cachePolicy = controller.selectedIndex;
+					dispatch_async(dispatch_get_main_queue(), ^{
+						[weakSelf updateCachcePolicyUI];
+					});
+				};
 				[self showViewController:vc sender:cell];
 			} break;
 			default:{} break;

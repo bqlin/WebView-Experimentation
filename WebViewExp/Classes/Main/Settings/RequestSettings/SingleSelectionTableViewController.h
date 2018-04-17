@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSArray<NSString *> *choices;
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, copy) void (^selectedIndexChangeHandler)(__weak SingleSelectionTableViewController *controller);
 
 @end

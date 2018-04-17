@@ -326,6 +326,7 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 }
 
 - (IBAction)clearAction:(UIBarButtonItem *)sender {
+	if (![self.tableView numberOfRowsInSection:0]) return;
 	UIView *senderView = [sender valueForKey:@"view"];
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"清空请求头信息" message:@"是否清空所有请求头信息？" preferredStyle:UIAlertControllerStyleActionSheet];
 	[alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
