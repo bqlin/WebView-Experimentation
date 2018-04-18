@@ -206,13 +206,13 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 
 - (void)goWithType:(WebViewType)type sender:(id)sender {
 	NSURL *URL = [self inputURL];
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
 	if (!URL) return;
 	switch (type) {
 		case WebViewTypeUIWebView:
 		case WebViewTypeWKWebView:{
 			SingleWebViewController *vc = [[SingleWebViewController alloc] initWithNibName:nil bundle:nil];
 			vc.webView = type == WebViewTypeUIWebView ? [WebViewBuilder uiWebView] : [WebViewBuilder wkWebView];
-			NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
 			[WebViewBuilder applySettingsToRequest:request];
 			if ([vc.webView respondsToSelector:@selector(loadRequest:)]) {
 				[vc.webView performSelector:@selector(loadRequest:) withObject:request];
@@ -232,7 +232,7 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 				dualVc = [[DualWebViewController alloc] initWithNibName:nil bundle:nil];
 			}
 			
-			dualVc.URL = URL;
+			dualVc.request = request;
 			[self.navigationController pushViewController:dualVc animated:YES];
 		}break;
 	}

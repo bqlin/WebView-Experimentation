@@ -11,6 +11,7 @@
 
 @interface DualWebViewController : UIViewController <DualWebViewControllerProtocol>
 
-@property (nonatomic, copy) NSURL *URL;
+//@property (nonatomic, copy) NSURL *URL;
+@property (nonatomic, strong) NSURLRequest *request;
 
 @end

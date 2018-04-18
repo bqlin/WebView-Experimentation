@@ -134,9 +134,8 @@
 	return _splitView;
 }
 
-- (void)setURL:(NSURL *)URL {
-	_URL = URL;
-	NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+- (void)setRequest:(NSURLRequest *)request {
+	_request = request;
 	[self.uiWebView loadRequest:request];
 	[self.wkWebView loadRequest:request];
 }

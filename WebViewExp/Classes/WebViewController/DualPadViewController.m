@@ -42,7 +42,7 @@
 }
 
 - (void)setupWebView {
-	NSURLRequest *request = [NSURLRequest requestWithURL:self.URL];
+	NSURLRequest *request = self.request;
 	UIWebView *uiWebView = [WebViewBuilder uiWebView];
 	[uiWebView loadRequest:request];
 	WKWebView *wkWebView = [WebViewBuilder wkWebView];

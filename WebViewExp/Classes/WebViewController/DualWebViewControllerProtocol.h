@@ -10,6 +10,7 @@
 
 @protocol DualWebViewControllerProtocol <NSObject>
 
-@property (nonatomic, copy) NSURL *URL;
+//@property (nonatomic, copy) NSURL *URL;
+@property (nonatomic, strong) NSURLRequest *request;
 
 @end
