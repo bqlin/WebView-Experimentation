@@ -28,7 +28,7 @@
                                 <rect key="frame" x="16" y="100" width="288" height="162"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="T79-cS-QZM" secondAttribute="height" multiplier="16:9" priority="750" id="rEh-yr-UGS"/>
+                                    <constraint firstAttribute="width" secondItem="T79-cS-QZM" secondAttribute="height" multiplier="16:9" priority="250" id="rEh-yr-UGS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go" enablesReturnKeyAutomatically="YES" textContentType="url"/>
@@ -80,10 +80,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="T79-cS-QZM" secondAttribute="bottom" constant="52" id="8kj-dG-Lg8"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="FHz-kb-uva"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Hub-6I-O81" secondAttribute="bottom" constant="8" id="Mph-w3-s2p"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="trailing" secondItem="6s2-CF-m54" secondAttribute="trailing" constant="8" id="Xsf-e7-gPO"/>
                             <constraint firstItem="Hub-6I-O81" firstAttribute="top" secondItem="T79-cS-QZM" secondAttribute="bottom" constant="8" id="cNU-XX-1mr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="T79-cS-QZM" secondAttribute="bottom" constant="8" id="ie0-mO-Cve"/>
                             <constraint firstItem="eI9-Rr-Rd7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ii1-0F-uzp"/>
                             <constraint firstItem="Hub-6I-O81" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="-8" id="nPA-hb-t9C"/>
                             <constraint firstItem="T79-cS-QZM" firstAttribute="top" secondItem="eI9-Rr-Rd7" secondAttribute="bottom" constant="8" id="nhK-8D-lfT"/>
@@ -126,7 +127,7 @@
                     <connections>
                         <outlet property="goButton" destination="Hub-6I-O81" id="Hog-zQ-huB"/>
                         <outlet property="requestSettingButton" destination="6s2-CF-m54" id="l0d-FU-vvc"/>
-                        <outlet property="textViewBottomLayout" destination="8kj-dG-Lg8" id="0Hz-Ds-hXh"/>
+                        <outlet property="textViewBottomLayout" destination="ie0-mO-Cve" id="kO2-w4-Zxq"/>
                         <outlet property="urlTextView" destination="T79-cS-QZM" id="IT5-sF-BN2"/>
                     </connections>
                 </viewController>

@@ -103,8 +103,10 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 	NSDictionary *userInfo = [notification userInfo];
 	double duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
 	CGRect keyboardRect = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+	CGFloat constantValue = keyboardRect.size.height+8;
+	constantValue -= CGRectGetHeight([(UIView *)self.bottomLayoutGuide bounds]);
 	[UIView animateWithDuration:duration animations:^{
-		self.textViewBottomLayout.constant = keyboardRect.size.height+8;
+		self.textViewBottomLayout.constant = constantValue;
 	} completion:^(BOOL finished) {
 		
 	}];
