@@ -216,7 +216,7 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 	for (NSString *substring in pastedStrings) {
 		// 替换
 		NSString *newSubstring = [substring stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-		newSubstring = [newSubstring stringByReplacingOccurrencesOfString:@"\\s*:\\s*" withString:@"\n" options:NSRegularExpressionSearch range:NSMakeRange(0, newSubstring.length)];
+		newSubstring = [newSubstring stringByReplacingOccurrencesOfString:@"\\s*:\\s*(?!//)" withString:@"\n" options:NSRegularExpressionSearch range:NSMakeRange(0, newSubstring.length)];
 		//NSLog(@"newSubstring: %@", newSubstring);
 		// 拆分赋值
 		NSArray *keyValueStrings = [newSubstring componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
