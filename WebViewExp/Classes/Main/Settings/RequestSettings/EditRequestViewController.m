@@ -21,27 +21,18 @@ typedef NS_ENUM(NSInteger, BqRequestSettingType) {
 	BqRequestSettingTypeCachePolicy
 };
 
-static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cachePolicy) {
-	switch (cachePolicy) {
-		case NSURLRequestReloadIgnoringCacheData:{
-			return @"ReloadIgnoringCacheData";
-		} break;
-		case NSURLRequestReloadIgnoringLocalAndRemoteCacheData:{
-			return @"ReloadIgnoringLocalAndRemoteCacheData";
-		} break;
-		case NSURLRequestReloadRevalidatingCacheData:{
-			return @"ReloadRevalidatingCacheData";
-		} break;
-		case NSURLRequestReturnCacheDataDontLoad:{
-			return @"ReturnCacheDataDontLoad";
-		} break;
-		case NSURLRequestReturnCacheDataElseLoad:{
-			return @"ReturnCacheDataElseLoad";
-		} break;
-		case NSURLRequestUseProtocolCachePolicy:{
-			return @"UseProtocolCachePolicy";
-		} break;
-	}
+static NSArray *CachePolicyItems() {
+	NSMutableArray<SingleSelectionItem *> *items = [NSMutableArray array];
+	[items addObject:[SingleSelectionItem itemWithTitle:@"UseProtocolCachePolicy"]];
+	items.lastObject.detail = @"默认的缓存策略，其行为是由协议指定的针对该协议最好的实现方式。";
+	[items addObject:[SingleSelectionItem itemWithTitle:@"ReloadIgnoringCacheData"]];
+	items.lastObject.detail = @"从服务端加载数据，完全忽略缓存。";
+	[items addObject:[SingleSelectionItem itemWithTitle:@"ReturnCacheDataElseLoad"]];
+	items.lastObject.detail = @"使用缓存数据，忽略其过期时间；只有在没有缓存版本的时候才从源端加载数据。";
+	[items addObject:[SingleSelectionItem itemWithTitle:@"ReturnCacheDataDontLoad"]];
+	items.lastObject.detail = @"只使用缓存数据，如果不存在缓存，请求失败，直接导致崩溃；用于没有建立网络连接离线模式。";
+	items.lastObject.disable = YES;
+	return items.copy;
 }
 
 @interface EditRequestViewController ()
@@ -122,7 +113,7 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 	self.headerFieldDetailLabel.text = text;
 }
 - (void)updateCachcePolicyUI {
-	self.cachcePolicyDetailLabel.text = NSStringFromNSURLRequestCachePolicy(self.settings.cachePolicy);
+	self.cachcePolicyDetailLabel.text = [[CachePolicyItems() objectAtIndex:self.settings.cachePolicy] title];
 }
 
 - (void)updateSettingFromUI {
@@ -199,12 +190,8 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 				
 			} break;
 			case BqRequestSettingTypeCachePolicy:{
-				NSMutableArray *cacheChoises = [NSMutableArray array];
-				for (int i = 0; i < NSURLRequestReloadIgnoringLocalAndRemoteCacheData; i++) {
-					[cacheChoises addObject:NSStringFromNSURLRequestCachePolicy(i)];
-				}
 				SingleSelectionTableViewController *vc = [[SingleSelectionTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-				vc.choices = cacheChoises;
+				vc.choices = CachePolicyItems();
 				vc.selectedIndex = self.settings.cachePolicy;
 				vc.title = @"缓存策略";
 				__weak typeof(self) weakSelf = self;

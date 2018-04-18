@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SingleSelectionItem.h"
 
 @interface SingleSelectionTableViewController : UITableViewController
 
-@property (nonatomic, strong) NSArray<NSString *> *choices;
+@property (nonatomic, strong) NSArray<SingleSelectionItem *> *choices;
 @property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, copy) void (^selectedIndexChangeHandler)(__weak SingleSelectionTableViewController *controller);
 
