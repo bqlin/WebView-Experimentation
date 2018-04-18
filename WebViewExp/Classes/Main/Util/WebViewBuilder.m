@@ -13,7 +13,7 @@
 @implementation WebViewBuilder
 
 + (UIWebView *)uiWebView {
-	Settings *settings = [Settings sharedSettings];
+	WebViewSettings *settings = [Settings sharedSettings].webViewSettings;
 	UIWebView *webView = [[UIWebView alloc] init];
 	
 	webView.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
@@ -31,7 +31,7 @@
 	return webView;
 }
 + (WKWebView *)wkWebView {
-	Settings *settings = [Settings sharedSettings];
+	WebViewSettings *settings = [Settings sharedSettings].webViewSettings;
 	WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
 	configuration.suppressesIncrementalRendering = settings.suppressesIncrementalRendering;
 	configuration.allowsInlineMediaPlayback = settings.allowsInlineMediaPlayback;
@@ -59,7 +59,7 @@
 }
 
 - (id)updateSettingsWithWebView:(id)webView {
-	Settings *settings = [Settings sharedSettings];
+	WebViewSettings *settings = [Settings sharedSettings].webViewSettings;
 	if ([webView isKindOfClass:[UIWebView class]]) {
 		UIWebView *_webView = webView;
 		_webView.mediaPlaybackRequiresUserAction = settings.banAutoPlay;
@@ -81,7 +81,7 @@
 
 + (void)applySettingsToRequest:(NSMutableURLRequest *)request {
 	// 有值则设置，无值则不设置或置空
-	RequestSettings *settings = [Settings sharedSettings].request;
+	RequestSettings *settings = [Settings sharedSettings].requestSettings;
 	for (NSString *key in settings.headerFields) {
 		if (![key isKindOfClass:[NSString class]]) continue;
 		[request setValue:settings.headerFields[key] forHTTPHeaderField:key];

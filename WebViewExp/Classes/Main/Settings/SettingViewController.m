@@ -45,7 +45,7 @@
 }
 
 - (ZFSettingGroup *)uiWebViewSettings {
-	Settings *settings = [Settings sharedSettings];
+	WebViewSettings *settings = [Settings sharedSettings].webViewSettings;
 	__weak typeof(settings) _settings = settings;
 	
 	// 禁止缩放页面
@@ -62,7 +62,7 @@
 }
 
 - (ZFSettingGroup *)wkWebViewSettings {
-	Settings *settings = [Settings sharedSettings];
+	WebViewSettings *settings = [Settings sharedSettings].webViewSettings;
 	__weak typeof(settings) _settings = settings;
 	
 	// 允许手势导航
@@ -79,7 +79,7 @@
 }
 
 - (ZFSettingGroup *)generalSettings {
-	Settings *settings = [Settings sharedSettings];
+	WebViewSettings *settings = [Settings sharedSettings].webViewSettings;
 	__weak typeof(settings) _settings = settings;
 	
 	// 9 - 允许链接预览
@@ -200,7 +200,7 @@
 #pragma mark - action
 
 - (IBAction)restoreAction:(id)sender {
-	[[Settings sharedSettings] restoreToDefault];
+	[[Settings sharedSettings].webViewSettings restoreToDefault];
 	if ([self.view isKindOfClass:[UITableView class]]) {
 		UITableView *tableView = (UITableView *)self.view;
 		[self loadData];

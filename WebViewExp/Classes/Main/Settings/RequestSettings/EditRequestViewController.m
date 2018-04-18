@@ -65,13 +65,14 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 
 - (RequestSettings *)settings {
 	if (!_settings) {
-		Settings *settings = [Settings sharedSettings];
-		if (settings.request) {
-			_settings = settings.request;
-		} else {
-			_settings = [[RequestSettings alloc] init];
-			settings.request = _settings;
-		}
+		_settings = [Settings sharedSettings].requestSettings;
+		//Settings *settings = [Settings sharedSettings];
+		//if (settings.requestSettings) {
+		//	_settings = settings.requestSettings;
+		//} else {
+		//	_settings = [[RequestSettings alloc] init];
+		//	settings.requestSettings = _settings;
+		//}
 	}
 	return _settings;
 }
@@ -98,7 +99,6 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 	self.httpMethodTextField.inputAccessoryView = self.httpMethodInputAccessoryView;
 	self.httpMethodInputAccessoryView.textField = self.httpMethodTextField;
 	self.httpMethodInputAccessoryView.inputKeys = @[@"GET", @"POST"];
-//	self.httpMethodTextField.inputView = view;
 	[self updateUIFromSetting];
 }
 

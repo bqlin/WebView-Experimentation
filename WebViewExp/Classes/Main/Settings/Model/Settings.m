@@ -7,10 +7,7 @@
 //
 
 #import "Settings.h"
-#import <UIKit/UIKit.h>
-#import <WebKit/WebKit.h>
 #import <YYModel.h>
-#import "BqUtil.h"
 
 static NSString * const SettingsKey = @"com.bq.webviewlab.settings";
 
@@ -60,23 +57,17 @@ static id _sharedInstance = nil;
 	//[user synchronize];
 }
 
+#pragma mark - SettingProtocol
+
++ (instancetype)defaultSettings {
+	Settings *settings = [self sharedSettings];
+	[settings restoreToDefault];
+	return settings;
+}
+
 - (void)restoreToDefault {
-	UIWebView *webView = [[UIWebView alloc] init];
-	_allowsScale = webView.scalesPageToFit;
-	_suppressesIncrementalRendering = webView.suppressesIncrementalRendering;
-	_allowsDataDetect = !(webView.dataDetectorTypes & UIDataDetectorTypeNone);
-	_allowsInlineMediaPlayback = webView.allowsInlineMediaPlayback;
-	_banAutoPlay = webView.mediaPlaybackRequiresUserAction;
-	_mediaPlaybackAllowsAirPlay = webView.mediaPlaybackAllowsAirPlay;
-	
-	if (BQ_AVAILABLE(9)) {
-		_allowsLinkPreview = webView.allowsLinkPreview;
-		_allowsPictureInPictureMediaPlayback = webView.allowsPictureInPictureMediaPlayback;
-	}
-	webView = nil;
-	
-	WKWebView *wkWebView = [[WKWebView alloc] init];
-	_allowsBackForwardNavigationGestures = wkWebView.allowsBackForwardNavigationGestures;
+	_webViewSettings = [WebViewSettings defaultSettings];
+	_requestSettings = [RequestSettings defaultSettings];
 }
 
 @end
