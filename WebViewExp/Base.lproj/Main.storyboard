@@ -419,7 +419,7 @@
         <scene sceneID="Sz7-oq-Xf9">
             <objects>
                 <tableViewController title="请求头信息" id="aHk-zw-pFd" customClass="HeaderFieldViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" allowsSelection="NO" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="VvS-Qs-dhz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" allowsSelection="NO" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="VvS-Qs-dhz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -441,7 +441,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="KEY" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m46-er-fdp">
-                                            <rect key="frame" x="16" y="13.5" width="80" height="17"/>
+                                            <rect key="frame" x="16" y="0.5" width="80" height="43"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="9ID-3J-adj"/>
                                             </constraints>
@@ -450,7 +450,7 @@
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="VALUE" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iKz-j6-6d7">
-                                            <rect key="frame" x="117" y="13.5" width="48" height="17"/>
+                                            <rect key="frame" x="117" y="0.5" width="187" height="43"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -467,12 +467,14 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="iKz-j6-6d7" firstAttribute="leading" secondItem="7UX-m5-frV" secondAttribute="trailing" constant="8" id="4XD-ls-nEj"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="iKz-j6-6d7" secondAttribute="trailing" id="7Eo-sI-wBM"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iKz-j6-6d7" secondAttribute="trailing" id="7Eo-sI-wBM"/>
                                         <constraint firstItem="m46-er-fdp" firstAttribute="leading" secondItem="dFN-2r-Nvj" secondAttribute="leadingMargin" id="TJJ-nV-mM6"/>
                                         <constraint firstItem="7UX-m5-frV" firstAttribute="leading" secondItem="m46-er-fdp" secondAttribute="trailing" constant="8" id="V88-Hs-rz9"/>
                                         <constraint firstItem="iKz-j6-6d7" firstAttribute="centerY" secondItem="dFN-2r-Nvj" secondAttribute="centerY" id="Vrt-1u-cqp"/>
                                         <constraint firstItem="7UX-m5-frV" firstAttribute="centerY" secondItem="dFN-2r-Nvj" secondAttribute="centerY" id="aWG-6k-pyu"/>
+                                        <constraint firstAttribute="bottom" secondItem="m46-er-fdp" secondAttribute="bottom" id="h1b-AR-5xx"/>
                                         <constraint firstItem="m46-er-fdp" firstAttribute="centerY" secondItem="dFN-2r-Nvj" secondAttribute="centerY" id="sVE-TP-wPd"/>
+                                        <constraint firstAttribute="bottom" secondItem="iKz-j6-6d7" secondAttribute="bottom" id="zrf-it-GXW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

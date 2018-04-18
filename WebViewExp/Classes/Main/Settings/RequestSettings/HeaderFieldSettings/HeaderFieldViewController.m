@@ -76,7 +76,6 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
 }
@@ -269,6 +268,7 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 	[self.tableView insertRowsAtIndexPaths:@[endIndePath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 - (IBAction)removeAction:(UIBarButtonItem *)sender {
+	[self.view endEditing:NO];
 	self.tableView.allowsMultipleSelectionDuringEditing = !self.editing;
 	[self setEditing:!self.editing animated:YES];
 }
