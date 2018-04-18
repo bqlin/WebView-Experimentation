@@ -395,12 +395,23 @@
                         <outlet property="cachcePolicyDetailLabel" destination="wCF-Jn-cWM" id="QfK-lY-6iS"/>
                         <outlet property="headerFieldDetailLabel" destination="Kvl-MN-Ukg" id="vpB-gi-TQG"/>
                         <outlet property="httpBodyTextView" destination="C1w-Gy-Zcy" id="C6U-TJ-2wJ"/>
+                        <outlet property="httpMethodInputAccessoryView" destination="TEv-ia-nhc" id="czR-w7-PFi"/>
                         <outlet property="httpMethodTextField" destination="hul-fS-0ao" id="VMi-dE-Gox"/>
                         <outlet property="timeoutTextField" destination="lqW-SA-fmh" id="mmB-Dc-ZFu"/>
                         <outlet property="uaTextView" destination="yLW-Xa-fWo" id="TY3-Jn-egE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jwE-bJ-Y61" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" id="TEv-ia-nhc" customClass="BqInputAccessoryView">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iZK-4I-p0T">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
             </objects>
             <point key="canvasLocation" x="1051.875" y="1060.5633802816901"/>
         </scene>

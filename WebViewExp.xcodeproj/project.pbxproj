@@ -41,6 +41,7 @@
 		03C9B30A2085064100381C71 /* HeaderFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C9B3092085064100381C71 /* HeaderFieldViewController.m */; };
 		03C9B30F2085969400381C71 /* KeyValueFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C9B30E2085969400381C71 /* KeyValueFieldCell.m */; };
 		03C9B3142085A10D00381C71 /* KeyValueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C9B3132085A10D00381C71 /* KeyValueItem.m */; };
+		03C9B3172086D77000381C71 /* BqInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C9B3162086D77000381C71 /* BqInputAccessoryView.m */; };
 		03D986F8205ECA6E0047E6A7 /* WebViewExpUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */; };
 		03D98701205ECC7E0047E6A7 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D98700205ECC7E0047E6A7 /* SnapshotHelper.swift */; };
 		7878B965E1A6BFF4319E84D5 /* libPods-WebViewExp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEBA89A64078897B6B584D2 /* libPods-WebViewExp.a */; };
@@ -124,6 +125,8 @@
 		03C9B30E2085969400381C71 /* KeyValueFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyValueFieldCell.m; sourceTree = "<group>"; };
 		03C9B3122085A10D00381C71 /* KeyValueItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyValueItem.h; sourceTree = "<group>"; };
 		03C9B3132085A10D00381C71 /* KeyValueItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyValueItem.m; sourceTree = "<group>"; };
+		03C9B3152086D77000381C71 /* BqInputAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BqInputAccessoryView.h; sourceTree = "<group>"; };
+		03C9B3162086D77000381C71 /* BqInputAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BqInputAccessoryView.m; sourceTree = "<group>"; };
 		03D986F5205ECA6E0047E6A7 /* WebViewExpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebViewExpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D986F7205ECA6E0047E6A7 /* WebViewExpUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewExpUITests.m; sourceTree = "<group>"; };
 		03D986F9205ECA6E0047E6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -250,8 +253,6 @@
 		03508277206902790004F2CC /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				03C9B2F42084E36900381C71 /* View */,
-				0339580D206E1C4B00AD83C7 /* ZFScan */,
 				036BFBFC206B9192001CAB1B /* Settings */,
 				036BFBD6206B894F001CAB1B /* Util */,
 				E5294D291DC9ED6A00AC82DB /* AppDelegate.h */,
@@ -277,6 +278,8 @@
 		036BFBD6206B894F001CAB1B /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				03C9B2F42084E36900381C71 /* View */,
+				0339580D206E1C4B00AD83C7 /* ZFScan */,
 				036BFBD7206B8970001CAB1B /* WebViewBuilder.h */,
 				036BFBD8206B8970001CAB1B /* WebViewBuilder.m */,
 				036D84B7207B9BC20073C84F /* BqUtil.h */,
@@ -327,6 +330,8 @@
 			children = (
 				03C9B2FF2084F4C800381C71 /* IQTextView.h */,
 				03C9B3002084F4C800381C71 /* IQTextView.m */,
+				03C9B3152086D77000381C71 /* BqInputAccessoryView.h */,
+				03C9B3162086D77000381C71 /* BqInputAccessoryView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -664,6 +669,7 @@
 				E5294D2E1DC9ED6A00AC82DB /* HomeViewController.m in Sources */,
 				03C9B3012084F4C800381C71 /* IQTextView.m in Sources */,
 				03C9B30F2085969400381C71 /* KeyValueFieldCell.m in Sources */,
+				03C9B3172086D77000381C71 /* BqInputAccessoryView.m in Sources */,
 				03995D06206258B00088019D /* SingleWebViewController.m in Sources */,
 				036D84B9207B9BC30073C84F /* BqUtil.m in Sources */,
 				03508275206901150004F2CC /* SettingViewController.m in Sources */,

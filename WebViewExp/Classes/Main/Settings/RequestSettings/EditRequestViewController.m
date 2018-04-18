@@ -10,6 +10,7 @@
 #import "Settings.h"
 #import "SingleSelectionTableViewController.h"
 #import "HeaderFieldViewController.h"
+#import "BqInputAccessoryView.h"
 
 typedef NS_ENUM(NSInteger, BqRequestSettingType) {
 	BqRequestSettingTypeHeaderFields,
@@ -52,6 +53,7 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 @property (weak, nonatomic) IBOutlet UITextField *timeoutTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *allowsCellularSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *cachcePolicyDetailLabel;
+@property (nonatomic, strong) IBOutlet BqInputAccessoryView *httpMethodInputAccessoryView;
 
 @property (nonatomic, strong) RequestSettings *settings;
 
@@ -93,7 +95,9 @@ static NSString *NSStringFromNSURLRequestCachePolicy(NSURLRequestCachePolicy cac
 	label.textColor = [UIColor darkGrayColor];
 	self.timeoutTextField.rightView = label;
 	self.timeoutTextField.rightViewMode = UITextFieldViewModeAlways;
-	
+	self.httpMethodTextField.inputAccessoryView = self.httpMethodInputAccessoryView;
+	self.httpMethodInputAccessoryView.textField = self.httpMethodTextField;
+	self.httpMethodInputAccessoryView.inputKeys = @[@"GET", @"POST"];
 //	self.httpMethodTextField.inputView = view;
 	[self updateUIFromSetting];
 }
