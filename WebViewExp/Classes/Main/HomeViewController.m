@@ -286,11 +286,30 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 	__weak typeof(self) weakSelf = self;
 	vc.returnScanBarCodeValue = ^(NSString * barCodeString){
 		dispatch_async(dispatch_get_main_queue(), ^{
-			NSString *codeString = [barCodeString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].decodeUrl;
-			weakSelf.urlTextView.text = codeString;
+			[weakSelf showConfirmAlertWithScanString:barCodeString];
 		});
 	};
 	
 	[self presentViewController:vc animated:YES completion:nil];
 }
+
+- (void)showConfirmAlertWithScanString:(NSString *)scanString {
+	NSString *codeString = [scanString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].decodeUrl;
+	
+	__weak typeof(self) weakSelf = self;
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否使用以下识别内容？" message:codeString preferredStyle:UIAlertControllerStyleAlert];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+	}]];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"使用" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		weakSelf.urlTextView.text = codeString;
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+	}]];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"复制" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[UIPasteboard generalPasteboard].string = codeString;
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+	}]];
+	[self presentViewController:alertController animated:YES completion:nil];
+}
+
 @end
