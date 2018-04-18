@@ -19,6 +19,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+	self.keyTextField.delegate = self.valueTextField.delegate = self;
+	self.keyTextField.returnKeyType = self.valueTextField.returnKeyType = UIReturnKeyNext;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -31,13 +33,17 @@
 
 - (void)setItem:(KeyValueItem *)item {
 	_item = item;
-	dispatch_async(dispatch_get_main_queue(), ^{
-		self.keyTextField.text = item.key;
-		self.valueTextField.text = item.value;
-	});
+	self.keyTextField.text = item.key;
+	self.valueTextField.text = item.value;
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+	if ([self.delegate respondsToSelector:@selector(cell:didBeginEditing:)]) {
+		[self.delegate cell:self didBeginEditing:textField];
+	}
+}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
 	if (textField == _keyTextField) {
@@ -45,6 +51,16 @@
 	} else if (textField == _valueTextField) {
 		self.item.value = textField.text;
 	}
+	//NSLog(@"%s - %@", __FUNCTION__, textField);
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	if (textField == self.keyTextField) {
+		[self.valueTextField becomeFirstResponder];
+	} else {
+		[self.keyTextField becomeFirstResponder];
+	}
+	return NO;
 }
 
 @end

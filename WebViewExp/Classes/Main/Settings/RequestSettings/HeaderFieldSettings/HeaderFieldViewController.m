@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "KeyValueFieldCell.h"
 #import "BqUtil.h"
+#import "BqInputAccessoryToolbar.h"
 
 NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items) {
 	if (!items.count) return nil;
@@ -21,12 +22,14 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 	return description;
 }
 
-@interface HeaderFieldViewController ()
+@interface HeaderFieldViewController () <KeyValueFieldCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray<KeyValueItem *> *headerFieldItems;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *removeButton;
 @property (nonatomic, strong) UIBarButtonItem *selectAllButton;
 @property (nonatomic, strong) UIBarButtonItem *deleteButton;
+
+@property (strong, nonatomic) IBOutlet BqInputAccessoryToolbar *accessoryToolbar;
 
 @end
 
@@ -72,7 +75,8 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+	
+	
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
 }
@@ -84,6 +88,7 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	[self.navigationController setToolbarHidden:YES animated:YES];
+	[self.view endEditing:YES];
 	[self updateHeaderFields];
 }
 
@@ -114,6 +119,7 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 	
 	KeyValueItem *item = self.headerFieldItems[indexPath.row];
 	cell.item = item;
+	cell.delegate = self;
     
     return cell;
 }
@@ -147,15 +153,11 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 	[self updateDeleteButton];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - KeyValueFieldCellDelegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)cell:(KeyValueFieldCell *)cell didBeginEditing:(UITextField *)textField {
+	//textField.inputAccessoryView = self.accessoryToolbar;
 }
-*/
 
 #pragma mark - private
 
@@ -194,7 +196,7 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 	for (KeyValueItem *item in self.headerFieldItems) {
 		NSString *itemKey = item.key;
 		NSString *itemValue = item.value;
-		if (!itemKey || !itemValue) continue;
+		if (!itemKey.length || !itemValue.length) continue;
 		dic[item.key] = item.value;
 	}
 	//NSString *key = @"headerFieldDic";

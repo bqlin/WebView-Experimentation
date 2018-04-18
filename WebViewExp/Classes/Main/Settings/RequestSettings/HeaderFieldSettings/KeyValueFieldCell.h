@@ -9,8 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "KeyValueItem.h"
 
+@class KeyValueFieldCell;
+
+@protocol KeyValueFieldCellDelegate <NSObject>
+
+@optional
+- (void)cell:(KeyValueFieldCell *)cell didBeginEditing:(UITextField *)textField;
+
+@end
+
 @interface KeyValueFieldCell : UITableViewCell
 
 @property (nonatomic, strong) KeyValueItem *item;
+
+@property (nonatomic, weak) id<KeyValueFieldCellDelegate> delegate;
 
 @end
