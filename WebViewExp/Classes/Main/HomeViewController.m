@@ -88,7 +88,7 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	[self.navigationController setToolbarHidden:YES animated:YES];
+	[self.navigationController setToolbarHidden:NO animated:YES];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
 }
 - (void)viewDidDisappear:(BOOL)animated {
@@ -238,6 +238,25 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 	}
 }
 
+- (void)showConfirmAlertWithScanString:(NSString *)scanString {
+	NSString *codeString = [scanString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].decodeUrl;
+	
+	__weak typeof(self) weakSelf = self;
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否使用以下识别内容？" message:codeString preferredStyle:UIAlertControllerStyleAlert];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+	}]];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"使用" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		weakSelf.urlTextView.text = codeString;
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+	}]];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"复制" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[UIPasteboard generalPasteboard].string = codeString;
+		[alertController dismissViewControllerAnimated:YES completion:^{}];
+	}]];
+	[self presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - UITextViewDelegate
 
 - (void)textViewDidChange:(UITextView *)textView {
@@ -293,23 +312,15 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 	[self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void)showConfirmAlertWithScanString:(NSString *)scanString {
-	NSString *codeString = [scanString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].decodeUrl;
-	
-	__weak typeof(self) weakSelf = self;
-	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否使用以下识别内容？" message:codeString preferredStyle:UIAlertControllerStyleAlert];
+- (IBAction)jsAction:(UIBarButtonItem *)sender {
+	NSString *title = @"运行 JavaScript";
+	NSString *message = @"运行 JavaScript 功能将在 1.4.0 中推出，敬请期待~";
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
 	[alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-		[alertController dismissViewControllerAnimated:YES completion:^{}];
-	}]];
-	[alertController addAction:[UIAlertAction actionWithTitle:@"使用" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-		weakSelf.urlTextView.text = codeString;
-		[alertController dismissViewControllerAnimated:YES completion:^{}];
-	}]];
-	[alertController addAction:[UIAlertAction actionWithTitle:@"复制" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-		[UIPasteboard generalPasteboard].string = codeString;
 		[alertController dismissViewControllerAnimated:YES completion:^{}];
 	}]];
 	[self presentViewController:alertController animated:YES completion:nil];
 }
+
 
 @end

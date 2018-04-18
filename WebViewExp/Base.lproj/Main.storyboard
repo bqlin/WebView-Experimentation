@@ -93,6 +93,14 @@
                             <constraint firstItem="T79-cS-QZM" firstAttribute="bottom" secondItem="6s2-CF-m54" secondAttribute="bottom" constant="6" id="xfx-5w-AyM"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem image="js" id="jiW-VV-qw5">
+                            <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="jsAction:" destination="BYZ-38-t0r" id="RIf-Ki-Wbn"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="WebView Lab" id="Tgp-oL-AwU">
                         <barButtonItem key="backBarButtonItem" title=" " id="wsh-fO-Vuy"/>
                         <barButtonItem key="leftBarButtonItem" image="garbage" id="eZJ-vL-2b1">
@@ -114,6 +122,7 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="goButton" destination="Hub-6I-O81" id="Hog-zQ-huB"/>
                         <outlet property="requestSettingButton" destination="6s2-CF-m54" id="l0d-FU-vvc"/>
@@ -605,6 +614,7 @@
     <resources>
         <image name="down-arrow" width="22" height="12"/>
         <image name="garbage" width="22" height="22"/>
+        <image name="js" width="22" height="18"/>
         <image name="left-arrow" width="12" height="22"/>
         <image name="ok" width="22" height="17"/>
         <image name="paint" width="18" height="22"/>
