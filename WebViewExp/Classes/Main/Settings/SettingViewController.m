@@ -202,9 +202,8 @@
 - (IBAction)restoreAction:(id)sender {
 	[[Settings sharedSettings].webViewSettings restoreToDefault];
 	if ([self.view isKindOfClass:[UITableView class]]) {
-		UITableView *tableView = (UITableView *)self.view;
 		[self loadData];
-		[tableView reloadData];
+		[self reloadData];
 	}
 }
 
