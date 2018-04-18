@@ -246,8 +246,9 @@ NS_INLINE NSString *DescriptionFromKeyValueItems(NSArray<KeyValueItem *> *items)
 
 - (void)showPrasteAlert {
 	NSArray *items = [self itemsFromPraste];
-	NSString *message = DescriptionFromKeyValueItems(items);
-	NSString *title = items.count ? @"是否添加剪贴板识别的请求头信息？" : @"无法识别剪贴内容";
+	NSString *pasteboardMessage = [NSString stringWithFormat:@"剪贴板内容：“%@”", [UIPasteboard generalPasteboard].string];
+	NSString *message = items.count ? DescriptionFromKeyValueItems(items) : pasteboardMessage;
+	NSString *title = items.count ? @"是否添加剪贴板识别的请求头信息？" : @"剪贴板无可用信息";
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
 	[alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 		[alertController dismissViewControllerAnimated:YES completion:^{}];
