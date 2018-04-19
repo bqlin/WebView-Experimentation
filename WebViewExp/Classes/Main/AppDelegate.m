@@ -24,7 +24,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-	[Settings sharedSettings];
+	Settings *settings = [Settings sharedSettings];
+	settings = nil;
     return YES;
 }
 

@@ -66,8 +66,24 @@ static id _sharedInstance = nil;
 }
 
 - (void)restoreToDefault {
-	_webViewSettings = [WebViewSettings defaultSettings];
-	_requestSettings = [RequestSettings defaultSettings];
+	_webViewSettings = nil;
+	_requestSettings = nil;
+}
+
+#pragma mark - property
+
+- (WebViewSettings *)webViewSettings {
+	if (!_webViewSettings) {
+		_webViewSettings = [WebViewSettings defaultSettings];
+	}
+	return _webViewSettings;
+}
+
+- (RequestSettings *)requestSettings {
+	if (!_requestSettings) {
+		_requestSettings = [RequestSettings defaultSettings];
+	}
+	return _requestSettings;
 }
 
 @end
