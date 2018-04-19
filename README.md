@@ -8,10 +8,13 @@ UIWebView 与 WKWebView 调试对比工具。
 
 ## 截图
 
+<!--  
 ![](https://ws4.sinaimg.cn/large/006tNc79gy1fqiac0vdsgj309e0goac1.jpg)![](https://ws3.sinaimg.cn/large/006tNc79gy1fqiacj6scnj30go09etau.jpg)![](https://ws4.sinaimg.cn/large/006tNc79gy1fqiad1zzoyj30go09e3zq.jpg)
 ![](https://ws2.sinaimg.cn/large/006tNc79gy1fqiadcbz3bj309e0goq4s.jpg)![](https://ws4.sinaimg.cn/large/006tNc79gy1fqiaeul57nj309e0gotai.jpg)![](https://ws2.sinaimg.cn/large/006tNc79gy1fqiaek816qj309e0godhq.jpg)
 ![](https://ws1.sinaimg.cn/large/006tNc79gy1fqiadj7vi2j309e0go0vb.jpg)![](https://ws1.sinaimg.cn/large/006tNc79gy1fqiadqstwmj309e0go76x.jpg)
 ![](https://ws4.sinaimg.cn/large/006tNc79gy1fqiadw8jttj309e0goq5h.jpg)![](https://ws3.sinaimg.cn/large/006tNc79gy1fqiae4puq4j30go09eju0.jpg)
+-->
+
 
 ## 功能列表
 
