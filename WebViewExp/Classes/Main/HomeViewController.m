@@ -101,18 +101,25 @@ static NSString * const DefaultURLKey = @"defaultURL_preference";
 - (void)keyboardWillShow:(NSNotification *)notification {
 	if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) return;
 	NSDictionary *userInfo = [notification userInfo];
-	double duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
 	CGRect keyboardRect = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	CGFloat constantValue = keyboardRect.size.height+8;
 	constantValue -= CGRectGetHeight([(UIView *)self.bottomLayoutGuide bounds]);
+	double duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
 	[UIView animateWithDuration:duration animations:^{
 		self.textViewBottomLayout.constant = constantValue;
 	} completion:^(BOOL finished) {
-		
+
 	}];
+//	self.textViewBottomLayout.constant = constantValue;
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification {
+//	if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) return;
+//	NSDictionary *userInfo = [notification userInfo];
+//	CGRect keyboardRect = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//	CGFloat constantValue = keyboardRect.size.height+8;
+//	constantValue -= CGRectGetHeight([(UIView *)self.bottomLayoutGuide bounds]);
+//	self.textViewBottomLayout.constant = constantValue;
 }
 
 - (void)applicationWillEnterForeground:(NSNotification *)notification {
