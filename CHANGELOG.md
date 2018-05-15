@@ -6,6 +6,13 @@
 ### Removed
 ### Fixed -->
 
+## [1.4.1]
+
+- 浏览器内缓存 JavaScript 代码
+- 优化 UI icon
+- 优化检查更新逻辑
+- 修复手势退出浏览器 JSEditor 不退出问题
+
 ## [1.4.0]
 
 - 支持在任意页面执行 JavaScript，并显示返回结果
