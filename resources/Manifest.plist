@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ProductNames</key>
+	<dict>
+		<key>coin_06</key>
+		<string>捐赠可乐🥤</string>
+		<key>coin_18</key>
+		<string>捐赠咖啡☕️</string>
+	</dict>
 	<key>DonateProducts</key>
 	<array>
 		<string>coin_06</string>
